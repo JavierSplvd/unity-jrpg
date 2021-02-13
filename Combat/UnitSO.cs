@@ -11,6 +11,10 @@ public class UnitSO : ScriptableObject {
     public float speed;
     public float maxHP;
     public float currentHP;
+    public float maxMP;
+    public float currentMP;
+
+    public AbilitySO[] abilities;
 
     public GameObject prefab;
 }
