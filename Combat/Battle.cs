@@ -19,9 +19,9 @@ public class Battle : MonoBehaviour
     public Text dialogueText;
 
     // The turn order goes like this:
-    // Start, 
-    // repeat Upkeep, Unit, CleanUp, 
-    // if one team is out of health Won/Lost
+    // Start: this is the start of the battle, only once per battle
+    // repeat Upkeep, Unit, CleanUp,
+    // if one team is out of health Won/Lost state
     void Start() 
     {
         currentState = new StartState(this);
@@ -52,7 +52,13 @@ public class Battle : MonoBehaviour
 
     public void ChangeState(State<Battle> newState)
     {
+        currentState.OnStateExit();
         currentState = newState;
+        newState.OnStateEnter();
     }
 
+    public void UpdateDialogueText(string newText)
+    {
+        dialogueText.text = newText;
+    }
 }

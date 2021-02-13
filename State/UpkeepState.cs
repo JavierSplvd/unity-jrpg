@@ -12,9 +12,9 @@ public class UpkeepState : State<Battle>
 
     }
 
-    public override void OnStateEnter()
+    public override void OnStateEnter() 
     {
-
+        base.owner.UpdateDialogueText("Upkeep...");
     }
 
     public override void OnStateExit()

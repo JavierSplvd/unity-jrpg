@@ -5,6 +5,10 @@ public class UnitSO : ScriptableObject {
     public string unitName;
     public float level;
     public float attack;
+    public float defense;
+    public float magicAttack;
+    public float magicDefense;
+    public float speed;
     public float maxHP;
     public float currentHP;
 
