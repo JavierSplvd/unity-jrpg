@@ -17,6 +17,7 @@ public class ActiveUnitState : State<Battle>
     public override void OnStateEnter() 
     {
         base.owner.UpdateDialogueText("It's " + activeUnit.unitName + " turn.");
+        base.owner.UpdateCommandSelector(activeUnit.abilities);
     }
 
     public override void OnStateExit()

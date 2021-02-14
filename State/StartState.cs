@@ -5,7 +5,7 @@ public class StartState : State<Battle>
     private UnityUtilities.Countdown timer;
     public StartState(Battle owner) : base(owner)
     {
-        timer = new UnityUtilities.Countdown(false, 2f);
+        timer = new UnityUtilities.Countdown(false, 0.3f);
     }
 
     public override void Tick()

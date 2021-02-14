@@ -18,6 +18,7 @@ public class Battle : MonoBehaviour
     private UnitSO enemy;
 
     public Text dialogueText;
+    private BattleCommandSelector commandSelector;
 
     // The turn order goes like this:
     // Start: this is the start of the battle, only once per battle
@@ -26,6 +27,7 @@ public class Battle : MonoBehaviour
     // if one team is out of health Won/Lost state
     void Start() 
     {
+        commandSelector = GameObject.FindObjectOfType<BattleCommandSelector>().GetComponent<BattleCommandSelector>();
         currentState = new StartState(this);
         SetupBattle();
     }
@@ -41,7 +43,7 @@ public class Battle : MonoBehaviour
         ally = allyTeam.units[0];
         enemy = enemyTeam.units[0];
 
-        GameObject allyGo = Instantiate(ally.prefab, alliesTransform.GetChild(0));
+        GameObject allyGo = Instantiate(ally.prefab, alliesTransform.GetChild(0).GetChild(0));
         GameObject allyHUD = Instantiate(originalBattleHUD, alliesTransform.GetChild(0));
         allyHUD.GetComponent<BattleHUD>().SetHUD(ally);
 
@@ -89,4 +91,8 @@ public class Battle : MonoBehaviour
         return null;
     }
 
+    internal void UpdateCommandSelector(AbilitySO[] abilities)
+    {
+        commandSelector.UpdateCommandSelector(abilities);
+    }
 }
