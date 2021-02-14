@@ -13,6 +13,9 @@ public class UnitSO : ScriptableObject {
     public float currentHP;
     public float maxMP;
     public float currentMP;
+    public float maxTurnCount = 100;
+    public float currentTurnCount;
+
 
     public AbilitySO[] abilities;
 

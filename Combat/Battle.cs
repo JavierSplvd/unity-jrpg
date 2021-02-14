@@ -1,13 +1,14 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Battle : MonoBehaviour
 {
-    [SerializeField] TeamSO allies;
-    [SerializeField] TeamSO enemies;
+    [SerializeField] TeamSO allyTeam;
+    [SerializeField] TeamSO enemyTeam;
     [SerializeField] Transform alliesTransform;
     [SerializeField] Transform enemiesTransform;
-
+    [SerializeField] UnitSO[] allUnits;
     [SerializeField] GameObject originalBattleHUD;
 
     [SerializeField] State<Battle> currentState;
@@ -37,8 +38,8 @@ public class Battle : MonoBehaviour
 
     void SetupBattle()
     {
-        ally = allies.units[0];
-        enemy = enemies.units[0];
+        ally = allyTeam.units[0];
+        enemy = enemyTeam.units[0];
 
         GameObject allyGo = Instantiate(ally.prefab, alliesTransform.GetChild(0));
         GameObject allyHUD = Instantiate(originalBattleHUD, alliesTransform.GetChild(0));
@@ -49,6 +50,8 @@ public class Battle : MonoBehaviour
         enemyHUD.GetComponent<BattleHUD>().SetHUD(enemy);
         
         dialogueText.text = "Prepare for battle!";
+
+        allUnits = allyTeam.units.Concat(enemyTeam.units).ToArray();
 
         Destroy(originalBattleHUD);
     }
@@ -64,4 +67,26 @@ public class Battle : MonoBehaviour
     {
         dialogueText.text = newText;
     }
+
+    internal void ChargeUnitTurn()
+    {
+        foreach(UnitSO u in allUnits)
+        {
+            u.currentTurnCount += Time.fixedDeltaTime * u.speed;
+        }
+    }
+
+    internal UnitSO GetActiveUnit()
+    {
+        foreach(UnitSO u in allUnits)
+        {
+            if(u.currentTurnCount >= 100)
+            {
+                u.currentTurnCount -= 100;
+                return u;
+            }
+        } 
+        return null;
+    }
+
 }

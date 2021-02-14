@@ -9,7 +9,12 @@ public class UpkeepState : State<Battle>
 
     public override void Tick()
     {
-
+        owner.ChargeUnitTurn();
+        UnitSO u = owner.GetActiveUnit();
+        if(u)
+        {
+            owner.ChangeState(new ActiveUnitState(owner, u));
+        }
     }
 
     public override void OnStateEnter() 

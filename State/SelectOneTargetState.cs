@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SelectOneTargetState : State<Battle>
 {
-    public LostState(Battle owner) : base(owner)
+    public SelectOneTargetState(Battle owner) : base(owner)
     {
 
     }
