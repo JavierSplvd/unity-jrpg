@@ -9,7 +9,7 @@ public class Battle : MonoBehaviour
     [SerializeField] Transform alliesTransform;
     [SerializeField] Transform enemiesTransform;
     [SerializeField] UnitSO[] allUnits;
-    [SerializeField] GameObject originalBattleHUD;
+    [SerializeField] GameObject[] HUDForAlliedUnits;
 
     [SerializeField] State<Battle> currentState;
     public string currentStateName;
@@ -43,19 +43,13 @@ public class Battle : MonoBehaviour
         ally = allyTeam.units[0];
         enemy = enemyTeam.units[0];
 
-        GameObject allyGo = Instantiate(ally.prefab, alliesTransform.GetChild(0).GetChild(0));
-        GameObject allyHUD = Instantiate(originalBattleHUD, alliesTransform.GetChild(0));
-        allyHUD.GetComponent<BattleHUD>().SetHUD(ally);
+        HUDForAlliedUnits[0].GetComponent<BattleHUD>().SetHUD(ally);
 
         GameObject enemyGo = Instantiate(enemy.prefab, enemiesTransform);
-        GameObject enemyHUD = Instantiate(originalBattleHUD, enemiesTransform);
-        enemyHUD.GetComponent<BattleHUD>().SetHUD(enemy);
         
         dialogueText.text = "Prepare for battle!";
 
         allUnits = allyTeam.units.Concat(enemyTeam.units).ToArray();
-
-        Destroy(originalBattleHUD);
     }
 
     public void ChangeState(State<Battle> newState)

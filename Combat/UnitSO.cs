@@ -20,4 +20,5 @@ public class UnitSO : ScriptableObject {
     public AbilitySO[] abilities;
 
     public GameObject prefab;
+    public Sprite sprite;
 }
