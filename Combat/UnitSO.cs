@@ -17,7 +17,7 @@ public class UnitSO : ScriptableObject {
     public float currentTurnCount;
 
 
-    public AbilitySO[] abilities;
+    public SkillSO[] skills;
 
     public GameObject prefab;
     public Sprite sprite;

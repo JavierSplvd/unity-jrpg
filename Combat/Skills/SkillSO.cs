@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public abstract class AbilitySO : ScriptableObject {
-    public string abilityName = "";
+public abstract class SkillSO : ScriptableObject {
+    public string skillName = "";
     public Sprite icon;
-    public AudioClip abilitySound;
+    public AudioClip skillSound;
     public float manaCost;
     public float power;
     public bool selectTarget = false;

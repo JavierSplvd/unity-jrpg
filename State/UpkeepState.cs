@@ -13,7 +13,7 @@ public class UpkeepState : State<Battle>
         UnitSO u = owner.GetActiveUnit();
         if(u)
         {
-            owner.ChangeState(new ActiveUnitState(owner, u));
+            owner.ChangeState(new UnitSelectActionState(owner, u));
         }
     }
 

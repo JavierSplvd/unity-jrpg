@@ -8,8 +8,8 @@ public class Battle : MonoBehaviour
     [SerializeField] TeamSO enemyTeam;
     [SerializeField] Transform alliesTransform;
     [SerializeField] Transform enemiesTransform;
-    [SerializeField] UnitSO[] allUnits;
-    [SerializeField] GameObject[] HUDForAlliedUnits;
+    [SerializeField] public UnitSO[] allUnits;
+    [SerializeField] public GameObject[] HUDForAlliedUnits;
 
     [SerializeField] State<Battle> currentState;
     public string currentStateName;
@@ -18,18 +18,22 @@ public class Battle : MonoBehaviour
     private UnitSO enemy;
 
     public Text dialogueText;
-    private BattleCommandSelector commandSelector;
+    public BattleCommandSelector commandSelector;
+    private BattleTargetSelector targetSelector;
 
     // The turn order goes like this:
     // Start: this is the start of the battle, only once per battle
     // repeat Upkeep, Unit, CleanUp,
-    // Select target: only when some ability is used that requires a target.
+    // Select target: only when some skill is used that requires a target.
     // if one team is out of health Won/Lost state
     void Start() 
     {
         commandSelector = GameObject.FindObjectOfType<BattleCommandSelector>().GetComponent<BattleCommandSelector>();
+        targetSelector = GameObject.FindObjectOfType<BattleTargetSelector>().GetComponent<BattleTargetSelector>();
         currentState = new StartState(this);
         SetupBattle();
+        HideCommandSelector();
+        targetSelector.Hide();
     }
 
     void FixedUpdate()
@@ -85,8 +89,16 @@ public class Battle : MonoBehaviour
         return null;
     }
 
-    internal void UpdateCommandSelector(AbilitySO[] abilities)
+    internal void UpdateCommandSelector(SkillSO[] abilities)
     {
         commandSelector.UpdateCommandSelector(abilities);
+    }
+    internal void ShowCommandSelector(float x)
+    {
+        commandSelector.ShowCommandSelector(x);
+    }
+    internal void HideCommandSelector()
+    {
+        commandSelector.HideCommandSelector();
     }
 }
