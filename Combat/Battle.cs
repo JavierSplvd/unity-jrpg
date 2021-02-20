@@ -6,10 +6,9 @@ public class Battle : MonoBehaviour
 {
     [SerializeField] TeamSO allyTeam;
     [SerializeField] TeamSO enemyTeam;
-    [SerializeField] Transform alliesTransform;
-    [SerializeField] Transform enemiesTransform;
     [SerializeField] public UnitSO[] allUnits;
     [SerializeField] public GameObject[] HUDForAlliedUnits;
+    [SerializeField] public GameObject[] HUDForEnemyUnits;
 
     [SerializeField] State<Battle> currentState;
     public string currentStateName;
@@ -23,7 +22,7 @@ public class Battle : MonoBehaviour
 
     // The turn order goes like this:
     // Start: this is the start of the battle, only once per battle
-    // repeat Upkeep, Unit, CleanUp,
+    // repeat Upkeep, UnitSelectAction, UnitSelectTarget, AttackPhase, CleanUp,
     // Select target: only when some skill is used that requires a target.
     // if one team is out of health Won/Lost state
     void Start() 
@@ -47,9 +46,8 @@ public class Battle : MonoBehaviour
         ally = allyTeam.units[0];
         enemy = enemyTeam.units[0];
 
-        HUDForAlliedUnits[0].GetComponent<BattleHUD>().SetHUD(ally);
-
-        GameObject enemyGo = Instantiate(enemy.prefab, enemiesTransform);
+        HUDForAlliedUnits[0].GetComponent<IBattleHUD>().SetUnit(ally);
+        HUDForEnemyUnits[0].GetComponent<IBattleHUD>().SetUnit(enemy);
         
         dialogueText.text = "Prepare for battle!";
 

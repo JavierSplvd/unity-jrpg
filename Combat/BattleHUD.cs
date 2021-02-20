@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BattleHUD : MonoBehaviour {
+public class BattleHUD : MonoBehaviour, IBattleHUD
+{
     private UnitSO unit;
     public Text nameText;
     public Text levelText;
@@ -50,20 +51,25 @@ public class BattleHUD : MonoBehaviour {
 
     void FixedUpdate()
     {
-        UpdateSliders(unit);
+        if(unit == null)
+        {
+            Destroy(this);
+            throw new System.Exception("Unit is null. This component is destroyed.");
+        }
+        UpdateData(unit);
     }
 
-    public void SetHUD(UnitSO unit)
+    public void SetUnit(UnitSO unit)
     {
         this.unit = unit;
         nameText.text = unit.unitName;
         levelText.text = "Lvl: " + unit.level;
-        UpdateSliders(unit);
+        UpdateData(unit);
         image.sprite = unit.sprite;
         image.rectTransform.sizeDelta = new Vector2(unit.sprite.rect.width, unit.sprite.rect.height);
     }
 
-    public void UpdateSliders(UnitSO unit)
+    public void UpdateData(UnitSO unit)
     {
         hpSlider.maxValue = unit.maxHP;
         hpSlider.value = unit.currentHP;

@@ -18,7 +18,7 @@ public class UnitSelectActionState : State<Battle>
     public override void OnStateEnter() 
     {
         owner.commandSelector.OnButtonClicked += Next;
-        base.owner.UpdateDialogueText("It's " + activeUnit.unitName + " turn.");
+        base.owner.UpdateDialogueText("It's " + activeUnit.unitName + " turn. Select an skill.");
         base.owner.UpdateCommandSelector(activeUnit.skills);
         float xCoord = owner.HUDForAlliedUnits[Array.FindIndex(owner.allUnits, row => row == activeUnit)].GetComponent<RectTransform>().localPosition.x;
         base.owner.ShowCommandSelector(xCoord);
@@ -31,7 +31,6 @@ public class UnitSelectActionState : State<Battle>
 
     private void Next(int i)
     {
-        Debug.Log(i);
         // Get the skill
         SkillSO skill = activeUnit.skills[i];
         // Create wrapper object with the skill

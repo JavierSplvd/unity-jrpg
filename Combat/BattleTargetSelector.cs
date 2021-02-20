@@ -7,10 +7,24 @@ public class BattleTargetSelector : MonoBehaviour
 {
     [SerializeField] private Button[] buttons;
     private UnitSO[] allUnits;
+    public delegate void ButtonTargetClicked(int i);
+    public event ButtonTargetClicked OnTargetClicked;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        buttons = transform.GetComponentsInChildren<Button>();    
+        buttons = transform.GetComponentsInChildren<Button>();
+        int i = 0;
+        foreach(Button b in buttons)
+        {
+            int copy = i; // https://stackoverflow.com/questions/271440/captured-variable-in-a-loop-in-c-sharp
+            b.onClick.AddListener(() => {
+                if(OnTargetClicked != null)
+                {
+                    OnTargetClicked(copy);
+                }
+            });
+            i = i + 1;
+        }
     }
 
     // Update is called once per frame
