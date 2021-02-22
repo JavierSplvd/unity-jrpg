@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 
-public class UnitSelectActionState : State<Battle>
+public class UnitSelectActionState : State<BattleSystem>
 {
     private UnitSO activeUnit;
 
-    public UnitSelectActionState(Battle owner, UnitSO activeUnit) : base(owner)
+    public UnitSelectActionState(BattleSystem owner, UnitSO activeUnit) : base(owner)
     {
         this.activeUnit = activeUnit;
     }

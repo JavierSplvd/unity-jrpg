@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class LostState : State<Battle>
+public class LostState : State<BattleSystem>
 {
-    public LostState(Battle owner) : base(owner)
+    public LostState(BattleSystem owner) : base(owner)
     {
 
     }

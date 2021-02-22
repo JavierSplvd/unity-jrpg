@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class BattleEnemyHUD : MonoBehaviour, IBattleHUD
 {
-    private UnitSO unit;
-    public Image image;
+    [SerializeField] private UnitSO unit;
+    [SerializeField] private Image image;
 
-    void Start()
+    void Awake()
     {
         int childCount = transform.childCount;
         for(int i = 0; i < childCount; i++)
@@ -25,7 +25,7 @@ public class BattleEnemyHUD : MonoBehaviour, IBattleHUD
     {
         if(unit == null)
         {
-            Destroy(this);
+            // Destroy(this);
             throw new System.Exception("Unit is null. This component is destroyed.");
         }
     }

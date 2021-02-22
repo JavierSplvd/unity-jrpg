@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class StartState : State<Battle>
+public class StartState : State<BattleSystem>
 {
     private UnityUtilities.Countdown timer;
-    public StartState(Battle owner) : base(owner)
+    public StartState(BattleSystem owner) : base(owner)
     {
         timer = new UnityUtilities.Countdown(false, 0.3f);
     }

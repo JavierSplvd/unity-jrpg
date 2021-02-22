@@ -1,8 +1,9 @@
 using UnityEngine;
+using static Controller;
 
-public class UpkeepState : State<Battle>
+public class UpkeepState : State<BattleSystem>
 {
-    public UpkeepState(Battle owner) : base(owner)
+    public UpkeepState(BattleSystem owner) : base(owner)
     {
 
     }
@@ -10,10 +11,14 @@ public class UpkeepState : State<Battle>
     public override void Tick()
     {
         owner.ChargeUnitTurn();
-        UnitSO u = owner.GetActiveUnit();
-        if(u)
+        UnitSO tentativeActiveUnit = owner.GetActiveUnit();
+        if(tentativeActiveUnit && tentativeActiveUnit.controller.Equals(PLAYER))
         {
-            owner.ChangeState(new UnitSelectActionState(owner, u));
+            owner.ChangeState(new UnitSelectActionState(owner, tentativeActiveUnit));
+        }
+        else if (tentativeActiveUnit && tentativeActiveUnit.controller.Equals(AI))
+        {
+            owner.ChangeState(new AIState(owner, tentativeActiveUnit));
         }
     }
 

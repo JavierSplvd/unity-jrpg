@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class CleanUpState : State<Battle>
+public class CleanUpState : State<BattleSystem>
 {
     private UnityUtilities.Countdown timer;
 
-    public CleanUpState(Battle owner) : base(owner)
+    public CleanUpState(BattleSystem owner) : base(owner)
     {
         timer = new UnityUtilities.Countdown(false, 0.3f);
     }

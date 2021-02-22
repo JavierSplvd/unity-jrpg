@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class DefenderState : State<Battle>
+public class DefenderState : State<BattleSystem>
 {
-    public DefenderState(Battle owner) : base(owner)
+    public DefenderState(BattleSystem owner) : base(owner)
     {
 
     }

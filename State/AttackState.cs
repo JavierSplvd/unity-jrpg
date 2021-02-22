@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class AttackState : State<Battle>
+public class AttackState : State<BattleSystem>
 {
     private CommandParams commandParams;
     private UnityUtilities.Countdown timer;
-    public AttackState(Battle owner, CommandParams commandParams) : base(owner)
+    public AttackState(BattleSystem owner, CommandParams commandParams) : base(owner)
     {
         this.commandParams = commandParams;
         timer = new UnityUtilities.Countdown(false, 0.3f);

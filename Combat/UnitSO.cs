@@ -16,6 +16,7 @@ public class UnitSO : ScriptableObject {
     public float maxTurnCount = 100;
     public float currentTurnCount;
 
+    public Controller controller;
 
     public SkillSO[] skills;
 

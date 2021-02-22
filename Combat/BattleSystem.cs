@@ -2,7 +2,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Battle : MonoBehaviour
+public class BattleSystem : MonoBehaviour
 {
     [SerializeField] TeamSO allyTeam;
     [SerializeField] TeamSO enemyTeam;
@@ -10,7 +10,7 @@ public class Battle : MonoBehaviour
     [SerializeField] public GameObject[] HUDForAlliedUnits;
     [SerializeField] public GameObject[] HUDForEnemyUnits;
 
-    [SerializeField] State<Battle> currentState;
+    [SerializeField] State<BattleSystem> currentState;
     public string currentStateName;
 
     private UnitSO ally;
@@ -54,7 +54,7 @@ public class Battle : MonoBehaviour
         allUnits = allyTeam.units.Concat(enemyTeam.units).ToArray();
     }
 
-    public void ChangeState(State<Battle> newState)
+    public void ChangeState(State<BattleSystem> newState)
     {
         currentState.OnStateExit();
         currentState = newState;

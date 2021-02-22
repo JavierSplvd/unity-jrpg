@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 
-public class SelectOneTargetState : State<Battle>
+public class SelectOneTargetState : State<BattleSystem>
 {
     private CommandParams commandParams;
     private BattleTargetSelector targetSelector;
     private UnitSO target;
-    public SelectOneTargetState(Battle owner, CommandParams commandParams) : base(owner)
+    public SelectOneTargetState(BattleSystem owner, CommandParams commandParams) : base(owner)
     {
         this.commandParams = commandParams;
         targetSelector = GameObject.FindObjectOfType<BattleTargetSelector>().GetComponent<BattleTargetSelector>();
