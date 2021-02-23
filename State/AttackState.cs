@@ -14,7 +14,9 @@ public class AttackState : State<BattleSystem>
     {
         if(timer.Progress())
         {
-            DamageDealer._obj.Damage(commandParams);
+            commandParams.GetSkill().Initialize(commandParams);
+            commandParams.GetSkill().Execute();
+            
             owner.ChangeState(new CleanUpState(base.owner));
         }
     }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "UnitSO", menuName = "BattleSystem/UnitSO", order = 0)]
 public class UnitSO : ScriptableObject {
+    public string unitId;
     public string unitName;
     public float level;
     public float attack;

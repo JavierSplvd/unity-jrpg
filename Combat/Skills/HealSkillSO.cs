@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BasicAttackSkillSO", menuName = "BattleSystem/BasicAttackSkillSO", order = 0)]
-public class BasicAttackSkillSO : SkillSO {
+[CreateAssetMenu(fileName = "HealSkillSO", menuName = "BattleSystem/HealSkillSO", order = 0)]
+public class HealSkillSO : SkillSO {
     public CommandParams commandParams;
 
     public override void Initialize(CommandParams commandParams)
@@ -11,6 +11,6 @@ public class BasicAttackSkillSO : SkillSO {
 
     public override void Execute()
     {
-        DamageDealer._obj.Damage(commandParams);
+        HealDealer._obj.Heal(commandParams);
     }
 }

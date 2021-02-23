@@ -52,6 +52,13 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = "Prepare for battle!";
 
         allUnits = allyTeam.units.Concat(enemyTeam.units).ToArray();
+        // Reset units and place ids
+        allUnits.ToList().ForEach(it => {
+            it.unitId = it.unitName + it.GetHashCode();
+            it.currentHP = it.maxHP;
+            it.currentMP = it.maxMP;
+            it.currentTurnCount = 0;
+        });
     }
 
     public void ChangeState(State<BattleSystem> newState)

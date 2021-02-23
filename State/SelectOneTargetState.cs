@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using UnityEngine;
 
 public class SelectOneTargetState : State<BattleSystem>
@@ -19,15 +19,15 @@ public class SelectOneTargetState : State<BattleSystem>
 
     public override void OnStateEnter()
     {
-        targetSelector.Show(base.owner.allUnits);
+        targetSelector.Show(UnitUtil.GetUnitsFor(commandParams.GetSubject(), base.owner.allUnits, commandParams.GetSkill()));
         targetSelector.OnTargetClicked += Next;
         base.owner.UpdateDialogueText("Choose a target.");
     }
 
-    private void Next(int i)
+    private void Next(string targetId)
     {
         // Get the target
-        UnitSO target = base.owner.allUnits[i];
+        UnitSO target = base.owner.allUnits.First(it => it.unitId.Equals(targetId));
         // Create wrapper object with the subject, target and skill
         CommandParams newParams = new CommandParams(commandParams.GetSubject(), target, commandParams.GetItem(), commandParams.GetSkill());
         // Go to the next state: select one target or select item
