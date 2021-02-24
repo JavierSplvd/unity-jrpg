@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static SkillTarget;
 
 public class UnitSelectActionState : State<BattleSystem>
 {
@@ -34,8 +35,21 @@ public class UnitSelectActionState : State<BattleSystem>
         // Get the skill
         SkillSO skill = activeUnit.skills[i];
         // Create wrapper object with the skill
-        CommandParams commandParams = new CommandParams(activeUnit, null, null, skill);
+        CommandParams commandParams = new CommandParams(activeUnit, null, skill);
         // Go to the next state: select one target or select item
-        base.owner.ChangeState(new SelectOneTargetState(base.owner, commandParams));
+        if(skill.targeting.Equals(SINGLE_OPPONENT) || skill.targeting.Equals(SINGLE_ALLY))
+        {
+            base.owner.ChangeState(new SelectOneTargetState(base.owner, commandParams));
+        }
+        else if (skill.targeting.Equals(SELF))
+        {
+            commandParams = new CommandParams(activeUnit, activeUnit, null, skill);
+            base.owner.ChangeState(new AttackState(base.owner, commandParams));
+        }
+        else
+        {
+            // Multiple opponents or allies
+        }
+        
     }
 }

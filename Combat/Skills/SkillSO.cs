@@ -1,4 +1,5 @@
 using UnityEngine;
+using static SkillTarget;
 
 public abstract class SkillSO : ScriptableObject {
     public string skillName = "";
@@ -8,8 +9,7 @@ public abstract class SkillSO : ScriptableObject {
     public float power;
     [Tooltip("True if should use magic stats.")]
     public bool isMagical = false;
-    [Tooltip("True if you want to select ONE target.")]
-    public bool selectTarget = false;
+    public SkillTarget targeting = SINGLE_OPPONENT;
     [Tooltip("True if this skill targets unit of the opposite controller.")]
     public bool offensive = true;
 

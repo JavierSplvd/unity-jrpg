@@ -1,0 +1,8 @@
+public enum SkillTarget
+{
+    SINGLE_OPPONENT,
+    MULTIPLE_OPPONENTS,
+    SELF,
+    SINGLE_ALLY,
+    MULTIPLE_ALLIES
+}

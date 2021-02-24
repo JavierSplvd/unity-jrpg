@@ -9,4 +9,14 @@ public class UnitUtil {
         Controller targetController = skill.offensive? opposingController : subjectController;
         return units.ToList().Where(it => it.controller.Equals(targetController)).ToArray();
     }
+
+    public static UnitSO[] GetFriends(UnitSO[] units, Controller controller)
+    {
+        return units.ToList().Where(it => it.controller.Equals(controller)).ToArray();
+    }
+
+    public static UnitSO[] GetOpponents(UnitSO[] units, Controller controller)
+    {
+        return units.ToList().Where(it => !it.controller.Equals(controller)).ToArray();
+    }
 }

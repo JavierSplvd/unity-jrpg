@@ -11,8 +11,8 @@ public class BattleTargetSelector : MonoBehaviour
     void Awake()
     {
         buttons = transform.GetComponentsInChildren<TargetButton>();
-        int i = 0;
-        /* foreach(TargetButton b in buttons)
+        /* int i = 0;
+        foreach(TargetButton b in buttons)
         {
             string copy = b.GetId(); // https://stackoverflow.com/questions/271440/captured-variable-in-a-loop-in-c-sharp
             b.GetButton().onClick.AddListener(() => {

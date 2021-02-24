@@ -24,10 +24,14 @@ public class AttackState : State<BattleSystem>
     public override void OnStateEnter()
     {
         string subject = commandParams.GetSubject()?.unitName;
-        string target = commandParams.GetTarget()?.unitName;
+        string targets = "all";
+        if(commandParams.GetTargets().Length == 1)
+        {
+            targets = commandParams.GetTargets()[0].unitName;
+        }
         string item = commandParams.GetItem()?.itemName;
         string skill = commandParams.GetSkill()?.skillName;
-        base.owner.UpdateDialogueText(subject + " performs " + skill + " to " + target);
+        base.owner.UpdateDialogueText(subject + " performs " + skill + " to " + targets);
     }
 
     public override void OnStateExit()

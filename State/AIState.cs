@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using static Controller;
 using Assets.Scripts.Utils;
+using static SkillTarget;
 
 public class AIState : State<BattleSystem>
 {
@@ -15,11 +16,32 @@ public class AIState : State<BattleSystem>
     public override void Tick()
     {
         SkillSO randomSkill = RandomUtil.NextItem(activeUnit.skills);
-        UnitSO randomTarget = pickRandomTarget();
+        UnitSO[] randomTargets = new UnitSO[1] {pickRandomPlayerTarget()};
+        switch (randomSkill.targeting)
+        {
+            case SINGLE_OPPONENT:
+                randomTargets = new UnitSO[1] {pickRandomPlayerTarget()};
+                break;
+            case SINGLE_ALLY:
+                randomTargets = new UnitSO[1] {activeUnit};
+                break;
+            case SELF:
+                randomTargets = new UnitSO[1] {activeUnit};
+                break;
+            case MULTIPLE_ALLIES:
+                randomTargets = UnitUtil.GetFriends(base.owner.allUnits, AI);
+                break;
+            case MULTIPLE_OPPONENTS:
+                randomTargets = UnitUtil.GetOpponents(base.owner.allUnits, AI);
+                break;
+            default:
+                throw new System.Exception("Exhaust enum at AIState.Tick()");
+        }
+        
         
         CommandParams commandParams = new CommandParams(
             activeUnit,
-            randomTarget,
+            randomTargets,
             null,
             randomSkill
         );
@@ -27,7 +49,7 @@ public class AIState : State<BattleSystem>
         base.owner.ChangeState(new AttackState(base.owner, commandParams));
     }
 
-    private UnitSO pickRandomTarget()
+    private UnitSO pickRandomPlayerTarget()
     {
         Controller targetController = PLAYER;
         List<UnitSO> targets = base.owner.allUnits.ToList().Where(it => it.controller.Equals(targetController)).ToList();
