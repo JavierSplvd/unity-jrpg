@@ -46,6 +46,10 @@ public class UnitSelectActionState : State<BattleSystem>
             commandParams = new CommandParams(activeUnit, activeUnit, null, skill);
             base.owner.ChangeState(new AttackState(base.owner, commandParams));
         }
+        else if (skill.targeting.Equals(ITEM_STATE))
+        {
+            base.owner.ChangeState(new SelectItemState(base.owner, owner.GetInventory(), commandParams));
+        }
         else
         {
             // Multiple opponents or allies

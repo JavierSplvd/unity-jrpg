@@ -4,5 +4,6 @@ public enum SkillTarget
     MULTIPLE_OPPONENTS,
     SELF,
     SINGLE_ALLY,
-    MULTIPLE_ALLIES
+    MULTIPLE_ALLIES,
+    ITEM_STATE
 }

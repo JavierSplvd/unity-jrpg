@@ -15,6 +15,8 @@ public class CommandButton : MonoBehaviour {
 
     public void Show(UnitSO unit, SkillSO skill)
     {
+        Debug.Log(unit);
+        Debug.Log(skill);
         if(skill.manaCost > unit.currentMP)
         {
             button.interactable = false;

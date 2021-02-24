@@ -6,6 +6,7 @@ public class SelectOneTargetState : State<BattleSystem>
     private CommandParams commandParams;
     private BattleTargetSelector targetSelector;
     private UnitSO target;
+    
     public SelectOneTargetState(BattleSystem owner, CommandParams commandParams) : base(owner)
     {
         this.commandParams = commandParams;

@@ -9,6 +9,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] public UnitSO[] allUnits;
     [SerializeField] public GameObject[] HUDForAlliedUnits;
     [SerializeField] public GameObject[] HUDForEnemyUnits;
+    [SerializeField] public InventorySO playerInventory;
 
     [SerializeField] State<BattleSystem> currentState;
     public string currentStateName;
@@ -19,7 +20,7 @@ public class BattleSystem : MonoBehaviour
     public Text dialogueText;
     public BattleCommandSelector commandSelector;
     private BattleTargetSelector targetSelector;
-
+    private BattleItemSelector itemSelector;
     // The turn order goes like this:
     // Start: this is the start of the battle, only once per battle
     // repeat Upkeep, UnitSelectAction, UnitSelectTarget, AttackPhase, CleanUp,
@@ -29,10 +30,12 @@ public class BattleSystem : MonoBehaviour
     {
         commandSelector = GameObject.FindObjectOfType<BattleCommandSelector>().GetComponent<BattleCommandSelector>();
         targetSelector = GameObject.FindObjectOfType<BattleTargetSelector>().GetComponent<BattleTargetSelector>();
+        itemSelector = GameObject.FindObjectOfType<BattleItemSelector>().GetComponent<BattleItemSelector>();
         currentState = new StartState(this);
         SetupBattle();
         HideCommandSelector();
         targetSelector.Hide();
+        itemSelector.Hide();
     }
 
     void FixedUpdate()
@@ -102,4 +105,5 @@ public class BattleSystem : MonoBehaviour
     {
         commandSelector.HideCommandSelector();
     }
+    internal InventorySO GetInventory() => playerInventory;
 }
