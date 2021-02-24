@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class DamageDealer {
    public static readonly DamageDealer _obj = new DamageDealer();
@@ -15,7 +16,18 @@ public class DamageDealer {
        return total;
    }
 
-   private float DamageOne(UnitSO subject, UnitSO target, SkillSO skill)
+    internal void DamageFlat(CommandParams commandParams, float power)
+    {
+        commandParams.GetTargets().ToList().ForEach(it => {
+            it.currentHP = Mathf.Clamp(
+                it.currentHP - power,
+                0,
+                it.maxHP
+            );
+        });
+    }
+
+    private float DamageOne(UnitSO subject, UnitSO target, SkillSO skill)
    {
        // Modifier should take into account resistances/weaknesess
        float modifier = 1;

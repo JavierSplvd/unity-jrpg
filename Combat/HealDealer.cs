@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -27,4 +28,15 @@ public class HealDealer {
       });
       return formulaRes;
    }
+
+    internal void HealFlat(CommandParams commandParams, float value)
+    {
+         commandParams.GetTargets().ToList().ForEach(it => {
+         it.currentHP = Mathf.Clamp(
+            value + it.currentHP,
+            0,
+            it.maxHP
+         );
+      });
+    }
 }

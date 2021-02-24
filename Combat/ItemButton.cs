@@ -28,6 +28,8 @@ public class ItemButton : MonoBehaviour
         button.gameObject.SetActive(true);
         text.gameObject.SetActive(true);
         button.interactable = true;
-        text.text = item.itemName + "<b>x" + item.quantity + "</b>";
+        text.text = item.itemName + "<b> x" + item.quantity + "</b>";
     }
+
+    internal Button GetButton() => button;
 }

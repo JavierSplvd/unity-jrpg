@@ -1,12 +1,13 @@
 using System.Linq;
 using UnityEngine;
+using static SkillTarget;
 
 public class SelectOneTargetState : State<BattleSystem>
 {
     private CommandParams commandParams;
     private BattleTargetSelector targetSelector;
     private UnitSO target;
-    
+
     public SelectOneTargetState(BattleSystem owner, CommandParams commandParams) : base(owner)
     {
         this.commandParams = commandParams;
@@ -20,14 +21,26 @@ public class SelectOneTargetState : State<BattleSystem>
 
     public override void OnStateEnter()
     {
-        targetSelector.Show(UnitUtil.GetUnitsFor(commandParams.GetSubject(), base.owner.allUnits, commandParams.GetSkill()));
+        bool offensive = false;
+        if (commandParams.GetItem() != null)
+        {
+            offensive = commandParams.GetItem().targeting.Equals(SINGLE_OPPONENT) || commandParams.GetItem().targeting.Equals(MULTIPLE_OPPONENTS);
+        }
+        else if (commandParams.GetSkill() != null)
+        {
+            offensive = commandParams.GetSkill().targeting.Equals(SINGLE_OPPONENT) || commandParams.GetSkill().targeting.Equals(MULTIPLE_OPPONENTS);
+        }
+        else
+        {
+            throw new System.Exception("SelectOneTargetState couldn't infer offensive intention of skill/item.");
+        }
+        targetSelector.Show(UnitUtil.GetUnitsFor(commandParams.GetSubject(), base.owner.allUnits, offensive));
         targetSelector.OnTargetClicked += Next;
         base.owner.UpdateDialogueText("Choose a target.");
     }
 
     private void Next(string targetId)
     {
-        Debug.Log("NEXT");
         // Get the target
         UnitSO target = base.owner.allUnits.First(it => it.unitId.Equals(targetId));
         // Create wrapper object with the subject, target and skill

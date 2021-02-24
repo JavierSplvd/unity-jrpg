@@ -7,6 +7,9 @@ public class BattleItemSelector : MonoBehaviour
     private ItemButton[] buttons;
     private Vector2 originalPosition;
 
+    public delegate void ButtonItemClicked(string i);
+    public event ButtonItemClicked OnItemClicked;
+
     void Awake()
     {
         originalPosition = GetComponent<RectTransform>().anchoredPosition;
@@ -35,6 +38,18 @@ public class BattleItemSelector : MonoBehaviour
         for(int i = 0; i < itemsCount; i++)
         {
             buttons[i].Show(items[i]);
+            string copy = items[i].itemId;
+            buttons[i].GetButton().onClick.RemoveAllListeners();
+            buttons[i].GetButton().onClick.AddListener(() => {
+                if(OnItemClicked != null)
+                {
+                    OnItemClicked(copy);
+                }
+            });
+            if(items[i].quantity == 0)
+            {
+                buttons[i].GetButton().interactable = false;
+            }
         }
         
     }

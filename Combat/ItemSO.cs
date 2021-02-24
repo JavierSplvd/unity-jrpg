@@ -1,9 +1,10 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ItemSO", menuName = "BattleSystem/ItemSO", order = 0)]
-public class ItemSO : ScriptableObject {
+public abstract class ItemSO : ScriptableObject {
+    public string itemId;
     public string itemName;
     public int quantity;
     public int buyValue, sellValue;
-    public SkillSO skillRelated;
+    public SkillTarget targeting;
+    public abstract void Execute(CommandParams commandParams);
 }

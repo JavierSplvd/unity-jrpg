@@ -14,11 +14,33 @@ public class AttackState : State<BattleSystem>
     {
         if(timer.Progress())
         {
-            commandParams.GetSkill().Initialize(commandParams);
-            commandParams.GetSkill().Execute();
+            if(commandParams.GetSkill() != null)
+            {
+                ExecuteSkill();
+                // Consume mana/energy
+                UnitUtil.SubstractMana(commandParams.GetSubject(), commandParams.GetSkill());
+            }
+            else if(commandParams.GetItem() != null)
+            {
+                ExecuteItem();
+                // Consume item
+                UnitUtil.ConsumeItem(owner.GetInventory(), commandParams.GetItem());
+            }
+            
             
             owner.ChangeState(new CleanUpState(base.owner));
         }
+    }
+
+    private void ExecuteSkill()
+    {
+        commandParams.GetSkill().Initialize(commandParams);
+        commandParams.GetSkill().Execute();
+    }
+
+    private void ExecuteItem()
+    {
+        commandParams.GetItem().Execute(commandParams);
     }
 
     public override void OnStateEnter()
@@ -32,8 +54,6 @@ public class AttackState : State<BattleSystem>
         string item = commandParams.GetItem()?.itemName;
         string skill = commandParams.GetSkill()?.skillName;
         base.owner.UpdateDialogueText(subject + " performs " + skill + " to " + targets);
-        // Consume mana/energy
-        UnitUtil.SubstractMana(commandParams.GetSubject(), commandParams.GetSkill());
     }
 
     public override void OnStateExit()
