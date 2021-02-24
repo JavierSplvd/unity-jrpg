@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class BattleCommandSelector : MonoBehaviour
 {
-    [SerializeField] private Button[] buttons;
+    [SerializeField] private CommandButton[] buttons;
     [SerializeField] private float yCoord;
 
     public delegate void ButtonClicked(int i);
@@ -13,10 +13,11 @@ public class BattleCommandSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buttons = transform.GetComponentsInChildren<Button>();
+        buttons = transform.GetComponentsInChildren<CommandButton>();
         int i = 0;
-        foreach(Button b in buttons)
+        foreach(CommandButton button in buttons)
         {
+            Button b = button.GetButton();
             int copy = i; // https://stackoverflow.com/questions/271440/captured-variable-in-a-loop-in-c-sharp
             b.onClick.AddListener(() => {
                 if(OnButtonClicked != null)
@@ -33,23 +34,21 @@ public class BattleCommandSelector : MonoBehaviour
         
     }
 
-    internal void UpdateCommandSelector(SkillSO[] skills)
+    internal void UpdateCommandSelector(UnitSO unit)
     {
-        bool lengthIsCorrect = skills.Length <= 4 && skills.Length >= 0;
+        bool lengthIsCorrect = unit.skills.Length <= 4 && unit.skills.Length >= 0;
         if(!lengthIsCorrect) throw new Exception("UpdateCommandSelector called with incorrect array length.");
 
-        foreach(Button b in buttons)
+        foreach(CommandButton button in buttons)
         {
+            Button b = button.GetButton();
             b.interactable = false;
             b.transform.GetChild(0).GetComponent<Text>().text = "";
         }
         int i = 0;
-        foreach(SkillSO a in skills)
+        foreach(SkillSO a in unit.skills)
         {
-            buttons[i].interactable = true;
-            // Select the Button, then the Text object.
-            Text t = buttons[i].transform.GetChild(0).GetComponent<Text>(); 
-            t.text = a.skillName;
+            buttons[i].Show(unit, a);
             i++;
         }
 
@@ -65,10 +64,12 @@ public class BattleCommandSelector : MonoBehaviour
     {
         Vector2 newPos = new Vector2(10000, 10000);
         transform.localPosition = newPos;
-        foreach(Button b in buttons)
+        foreach(CommandButton button in buttons)
         {
+            Button b = button.GetButton();
             b.interactable = false;
             b.transform.GetChild(0).GetComponent<Text>().text = "";
+
         }
     }
 }

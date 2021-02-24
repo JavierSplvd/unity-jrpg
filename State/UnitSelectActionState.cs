@@ -20,7 +20,7 @@ public class UnitSelectActionState : State<BattleSystem>
     {
         owner.commandSelector.OnButtonClicked += Next;
         base.owner.UpdateDialogueText("It's " + activeUnit.unitName + " turn. Select an skill.");
-        base.owner.UpdateCommandSelector(activeUnit.skills);
+        base.owner.UpdateCommandSelector(activeUnit);
         float xCoord = owner.HUDForAlliedUnits[Array.FindIndex(owner.allUnits, row => row == activeUnit)].GetComponent<RectTransform>().localPosition.x;
         base.owner.ShowCommandSelector(xCoord);
     }

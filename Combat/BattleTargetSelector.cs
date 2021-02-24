@@ -7,9 +7,11 @@ public class BattleTargetSelector : MonoBehaviour
     private UnitSO[] allUnits;
     public delegate void ButtonTargetClicked(string i);
     public event ButtonTargetClicked OnTargetClicked;
+    private Vector2 originalPosition;
     
     void Awake()
     {
+        originalPosition = GetComponent<RectTransform>().anchoredPosition;
         buttons = transform.GetComponentsInChildren<TargetButton>();
         /* int i = 0;
         foreach(TargetButton b in buttons)
@@ -34,8 +36,7 @@ public class BattleTargetSelector : MonoBehaviour
 
     public void Show(UnitSO[] targets)
     {
-        Vector2 newPos = new Vector2(0, 0);
-        transform.localPosition = newPos;
+        GetComponent<RectTransform>().anchoredPosition = originalPosition;
         for(int i = 0; i < targets.Length; i++)
         {
             buttons[i].Show(targets[i].unitName, targets[i].unitId);

@@ -26,6 +26,7 @@ public class SelectOneTargetState : State<BattleSystem>
 
     private void Next(string targetId)
     {
+        Debug.Log("NEXT");
         // Get the target
         UnitSO target = base.owner.allUnits.First(it => it.unitId.Equals(targetId));
         // Create wrapper object with the subject, target and skill
@@ -38,5 +39,6 @@ public class SelectOneTargetState : State<BattleSystem>
     {
         CommandParams newParams = new CommandParams(commandParams.GetSubject(), target, null, commandParams.GetSkill());
         targetSelector.Hide();
+        targetSelector.OnTargetClicked -= Next;
     }
 }

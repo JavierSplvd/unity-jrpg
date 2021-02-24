@@ -32,6 +32,8 @@ public class AttackState : State<BattleSystem>
         string item = commandParams.GetItem()?.itemName;
         string skill = commandParams.GetSkill()?.skillName;
         base.owner.UpdateDialogueText(subject + " performs " + skill + " to " + targets);
+        // Consume mana/energy
+        UnitUtil.SubstractMana(commandParams.GetSubject(), commandParams.GetSkill());
     }
 
     public override void OnStateExit()

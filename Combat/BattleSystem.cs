@@ -94,9 +94,9 @@ public class BattleSystem : MonoBehaviour
         return null;
     }
 
-    internal void UpdateCommandSelector(SkillSO[] abilities)
+    internal void UpdateCommandSelector(UnitSO activeUnit)
     {
-        commandSelector.UpdateCommandSelector(abilities);
+        commandSelector.UpdateCommandSelector(activeUnit);
     }
     internal void ShowCommandSelector(float x)
     {
