@@ -58,6 +58,16 @@ public class UnitUtilTest
         Assert.That(unit.currentDebuffs.Contains(Debuff.STUN));
     }
 
+    [Test]
+    public void RemoveDebuffAwareWhenArrayItsNull()
+    {
+        UnitSO unit = CreateUnit();
+
+        UnitUtil.RemoveDebuff(unit, Debuff.POISON);
+
+        Assert.That(unit.currentDebuffs.Length == 0);
+    }
+
     private UnitSO CreateUnit()
     {
         return ScriptableObject.CreateInstance<UnitSO>();

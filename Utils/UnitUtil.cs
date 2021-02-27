@@ -60,6 +60,11 @@ public class UnitUtil {
 
     public static void RemoveDebuff(UnitSO target, Debuff type)
     {
+        if(target.currentDebuffs == null)
+        {
+            target.currentDebuffs = new Debuff[0];
+            return;
+        }
         int index = Array.IndexOf(target.currentDebuffs, type);
         var asList = target.currentDebuffs.ToList();
         asList.Remove(type);

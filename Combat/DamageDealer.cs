@@ -27,6 +27,15 @@ public class DamageDealer {
         });
     }
 
+    public void DamagePercentage(UnitSO target, float percentage)
+    {
+        target.currentHP = Mathf.Clamp(
+            target.currentHP - target.maxHP * percentage,
+            0,
+            target.maxHP
+        );
+    }
+
     private float DamageOne(UnitSO subject, UnitSO target, SkillSO skill)
    {
        // Modifier should take into account resistances/weaknesess
