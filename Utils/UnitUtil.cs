@@ -46,7 +46,24 @@ public class UnitUtil {
 
     public static void SetDebuff(UnitSO target, Debuff type)
     {
-        target.currentDebuffs.Add(type);
+        if(target.currentDebuffs == null)
+        {
+            target.currentDebuffs = new Debuff[1] {type};
+        }
+        else
+        {
+            var asList = target.currentDebuffs.ToList();
+            asList.Add(type);
+            target.currentDebuffs = asList.Distinct().ToArray();
+        }
+    }
+
+    public static void RemoveDebuff(UnitSO target, Debuff type)
+    {
+        int index = Array.IndexOf(target.currentDebuffs, type);
+        var asList = target.currentDebuffs.ToList();
+        asList.Remove(type);
+        target.currentDebuffs = asList.ToArray();
     }
 
     public static void LevelScaling(UnitSO[] allUnits)

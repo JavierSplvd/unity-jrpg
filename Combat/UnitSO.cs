@@ -29,7 +29,7 @@ public class UnitSO : ScriptableObject {
     public float currentMP;
     public float maxTurnCount = 100;
     public float currentTurnCount;
-    public HashSet<Debuff> currentDebuffs = new HashSet<Debuff>();
+    public Debuff[] currentDebuffs;
     [Header("Debuff Weakness")]
     public float stunWeakness;
     public float poisonWeakness;
