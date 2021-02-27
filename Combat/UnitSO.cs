@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UnitSO", menuName = "BattleSystem/UnitSO", order = 0)]
@@ -28,6 +29,15 @@ public class UnitSO : ScriptableObject {
     public float currentMP;
     public float maxTurnCount = 100;
     public float currentTurnCount;
+    public HashSet<Debuff> currentDebuffs = new HashSet<Debuff>();
+    [Header("Debuff Weakness")]
+    public float stunWeakness;
+    public float poisonWeakness;
+    public float burnWeakness;
+    public float freezeWeakness;
+    public float cryingWeakness;
+    public float hungryWeakness;
+    public float forgetWeakness;
 
     [Header("Other")]
     public Controller controller;

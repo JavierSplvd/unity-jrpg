@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Linq;
 using static Controller;
+using static Debuff;
 using System;
 
 public class UnitUtil {
@@ -43,6 +44,11 @@ public class UnitUtil {
         });
     }
 
+    public static void SetDebuff(UnitSO target, Debuff type)
+    {
+        target.currentDebuffs.Add(type);
+    }
+
     public static void LevelScaling(UnitSO[] allUnits)
     {
         allUnits.ToList().ForEach(it => {
@@ -55,5 +61,27 @@ public class UnitUtil {
             it.magicDefense = (int) (it.baseMagicDefense * multi);
             it.speed = (int) (it.baseSpeed * multi);
         });
+    }
+
+    public static float GetWeakness(Debuff type, UnitSO unit)
+    {
+        switch(type)
+        {
+            case STUN:
+                return unit.stunWeakness;
+            case POISON:
+                return unit.poisonWeakness;
+            case BURN:
+                return unit.burnWeakness;
+            case FREEZE:
+                return unit.freezeWeakness;
+            case CRYING:
+                return unit.cryingWeakness;
+            case HUNGRY:
+                return unit.hungryWeakness;
+            case FORGET:
+                return unit.forgetWeakness;
+        }
+        return 0;
     }
 }
