@@ -23,6 +23,18 @@ public class UnitUtil {
         return units.ToList().Where(it => !it.controller.Equals(controller)).ToArray();
     }
 
+    public static float GetSumOfHP(UnitSO[] units, Controller controller)
+    {
+        float count = 0;
+        units.ToList().ForEach(it => {
+            if(it.controller.Equals(controller))
+            {
+                count +=it.currentHP;
+            }
+        });
+        return count;
+    }
+
     internal static void ConsumeItem(InventorySO inventory, ItemSO item)
     {
         inventory.items.ToList().First(it => it.itemId.Equals(item.itemId)).quantity -= 1;

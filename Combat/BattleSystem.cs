@@ -10,6 +10,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] public GameObject[] HUDForAlliedUnits;
     [SerializeField] public GameObject[] HUDForEnemyUnits;
     [SerializeField] public InventorySO playerInventory;
+    [SerializeField] public GameObject winLoseElement;
 
     [SerializeField] State<BattleSystem> currentState;
     public string currentStateName;
@@ -28,6 +29,7 @@ public class BattleSystem : MonoBehaviour
     // if one team is out of health Won/Lost state
     void Start() 
     {
+        winLoseElement.SetActive(false);
         commandSelector = GameObject.FindObjectOfType<BattleCommandSelector>().GetComponent<BattleCommandSelector>();
         targetSelector = GameObject.FindObjectOfType<BattleTargetSelector>().GetComponent<BattleTargetSelector>();
         itemSelector = GameObject.FindObjectOfType<BattleItemSelector>().GetComponent<BattleItemSelector>();
@@ -98,4 +100,10 @@ public class BattleSystem : MonoBehaviour
         commandSelector.HideCommandSelector();
     }
     internal InventorySO GetInventory() => playerInventory;
+
+    public void ShowWinLoseMessage(string text)
+    {
+        winLoseElement.SetActive(true);
+        winLoseElement.transform.GetChild(0).GetComponent<Text>().text = text;
+    }
 }

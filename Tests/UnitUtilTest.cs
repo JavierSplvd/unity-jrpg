@@ -96,4 +96,25 @@ public class UnitUtilTest
 
         Assert.AreEqual(10, unit.currentTurnCount);
     }
+
+    [Test]
+    public void GetSumOfHP_forEachController()
+    {
+        UnitSO playerUnitA = TestUtil.CreateUnit();
+        playerUnitA.currentHP = 50;
+        playerUnitA.controller = Controller.PLAYER;
+        UnitSO playerUnitB = TestUtil.CreateUnit();
+        playerUnitB.currentHP = 60;
+        playerUnitB.controller = Controller.PLAYER;
+        UnitSO aiUnitC = TestUtil.CreateUnit();
+        aiUnitC.currentHP = 90;
+        aiUnitC.controller = Controller.AI;
+
+        UnitSO[] allUnits = new UnitSO[] {playerUnitA, playerUnitB, aiUnitC};
+        float countPlayer = UnitUtil.GetSumOfHP(allUnits, Controller.PLAYER);
+        float countAI = UnitUtil.GetSumOfHP(allUnits, Controller.AI);
+
+        Assert.AreEqual(110, countPlayer);
+        Assert.AreEqual(90, countAI);
+    }
 }
