@@ -106,4 +106,18 @@ public class UnitUtil {
         }
         return 0;
     }
+        
+    public static void ChargeTurnPointsAllUnits(UnitSO[] allUnits, float deltaTime)
+    {
+        allUnits.ToList().ForEach(it => {
+            if(it.currentDebuffs.Contains(Debuff.STUN))
+            {
+                it.currentTurnCount += deltaTime * it.speed * 0.2f;
+            }
+            else
+            {
+                it.currentTurnCount += deltaTime * it.speed;
+            }
+        });
+    }
 }

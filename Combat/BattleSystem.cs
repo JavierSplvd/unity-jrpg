@@ -60,7 +60,7 @@ public class BattleSystem : MonoBehaviour
         UnitUtil.ResetUnits(allUnits);
     }
 
-    public void ChangeState(State<BattleSystem> newState)
+    public virtual void ChangeState(State<BattleSystem> newState)
     {
         currentState.OnStateExit();
         currentState = newState;
@@ -70,14 +70,6 @@ public class BattleSystem : MonoBehaviour
     public void UpdateDialogueText(string newText)
     {
         dialogueText.text = newText;
-    }
-
-    internal void ChargeUnitTurn()
-    {
-        foreach(UnitSO u in allUnits)
-        {
-            u.currentTurnCount += Time.fixedDeltaTime * u.speed;
-        }
     }
 
     internal UnitSO GetActiveUnit()

@@ -8,7 +8,7 @@ public class UnitUtilTest
     [Test]
     public void SetDebuffDontAddDuplicates()
     {
-        UnitSO unit = CreateUnit();
+        UnitSO unit = TestUtil.CreateUnit();
 
         UnitUtil.SetDebuff(unit, Debuff.BURN);
         UnitUtil.SetDebuff(unit, Debuff.BURN);
@@ -20,7 +20,7 @@ public class UnitUtilTest
     [Test]
     public void SetDebuffAddValues()
     {
-        UnitSO unit = CreateUnit();
+        UnitSO unit = TestUtil.CreateUnit();
 
         UnitUtil.SetDebuff(unit, Debuff.BURN);
         UnitUtil.SetDebuff(unit, Debuff.STUN);
@@ -33,7 +33,7 @@ public class UnitUtilTest
     [Test]
     public void RemoveDebuffDeletesElement()
     {
-        UnitSO unit = CreateUnit();
+        UnitSO unit = TestUtil.CreateUnit();
         UnitUtil.SetDebuff(unit, Debuff.BURN);
         UnitUtil.SetDebuff(unit, Debuff.STUN);
 
@@ -47,7 +47,7 @@ public class UnitUtilTest
     [Test]
     public void RemoveDebuffDoesNothingWhenTypeNotContained()
     {
-        UnitSO unit = CreateUnit();
+        UnitSO unit = TestUtil.CreateUnit();
         UnitUtil.SetDebuff(unit, Debuff.BURN);
         UnitUtil.SetDebuff(unit, Debuff.STUN);
 
@@ -61,15 +61,39 @@ public class UnitUtilTest
     [Test]
     public void RemoveDebuffAwareWhenArrayItsNull()
     {
-        UnitSO unit = CreateUnit();
+        UnitSO unit = TestUtil.CreateUnit();
 
         UnitUtil.RemoveDebuff(unit, Debuff.POISON);
 
         Assert.That(unit.currentDebuffs.Length == 0);
     }
 
-    private UnitSO CreateUnit()
+    [Test]
+    public void ChargeTurnPoints_FunctionOfSpeed()
     {
-        return ScriptableObject.CreateInstance<UnitSO>();
+        UnitSO unit = TestUtil.CreateUnit();
+        UnitSO[] allUnits = new UnitSO[] {unit};
+        unit.maxTurnCount = 100f;
+        unit.currentTurnCount = 0f;
+        unit.speed = 10;
+
+        UnitUtil.ChargeTurnPointsAllUnits(allUnits, 1);
+
+        Assert.AreEqual(10, unit.currentTurnCount);
+    }
+
+    [Test]
+    public void ChargeTurnPoints_ReducedWhenStun()
+    {
+        UnitSO unit = TestUtil.CreateUnit();
+        UnitSO[] allUnits = new UnitSO[] {unit};
+        unit.maxTurnCount = 100f;
+        unit.currentTurnCount = 0f;
+        unit.speed = 50;
+        unit.currentDebuffs = new Debuff[1] {Debuff.STUN};
+
+        UnitUtil.ChargeTurnPointsAllUnits(allUnits, 1);
+
+        Assert.AreEqual(10, unit.currentTurnCount);
     }
 }

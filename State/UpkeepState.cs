@@ -10,11 +10,11 @@ public class UpkeepState : State<BattleSystem>
 
     public override void Tick()
     {
-        owner.ChargeUnitTurn();
+        UnitUtil.ChargeTurnPointsAllUnits(base.owner.allUnits, Time.fixedDeltaTime);
         UnitSO tentativeActiveUnit = owner.GetActiveUnit();
         if(tentativeActiveUnit && tentativeActiveUnit.controller.Equals(PLAYER))
         {
-            owner.ChangeState(new UnitSelectActionState(owner, tentativeActiveUnit));
+            owner.ChangeState(new UnitUpkeepState(owner, tentativeActiveUnit));
         }
         else if (tentativeActiveUnit && tentativeActiveUnit.controller.Equals(AI))
         {
