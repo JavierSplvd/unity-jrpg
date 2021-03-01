@@ -23,6 +23,7 @@ public class BattleCommandSelector : MonoBehaviour
                 if(OnButtonClicked != null)
                 {
                     OnButtonClicked(copy);
+                    SoundService.Instance.Play(SoundService.Instance.library.BUTTON_CLICK);
                 }
             });
             i = i + 1;

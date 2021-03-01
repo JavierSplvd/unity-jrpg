@@ -51,7 +51,15 @@ public class BattleSystem : MonoBehaviour
         ally = allyTeam.units[0];
         enemy = enemyTeam.units[0];
 
-        HUDForAlliedUnits[0].GetComponent<IBattleHUD>().SetUnit(ally);
+        for (int i = 0; i < allyTeam.units.Length; i++)
+        {
+            HUDForAlliedUnits[i].GetComponent<IBattleHUD>().SetUnit(allyTeam.units[i]);
+        }
+        for (int i = allyTeam.units.Length; i < HUDForAlliedUnits.Length; i++)
+        {
+            HUDForAlliedUnits[i].gameObject.SetActive(false);
+        }
+
         HUDForEnemyUnits[0].GetComponent<IBattleHUD>().SetUnit(enemy);
         
         dialogueText.text = "Prepare for battle!";

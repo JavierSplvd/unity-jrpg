@@ -44,6 +44,7 @@ public class BattleItemSelector : MonoBehaviour
                 if(OnItemClicked != null)
                 {
                     OnItemClicked(copy);
+                    SoundService.Instance.Play(SoundService.Instance.library.BUTTON_CLICK);
                 }
             });
             if(items[i].quantity == 0)

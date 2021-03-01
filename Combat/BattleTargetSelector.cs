@@ -46,6 +46,7 @@ public class BattleTargetSelector : MonoBehaviour
                 if(OnTargetClicked != null)
                 {
                     OnTargetClicked(copy);
+                    SoundService.Instance.Play(SoundService.Instance.library.BUTTON_CLICK);
                 }
             });
         }

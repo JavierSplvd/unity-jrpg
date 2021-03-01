@@ -12,7 +12,7 @@ public class MobileConfig : MonoBehaviour
         currentHeight = Screen.height;
         currentWidth = Screen.width;
 
-        int targetWidth = (int) currentHeight * 2;
+        int targetWidth = (int) (currentHeight * ratio);
 
         Screen.SetResolution(targetWidth, (int) currentHeight, true);
     }
