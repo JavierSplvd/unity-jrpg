@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 
 public class SoundService : MonoBehaviour {
     private static SoundService _instance;
@@ -20,10 +21,12 @@ public class SoundService : MonoBehaviour {
 
     public void Play(AudioClip sound)
     {
-        if(!source[0].isPlaying)
+        AudioSource s = source.ToList().First(it => !it.isPlaying);
+        if(s != null)
         {
-            source[0].clip = sound;
-            source[0].Play();
+            s.clip = sound;
+            s.Play();
         }
+        
     }
 }

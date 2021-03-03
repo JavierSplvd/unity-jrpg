@@ -11,6 +11,7 @@ public class BasicAttackSkillSO : SkillSO {
 
     public override void Execute()
     {
+        SoundService.Instance.Play(skillSound);
         DamageDealer._obj.Damage(commandParams);
     }
 }

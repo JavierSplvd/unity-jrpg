@@ -11,6 +11,7 @@ public class HealSkillSO : SkillSO {
 
     public override void Execute()
     {
+        SoundService.Instance.Play(skillSound);
         HealDealer._obj.Heal(commandParams);
     }
 }

@@ -70,7 +70,6 @@ public class BattleCommandSelector : MonoBehaviour
             Button b = button.GetButton();
             b.interactable = false;
             b.transform.GetChild(0).GetComponent<Text>().text = "";
-
         }
     }
 }
