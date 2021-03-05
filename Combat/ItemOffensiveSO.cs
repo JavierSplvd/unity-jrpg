@@ -45,7 +45,7 @@ public class ItemOffensiveSO : ItemSO {
                 {
                     UnitUtil.SetDebuff(target, it.type);
                 }
-                Debug.Log(hit + "/" + it.type);
+                // Debug.Log(hit + "/" + it.type);
             });
         });
         

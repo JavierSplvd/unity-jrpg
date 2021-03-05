@@ -8,24 +8,27 @@ public class SkillAnimationTest
     [Test]
     public void AtStart_ImageIsNotVisible()
     {
-        SkillAnimation sa = new SkillAnimation(
-            TestUtil.Create<Animator>(),
-            TestUtil.Create<Image>()
-        );
+        var go = new GameObject();
+        go.AddComponent<Animator>();
+        go.AddComponent<Image>();
+        var skillAnimation = go.AddComponent<SkillAnimation>();
+        
+        skillAnimation.Awake();
 
-        Assert.That(!sa.GetImage().enabled);
+        Assert.That(!skillAnimation.GetImage().enabled);
     }
 
     [Test]
     public void WhenAnimationIsPlayed_ImageVisible()
     {
-        SkillAnimation sa = new SkillAnimation(
-            TestUtil.Create<Animator>(),
-            TestUtil.Create<Image>()
-        );
+        var go = new GameObject();
+        go.AddComponent<Animator>();
+        go.AddComponent<Image>();
+        var skillAnimation = go.AddComponent<SkillAnimation>();
+        
+        skillAnimation.Awake();
+        skillAnimation.Play(SKILL_ATTACK);
 
-        sa.Play(SKILL_ATTACK);
-
-        Assert.That(sa.GetImage().enabled);
+        Assert.That(skillAnimation.GetImage().enabled);
     }
 }

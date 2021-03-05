@@ -1,22 +1,24 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillAnimation
+public class SkillAnimation : MonoBehaviour
 {
     private Animator animator;
     private Image image;
+    public string unitId;
 
-    public SkillAnimation(Animator animator, Image image)
+    public void Awake()
     {
-        this.animator = animator;
-        this.image = image;
+        animator = GetComponent<Animator>();
+        image = GetComponent<Image>();
 
         image.enabled = false;
     }
 
     public void Play(SkillAnimationName name)
     {
-        image.enabled = false;
+        image.enabled = true;
+        Debug.Log(name.ToString());
         animator.Play(name.ToString());
     }
 

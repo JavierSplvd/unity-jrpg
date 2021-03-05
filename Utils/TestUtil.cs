@@ -1,5 +1,6 @@
-using System.Runtime.Serialization;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Runtime.Serialization;
 
 public class TestUtil
 {
@@ -11,7 +12,21 @@ public class TestUtil
         }
     }
 
-    public static T Create<T>() 
+    public static T CreateUnity<T>() 
+    {
+        GameObject go = new GameObject();
+        if(typeof(T) == typeof(Animator))
+        {
+            go.AddComponent<Animator>();
+        }
+        else if(typeof(T) == typeof(Image))
+        {
+            go.AddComponent<Image>();
+        }
+        return go.GetComponent<T>();
+    }
+
+    public static T Create<T>()
     {
         return (T) FormatterServices.GetUninitializedObject(typeof(T));
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NumiInput : MonoBehaviour
 {
-    public static NumiInput instance;
+    public static NumiInput _instance;
 
     public float forward;
     public float lateral;
@@ -19,12 +19,12 @@ public class NumiInput : MonoBehaviour
 
     void Awake()
     {
-        if(instance == null)
+        if(_instance == null)
         {
             DontDestroyOnLoad(gameObject);
-            instance = this;
+            _instance = this;
         }
-        else if(instance != this)
+        else if(_instance != this)
         {
             Destroy(gameObject);
         }

@@ -42,7 +42,7 @@ public class UnitUtil {
 
     public static void SubstractMana(UnitSO subject, SkillSO skill)
     {
-        Debug.Log(subject.unitName +"/"+ subject.currentMP.ToString() +"/"+ skill.manaCost.ToString());
+        // Debug.Log(subject.unitName +"/"+ subject.currentMP.ToString() +"/"+ skill.manaCost.ToString());
         subject.currentMP = Mathf.Clamp(subject.currentMP - skill.manaCost, 0, subject.maxMP);
     }
 

@@ -5,6 +5,7 @@ public abstract class SkillSO : ScriptableObject {
     public string skillName = "";
     public Sprite icon;
     public AudioClip skillSound;
+    public SkillAnimationName animationName;
     public float manaCost;
     public float power;
     [Tooltip("True if should use magic stats.")]
