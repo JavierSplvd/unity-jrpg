@@ -11,39 +11,44 @@ public class BattleHUD : MonoBehaviour, IBattleHUD
     public Slider mpSlider;
     public Slider turnCount;
     public Image image;
+    public SkillAnimation skillAnimation;
 
     void Awake() {
         int childCount = transform.childCount;
         for(int i = 0; i < childCount; i++)
         {
-            Transform c = transform.GetChild(i);
-            if(c.name.Equals("Name"))
+            Transform child = transform.GetChild(i);
+            if(child.name.Equals("Name"))
             {
-                nameText = c.gameObject.GetComponent<Text>();
+                nameText = child.gameObject.GetComponent<Text>();
             }
-            else if(c.name.Equals("Level"))
+            else if(child.name.Equals("Level"))
             {
-                levelText = c.gameObject.GetComponent<Text>();
+                levelText = child.gameObject.GetComponent<Text>();
             }
-            else if(c.name.Equals("HP"))
+            else if(child.name.Equals("HP"))
             {
-                hpText = c.gameObject.GetComponent<Text>();
+                hpText = child.gameObject.GetComponent<Text>();
             }
-            else if(c.name.Equals("HPSlider"))
+            else if(child.name.Equals("HPSlider"))
             {
-                hpSlider = c.gameObject.GetComponent<Slider>();
+                hpSlider = child.gameObject.GetComponent<Slider>();
             }
-            else if(c.name.Equals("MPSlider"))
+            else if(child.name.Equals("MPSlider"))
             {
-                mpSlider = c.gameObject.GetComponent<Slider>();
+                mpSlider = child.gameObject.GetComponent<Slider>();
             }
-            else if(c.name.Equals("TurnCount"))
+            else if(child.name.Equals("TurnCount"))
             {
-                turnCount = c.gameObject.GetComponent<Slider>();
+                turnCount = child.gameObject.GetComponent<Slider>();
             }
-            else if(c.name.Equals("Image"))
+            else if(child.name.Equals("Image"))
             {
-                image = c.gameObject.GetComponent<Image>();
+                image = child.gameObject.GetComponent<Image>();
+            }
+            else if(child.name.Equals("SkillAnimation"))
+            {
+                skillAnimation = child.gameObject.GetComponent<SkillAnimation>();
             }
         }
 
@@ -65,6 +70,7 @@ public class BattleHUD : MonoBehaviour, IBattleHUD
         nameText.text = unit.unitName;
         levelText.text = "Lvl: " + unit.level;
         UpdateData(unit);
+        skillAnimation.SetUnitId(unit.unitId);
         image.sprite = unit.sprite;
         image.rectTransform.sizeDelta = new Vector2(unit.sprite.rect.width, unit.sprite.rect.height);
     }

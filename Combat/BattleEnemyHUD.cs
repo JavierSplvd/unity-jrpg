@@ -7,6 +7,7 @@ public class BattleEnemyHUD : MonoBehaviour, IBattleHUD
 {
     [SerializeField] private UnitSO unit;
     [SerializeField] private Image image;
+    private SkillAnimation skillAnimation;
 
     void Awake()
     {
@@ -17,6 +18,10 @@ public class BattleEnemyHUD : MonoBehaviour, IBattleHUD
             if(c.name.Equals("Image"))
             {
                 image = c.gameObject.GetComponent<Image>();
+            }
+            else if(c.name.Equals("SkillAnimation"))
+            {
+                skillAnimation = c.gameObject.GetComponent<SkillAnimation>();
             }
         }
     }
@@ -33,6 +38,7 @@ public class BattleEnemyHUD : MonoBehaviour, IBattleHUD
     public void SetUnit(UnitSO unit)
     {
         this.unit = unit;
+        skillAnimation.SetUnitId(unit.unitId);
         image.sprite = unit.sprite;
         image.rectTransform.sizeDelta = new Vector2(unit.sprite.rect.width, unit.sprite.rect.height);
     }

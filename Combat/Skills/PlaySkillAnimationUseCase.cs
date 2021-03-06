@@ -14,11 +14,16 @@ public class PlaySkillAnimationUseCase : UseCase
         {
             components = GameObject.FindObjectsOfType<SkillAnimation>().ToList();
         }
-        var sa = components.FirstOrDefault<SkillAnimation>(it => it.unitId.Equals(id));
-        sa?.Play(name);
+        GetSkillAnimation(components, id).Play(name);
+    }
+
+    public SkillAnimation GetSkillAnimation(List<SkillAnimation> list, string id)
+    {
+        var sa = list.FirstOrDefault<SkillAnimation>(it => it.GetUnitId().Equals(id));
         if(sa == null)
         {
-            Debug.LogWarning("PlaySkillAnimationUseCase couldnt find any SkillAnimation.");
+            throw new System.Exception("PlaySkillAnimationUseCase couldnt find any SkillAnimation.");
         }
+        return sa;
     }
 }

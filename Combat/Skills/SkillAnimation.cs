@@ -5,7 +5,7 @@ public class SkillAnimation : MonoBehaviour
 {
     private Animator animator;
     private Image image;
-    public string unitId;
+    private string unitId;
 
     public void Awake()
     {
@@ -19,8 +19,10 @@ public class SkillAnimation : MonoBehaviour
     {
         image.enabled = true;
         Debug.Log(name.ToString());
-        animator.Play(name.ToString());
+        animator.Play(name.ToString(), -1, 0f);
     }
 
     public Image GetImage() => image;
+    public string GetUnitId() => unitId;
+    public void SetUnitId(string unitId) => this.unitId = unitId;
 }
