@@ -22,7 +22,7 @@ public class PlaySkillAnimationUseCase : UseCase
         var sa = list.FirstOrDefault<SkillAnimation>(it => it.GetUnitId().Equals(id));
         if(sa == null)
         {
-            throw new System.Exception("PlaySkillAnimationUseCase couldnt find any SkillAnimation.");
+            throw new System.Exception("PlaySkillAnimationUseCase couldnt find any SkillAnimation. id=" + id);
         }
         return sa;
     }
