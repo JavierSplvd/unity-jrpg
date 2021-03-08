@@ -12,6 +12,7 @@ public class BattleHUD : MonoBehaviour, IBattleHUD
     public Slider turnCount;
     public Image image;
     public SkillAnimation skillAnimation;
+    public DamageLogText damageLog;
 
     void Awake() {
         int childCount = transform.childCount;
@@ -50,6 +51,10 @@ public class BattleHUD : MonoBehaviour, IBattleHUD
             {
                 skillAnimation = child.gameObject.GetComponent<SkillAnimation>();
             }
+            else if(child.name.Equals("DamageLog"))
+            {
+                damageLog = child.gameObject.GetComponent<DamageLogText>();
+            }
         }
 
     }
@@ -71,6 +76,7 @@ public class BattleHUD : MonoBehaviour, IBattleHUD
         levelText.text = "Lvl: " + unit.level;
         UpdateData(unit);
         skillAnimation.SetUnitId(unit.unitId);
+        damageLog.SetId(unit.unitId);
         image.sprite = unit.sprite;
         image.rectTransform.sizeDelta = new Vector2(unit.sprite.rect.width, unit.sprite.rect.height);
     }
@@ -79,7 +85,7 @@ public class BattleHUD : MonoBehaviour, IBattleHUD
     {
         hpSlider.maxValue = unit.maxHP;
         hpSlider.value = unit.currentHP;
-        hpText.text = unit.currentHP + "/" + unit.maxHP;
+        hpText.text = (int) unit.currentHP + "/" + unit.maxHP;
 
         mpSlider.maxValue = unit.maxMP;
         mpSlider.value = unit.currentMP;

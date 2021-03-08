@@ -25,7 +25,9 @@ public class HealDealer {
             0,
             it.maxHP
          );
+         DamageLogger.Add(it.unitId, (int) formulaRes);
       });
+      
       return formulaRes;
    }
 
@@ -37,6 +39,7 @@ public class HealDealer {
             0,
             it.maxHP
          );
+         DamageLogger.Add(it.unitId, (int) value);
       });
     }
 }

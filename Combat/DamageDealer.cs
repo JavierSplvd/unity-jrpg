@@ -25,7 +25,7 @@ public class DamageDealer {
                 0,
                 it.maxHP
             );
-            DamageLogger.Add(it.unitId, (int) - power);    
+            DamageLogger.Add(it.unitId, (int) - power);
         });
     }
 
