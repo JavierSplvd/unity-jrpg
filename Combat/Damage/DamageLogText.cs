@@ -1,17 +1,17 @@
-using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DamageLogText : MonoBehaviour
 {
-    private Text textElement;
+    private TMP_Text textElement;
     [SerializeField] private string unitId;
 
     private UnityUtilities.Countdown timer = new UnityUtilities.Countdown(false, 0.6f);
 
     void Awake()
     {
-        textElement = GetComponent<Text>();
+        textElement = GetComponent<TMP_Text>();
         DamageLogger.OnDamageDealt += UpdateText;
         textElement.text = "";
     }
