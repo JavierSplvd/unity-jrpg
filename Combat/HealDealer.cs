@@ -31,9 +31,9 @@ public class HealDealer {
       return formulaRes;
    }
 
-    internal void HealFlat(CommandParams commandParams, float value)
-    {
-         commandParams.GetTargets().ToList().ForEach(it => {
+   internal void HealFlat(CommandParams commandParams, float value)
+   {
+      commandParams.GetTargets().ToList().ForEach(it => {
          it.currentHP = Mathf.Clamp(
             value + it.currentHP,
             0,
@@ -41,5 +41,5 @@ public class HealDealer {
          );
          DamageLogger.Add(it.unitId, (int) value);
       });
-    }
+   }
 }

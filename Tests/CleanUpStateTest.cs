@@ -8,6 +8,8 @@ public class CleanUpStateTest
     [Test]
     public void OnStateEnter_ApplyDamageBurn()
     {
+        RandomWrapper.test = true;
+        
         UnitSO unit = TestUtil.CreateUnit();
         unit.maxHP = 100f;
         unit.currentHP = 100f;

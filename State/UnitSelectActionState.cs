@@ -27,6 +27,7 @@ public class UnitSelectActionState : State<BattleSystem>
 
     public override void OnStateExit()
     {
+        owner.commandSelector.OnButtonClicked -= Next;
         base.owner.HideCommandSelector();
     }
 

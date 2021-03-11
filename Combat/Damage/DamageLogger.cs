@@ -11,6 +11,10 @@ class DamageLogger
     public static void Add(string unitId, int value)
     {
         damageList.Add(unitId + "-" + damageList.Count, value);
-        OnDamageDealt(unitId, value);
+        if(OnDamageDealt != null)
+        {
+            OnDamageDealt(unitId, value);
+        }
+        
     }
 }

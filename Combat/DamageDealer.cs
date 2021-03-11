@@ -41,7 +41,7 @@ public class DamageDealer {
     }
 
     private float DamageOne(UnitSO subject, UnitSO target, SkillSO skill)
-   {
+    {
         // Modifier should take into account resistances/weaknesess
         float modifier = 1;
         float power = skill.power;
@@ -60,5 +60,5 @@ public class DamageDealer {
         );
         DamageLogger.Add(target.unitId, (int) - formulaRes);
         return formulaRes;
-   }
+    }
 }

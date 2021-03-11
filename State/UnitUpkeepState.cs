@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using static Debuff;
 
-public class UnitUpkeepState : State<BattleSystem>
+public class UnitUpkeepState : State<BattleSystem> // rename to RemoveStunState???
 {
     private UnitSO activeUnit;
 
