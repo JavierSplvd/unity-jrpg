@@ -13,7 +13,7 @@ public class BasicAttackSkillSO : SkillSO {
     public override void Execute()
     {
         commandParams.GetTargets().ToList().ForEach(it => {
-            new PlaySkillAnimationUseCase().Execute(it.unitId, commandParams.GetSkill().animationName);
+            new PlaySkillAnimationUseCase(it.unitId, commandParams.GetSkill().animationName).Execute();
         });
         SoundService.Instance.Play(skillSound);
         DamageDealer._obj.Damage(commandParams);

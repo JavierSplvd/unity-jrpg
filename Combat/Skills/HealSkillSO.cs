@@ -13,9 +13,9 @@ public class HealSkillSO : SkillSO {
     public override void Execute()
     {
         commandParams.GetTargets().ToList().ForEach(it => {
-            new PlaySkillAnimationUseCase().Execute(it.unitId, commandParams.GetSkill().animationName);
+            new PlaySkillAnimationUseCase(it.unitId, commandParams.GetSkill().animationName).Execute();
         });
         SoundService.Instance.Play(skillSound);
-        HealDealer._obj.Heal(commandParams);
+        new HealUseCase(commandParams).Execute();
     }
 }

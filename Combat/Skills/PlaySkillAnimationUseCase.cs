@@ -2,24 +2,31 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-public class PlaySkillAnimationUseCase : UseCase
+public class PlaySkillAnimationUseCase : UseCase<object>
 {
     public static List<SkillAnimation> components;
-
-    public void Execute(params object[] list)
+    private string unitId;
+    private SkillAnimationName name;
+    
+    public PlaySkillAnimationUseCase(string unitId, SkillAnimationName name)
     {
-        var id = (string) list[0];
-        var name = (SkillAnimationName) list[1];
+        this.unitId = unitId;
+        this.name = name;
+    }
+
+    public object Execute()
+    {
         if(components == null)
         {
             components = GameObject.FindObjectsOfType<SkillAnimation>().ToList();
         }
-        GetSkillAnimation(components, id).Play(name);
+        GetSkillAnimation(components, unitId).Play(name);
+        return null;
     }
 
-    public SkillAnimation GetSkillAnimation(List<SkillAnimation> list, string id)
+    public SkillAnimation GetSkillAnimation(List<SkillAnimation> listComponents, string id)
     {
-        var sa = list.FirstOrDefault<SkillAnimation>(it => it.GetUnitId().Equals(id));
+        var sa = listComponents.FirstOrDefault<SkillAnimation>(it => it.GetUnitId().Equals(id));
         if(sa == null)
         {
             throw new System.Exception("PlaySkillAnimationUseCase couldnt find any SkillAnimation. id=" + id);

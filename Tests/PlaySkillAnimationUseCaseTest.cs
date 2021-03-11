@@ -1,20 +1,18 @@
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
-using System.Linq;
 using System.Collections.Generic;
 
 public class PlaySkillAnimationUseCaseTest {
     [Test]
     public void GivenSkillAnimationList_FindById()
     {
-        PlaySkillAnimationUseCase useCase = new PlaySkillAnimationUseCase();
         var list = new List<SkillAnimation>();
         var go = new GameObject();
         go.AddComponent<SkillAnimation>();
         var sa = go.GetComponent<SkillAnimation>();
         sa.SetUnitId("target");
         list.Add(go.GetComponent<SkillAnimation>());
+        PlaySkillAnimationUseCase useCase = new PlaySkillAnimationUseCase("target", SkillAnimationName.EMPTY);
 
         var result = useCase.GetSkillAnimation(list, "target");
 
@@ -24,13 +22,13 @@ public class PlaySkillAnimationUseCaseTest {
     [Test]
     public void GivenSkillAnimationList_ThrowExceptionWhenThereIsNoMatch()
     {
-        PlaySkillAnimationUseCase useCase = new PlaySkillAnimationUseCase();
         var list = new List<SkillAnimation>();
         var go = new GameObject();
         go.AddComponent<SkillAnimation>();
         var sa = go.GetComponent<SkillAnimation>();
         sa.SetUnitId("target");
         list.Add(go.GetComponent<SkillAnimation>());
+        PlaySkillAnimationUseCase useCase = new PlaySkillAnimationUseCase("target", SkillAnimationName.EMPTY);
 
         Assert.Throws<System.Exception>(() => {
             var result = useCase.GetSkillAnimation(list, "missing");
