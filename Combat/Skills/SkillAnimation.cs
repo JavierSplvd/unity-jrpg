@@ -5,7 +5,7 @@ public class SkillAnimation : MonoBehaviour
 {
     private Animator animator;
     private Image image;
-    private string unitId;
+    [SerializeField] private string unitId;
 
     public void Awake()
     {

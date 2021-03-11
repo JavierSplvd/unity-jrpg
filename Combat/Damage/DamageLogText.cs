@@ -27,7 +27,7 @@ public class DamageLogText : MonoBehaviour
     {
         if(unitId.Equals(u))
         {
-            textElement.text = i.ToString();
+            textElement.text = i > 0? "+" + i.ToString() : i.ToString();
             timer.Reset();
         }
         
