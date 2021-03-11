@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Runtime.Serialization;
+using System;
 
 public class TestUtil
 {
@@ -26,6 +27,14 @@ public class TestUtil
         return go.GetComponent<T>();
     }
 
+    public static SkillSO CreateHealSkill()
+    {
+        SkillSO skill = ScriptableObject.CreateInstance<HealSkillSO>();
+        skill.power = 100;
+        skill.isMagical = true;
+        return skill;
+    }
+
     public static T Create<T>()
     {
         return (T) FormatterServices.GetUninitializedObject(typeof(T));
@@ -35,6 +44,8 @@ public class TestUtil
     {
         UnitSO unit = ScriptableObject.CreateInstance<UnitSO>();
         unit.currentDebuffs = new Debuff[0] {};
+        unit.magicAttack = 100;
+        unit.level = 1;
         return unit;
     }
 

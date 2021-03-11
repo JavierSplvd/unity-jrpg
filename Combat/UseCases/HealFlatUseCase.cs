@@ -1,18 +1,26 @@
 using System.Linq;
 using UnityEngine;
 
-class HealFlatUseCase : UseCase<float> {
+public class HealFlatUseCase : UseCase<float> {
 
     private CommandParams commandParams;
-    private float power;
 
-    public HealFlatUseCase(CommandParams commandParams, float value)
+    public HealFlatUseCase(CommandParams commandParams)
     {
         this.commandParams = commandParams;
-        this.power = value;
     }
 
     public float Execute() {
+        float power = 0f;
+        if(commandParams.GetSkill() != null)
+        {
+            power = commandParams.GetSkill().power;
+        }
+        else if (commandParams.GetItem() != null)
+        {
+            power = ((ItemHealingSO) commandParams.GetItem()).power;
+        }
+
         commandParams.GetTargets().ToList().ForEach(it => {
             it.currentHP = Mathf.Clamp(
                 power + it.currentHP,

@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-class HealUseCase : UseCase<float> {
+public class HealUseCase : UseCase<float> {
 
     private CommandParams commandParams;
 
