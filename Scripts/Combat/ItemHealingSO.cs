@@ -5,7 +5,7 @@ public class ItemHealingSO : ItemSO {
     public float power;
     public override void Execute(CommandParams commandParams)
     {
-        new HealFlatUseCase(commandParams).Execute();
+        new DamageFlatUseCase(commandParams).Execute();
     }
     
 }

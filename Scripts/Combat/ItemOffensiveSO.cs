@@ -49,7 +49,6 @@ public class ItemOffensiveSO : ItemSO {
             });
         });
         
-
-        DamageDealer._obj.DamageFlat(commandParams, power);
+        new DamageFlatUseCase(commandParams).Execute();
     }
 }

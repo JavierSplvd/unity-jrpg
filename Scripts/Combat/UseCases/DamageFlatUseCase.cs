@@ -1,11 +1,11 @@
 using System.Linq;
 using UnityEngine;
 
-public class HealFlatUseCase : UseCase<float> {
+public class DamageFlatUseCase : UseCase<float> {
 
     private CommandParams commandParams;
 
-    public HealFlatUseCase(CommandParams commandParams)
+    public DamageFlatUseCase(CommandParams commandParams)
     {
         this.commandParams = commandParams;
     }
@@ -16,9 +16,13 @@ public class HealFlatUseCase : UseCase<float> {
         {
             power = commandParams.GetSkill().power;
         }
-        else if (commandParams.GetItem() != null)
+        else if (commandParams.GetItem().GetType() == typeof(ItemHealingSO))
         {
             power = ((ItemHealingSO) commandParams.GetItem()).power;
+        }
+        else if (commandParams.GetItem().GetType() == typeof(ItemOffensiveSO))
+        {
+            power = ((ItemOffensiveSO) commandParams.GetItem()).power;
         }
 
         commandParams.GetTargets().ToList().ForEach(it => {

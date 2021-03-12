@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: Poisonbomb
   itemName: Poisonbomb
-  quantity: 5
+  quantity: 4
   buyValue: 100
   sellValue: 100
   targeting: 0
-  power: 100
+  power: -100
   stun: 0
   poison: 100
   burn: 0

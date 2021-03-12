@@ -10,7 +10,7 @@ public class HealFlatUseCaseTest {
             null,
             TestUtil.CreateHealSkill()
         );
-        float result = new HealFlatUseCase(cp).Execute();
+        float result = new DamageFlatUseCase(cp).Execute();
 
         Assert.AreEqual(100f, result);
     }

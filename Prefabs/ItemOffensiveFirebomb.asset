@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: Firebomb
   itemName: Firebomb
-  quantity: 5
+  quantity: 4
   buyValue: 1000
   sellValue: 550
   targeting: 0
-  power: 200
+  power: -200
   stun: 0
   poison: 0
   burn: 0

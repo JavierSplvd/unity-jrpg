@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DamageLogText : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class DamageLogText : MonoBehaviour
     void Awake()
     {
         textElement = GetComponent<TMP_Text>();
-        DamageLogger.OnDamageDealt += UpdateText;
+        DamageLogger.OnDamageDealt += ShowText;
         textElement.text = "";
     }
 
@@ -23,14 +22,19 @@ public class DamageLogText : MonoBehaviour
         }
     }
 
-    private void UpdateText(string u, int i)
+    private void ShowText(string u, int i)
     {
         if(unitId.Equals(u))
         {
+            LeanTween.scale(gameObject, Vector3.one * 2, 0.6f).setEasePunch().setOnComplete(ResetScale);
             textElement.text = i > 0? "+" + i.ToString() : i.ToString();
             timer.Reset();
         }
-        
+    }
+
+    private void ResetScale()
+    {
+        transform.localScale = Vector3.one;
     }
 
     public void SetId(string unitId) => this.unitId = unitId;
