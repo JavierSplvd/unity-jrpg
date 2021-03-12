@@ -10,6 +10,7 @@ public class DamagePercentageUseCase : UseCase<float> {
     }
 
     public float Execute() {
+        Debug.Log("DamagePercentageUseCase");
         float damage = -target.maxHP * percentage * RandomWrapper.Range(0.2f);
         target.currentHP = Mathf.Clamp(
             target.currentHP + damage,

@@ -1,9 +1,13 @@
-using UnityEngine;
+using System.Linq;
 
 public class AttackState : State<BattleSystem>
 {
     private CommandParams commandParams;
     private UnityUtilities.Countdown timer;
+   
+    public delegate void UpdateStatus(string[] ids);
+    public static event UpdateStatus OnUpdateStatus;
+ 
     public AttackState(BattleSystem owner, CommandParams commandParams) : base(owner)
     {
         this.commandParams = commandParams;
@@ -58,6 +62,9 @@ public class AttackState : State<BattleSystem>
 
     public override void OnStateExit()
     {
-
+        if(OnUpdateStatus != null)
+        {
+            OnUpdateStatus(commandParams.GetTargets().ToList().Select(it => it.unitId).ToArray());
+        }
     }
 }

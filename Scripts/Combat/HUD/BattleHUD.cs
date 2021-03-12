@@ -13,6 +13,7 @@ public class BattleHUD : MonoBehaviour, IBattleHUD
     public Image image;
     public SkillAnimation skillAnimation;
     public DamageLogText damageLog;
+    public StatusEffectsHUD statusEffects;
 
     void Awake() {
         int childCount = transform.childCount;
@@ -55,6 +56,7 @@ public class BattleHUD : MonoBehaviour, IBattleHUD
             {
                 damageLog = child.gameObject.GetComponent<DamageLogText>();
             }
+            statusEffects = transform.GetComponentInChildren<StatusEffectsHUD>();
         }
 
     }
@@ -79,6 +81,7 @@ public class BattleHUD : MonoBehaviour, IBattleHUD
         damageLog.SetId(unit.unitId);
         image.sprite = unit.sprite;
         image.rectTransform.sizeDelta = new Vector2(unit.sprite.rect.width, unit.sprite.rect.height);
+        statusEffects.Init(unit);
     }
 
     public void UpdateData(UnitSO unit)
