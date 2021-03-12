@@ -610,6 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c8a55eff307a848a8f1a859bbf1158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitId: 
 --- !u!95 &82094659
 Animator:
   serializedVersion: 3
@@ -848,6 +849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c8a55eff307a848a8f1a859bbf1158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitId: 
 --- !u!95 &94778354
 Animator:
   serializedVersion: 3
@@ -1954,6 +1956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c8a55eff307a848a8f1a859bbf1158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitId: 
 --- !u!95 &287568073
 Animator:
   serializedVersion: 3
@@ -3153,7 +3156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3746,7 +3749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5072,7 +5075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6351,7 +6354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -8145,6 +8148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c8a55eff307a848a8f1a859bbf1158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitId: 
 --- !u!1 &1451990100
 GameObject:
   m_ObjectHideFlags: 0
@@ -9272,7 +9276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10135,6 +10139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c8a55eff307a848a8f1a859bbf1158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitId: 
 --- !u!95 &1720219292
 Animator:
   serializedVersion: 3

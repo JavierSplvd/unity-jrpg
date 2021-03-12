@@ -28,15 +28,15 @@ public class CleanUpState : State<BattleSystem>
         base.owner.allUnits.ToList().ForEach(it => {
             if(it.currentDebuffs.Contains(BURN))
             {
-                DamageDealer._obj.DamagePercentage(it, BURN_PERCENTAGE);
+                new DamagePercentageUseCase(it, BURN_PERCENTAGE);
             }
             if(it.currentDebuffs.Contains(POISON))
             {
-                DamageDealer._obj.DamagePercentage(it, POISON_PERCENTAGE);
+                new DamagePercentageUseCase(it, POISON_PERCENTAGE);
             }
             if(it.currentDebuffs.Contains(HUNGRY))
             {
-                DamageDealer._obj.DamagePercentage(it, HUNGRY_PERCENTAGE);
+                new DamagePercentageUseCase(it, HUNGRY_PERCENTAGE);
             }
         });
     }

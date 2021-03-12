@@ -16,6 +16,6 @@ public class BasicAttackSkillSO : SkillSO {
             new PlaySkillAnimationUseCase(it.unitId, commandParams.GetSkill().animationName).Execute();
         });
         SoundService.Instance.Play(skillSound);
-        DamageDealer._obj.Damage(commandParams);
+        new DamageUseCase(commandParams).Execute();
     }
 }
