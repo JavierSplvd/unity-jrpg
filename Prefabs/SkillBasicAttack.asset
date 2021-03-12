@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0ffbcdebdbcce489146649e350b623, type: 3}
   m_Name: SkillBasicAttack
   m_EditorClassIdentifier: 
-  skillName: Basic Attack
+  skillName: Attack
   icon: {fileID: 0}
   skillSound: {fileID: 8300000, guid: 0ded48f1b2cf21e48a70abc893bbcbd3, type: 3}
   animationName: 1

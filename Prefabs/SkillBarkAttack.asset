@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db0ffbcdebdbcce489146649e350b623, type: 3}
-  m_Name: SkillHeavyAttack
+  m_Name: SkillBarkAttack
   m_EditorClassIdentifier: 
-  skillName: Heavy Attack
+  skillName: Bark
   icon: {fileID: 0}
   skillSound: {fileID: 8300000, guid: 3ee6cf7c57a87a745b09d76c82305314, type: 3}
   animationName: 1
   manaCost: 25
   power: 120
-  isMagical: 0
+  isMagical: 1
   targeting: 0
   offensive: 1

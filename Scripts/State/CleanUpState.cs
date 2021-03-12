@@ -22,26 +22,26 @@ public class CleanUpState : State<BattleSystem>
         }
     }
 
-    public override void OnStateEnter()
+    public override void OnStateExit()
     {
         // Apply poison, burn and hungry:
         base.owner.allUnits.ToList().ForEach(it => {
             if(it.currentDebuffs.Contains(BURN))
             {
-                new DamagePercentageUseCase(it, BURN_PERCENTAGE);
+                new DamagePercentageUseCase(it, BURN_PERCENTAGE).Execute();
             }
             if(it.currentDebuffs.Contains(POISON))
             {
-                new DamagePercentageUseCase(it, POISON_PERCENTAGE);
+                new DamagePercentageUseCase(it, POISON_PERCENTAGE).Execute();
             }
             if(it.currentDebuffs.Contains(HUNGRY))
             {
-                new DamagePercentageUseCase(it, HUNGRY_PERCENTAGE);
+                new DamagePercentageUseCase(it, HUNGRY_PERCENTAGE).Execute();
             }
         });
     }
 
-    public override void OnStateExit()
+    public override void OnStateEnter()
     {
 
     }

@@ -5,11 +5,15 @@ using UnityEngine.UI;
 public class BattleCommandSelector : MonoBehaviour
 {
     [SerializeField] private CommandButton[] buttons;
-    [SerializeField] private float yCoord;
+    private Vector2 originalPosition;
 
     public delegate void ButtonClicked(int i);
     public event ButtonClicked OnButtonClicked;
 
+    void Awake()
+    {
+        originalPosition = GetComponent<RectTransform>().anchoredPosition;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -57,8 +61,11 @@ public class BattleCommandSelector : MonoBehaviour
 
     internal void ShowCommandSelector(float x)
     {
-        Vector2 newPos = new Vector2(x, yCoord);
-        GetComponent<RectTransform>().anchoredPosition = newPos;
+        GetComponent<RectTransform>().anchoredPosition = originalPosition;
+        transform.localScale = Vector3.one * 0.5f;
+        LeanTween.scale(gameObject, Vector3.one, 0.2f).setEaseSpring();
+        // Vector2 newPos = new Vector2(x, yCoord);
+        // GetComponent<RectTransform>().anchoredPosition = newPos;
     }
 
     internal void HideCommandSelector()

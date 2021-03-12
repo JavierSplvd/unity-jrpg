@@ -30,7 +30,7 @@ public class CommandButton : MonoBehaviour {
         }
         else
         {
-            text.text = skill.skillName + "[" + skill.manaCost + "]";
+            text.text = skill.skillName + "  (" + skill.manaCost + ")";
         }   
     }
 

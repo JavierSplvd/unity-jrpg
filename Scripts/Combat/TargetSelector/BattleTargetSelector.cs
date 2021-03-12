@@ -37,6 +37,8 @@ public class BattleTargetSelector : MonoBehaviour
     public void Show(UnitSO[] targets)
     {
         GetComponent<RectTransform>().anchoredPosition = originalPosition;
+        transform.localScale = Vector3.one * 0.5f;
+        LeanTween.scale(gameObject, Vector3.one, 0.2f).setEaseSpring();
         for(int i = 0; i < targets.Length; i++)
         {
             buttons[i].Show(targets[i].unitName, targets[i].unitId);
