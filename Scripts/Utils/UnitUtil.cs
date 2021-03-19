@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Linq;
 using static Controller;
-using static Debuff;
+using static StatusEffect;
 using System;
 
 public class UnitUtil {
@@ -56,31 +56,31 @@ public class UnitUtil {
         });
     }
 
-    public static void SetDebuff(UnitSO target, Debuff type)
+    public static void SetStatusEffect(UnitSO target, StatusEffect type)
     {
-        if(target.currentDebuffs == null)
+        if(target.currentStatusEffect == null)
         {
-            target.currentDebuffs = new Debuff[1] {type};
+            target.currentStatusEffect = new StatusEffect[1] {type};
         }
         else
         {
-            var asList = target.currentDebuffs.ToList();
+            var asList = target.currentStatusEffect.ToList();
             asList.Add(type);
-            target.currentDebuffs = asList.Distinct().ToArray();
+            target.currentStatusEffect = asList.Distinct().ToArray();
         }
     }
 
-    public static void RemoveDebuff(UnitSO target, Debuff type)
+    public static void RemoveStatusEffect(UnitSO target, StatusEffect type)
     {
-        if(target.currentDebuffs == null)
+        if(target.currentStatusEffect == null)
         {
-            target.currentDebuffs = new Debuff[0];
+            target.currentStatusEffect = new StatusEffect[0];
             return;
         }
-        int index = Array.IndexOf(target.currentDebuffs, type);
-        var asList = target.currentDebuffs.ToList();
+        int index = Array.IndexOf(target.currentStatusEffect, type);
+        var asList = target.currentStatusEffect.ToList();
         asList.Remove(type);
-        target.currentDebuffs = asList.ToArray();
+        target.currentStatusEffect = asList.ToArray();
     }
 
     public static void LevelScaling(UnitSO[] allUnits)
@@ -97,7 +97,7 @@ public class UnitUtil {
         });
     }
 
-    public static float GetWeakness(Debuff type, UnitSO unit)
+    public static float GetWeakness(StatusEffect type, UnitSO unit)
     {
         switch(type)
         {
@@ -122,9 +122,9 @@ public class UnitUtil {
     public static void ChargeTurnPointsAllUnits(UnitSO[] allUnits, float deltaTime)
     {
         allUnits.ToList().ForEach(it => {
-            if(it.currentDebuffs.Contains(Debuff.STUN))
+            if(it.currentStatusEffect.Contains(StatusEffect.STUN))
             {
-                it.currentTurnCount += deltaTime * it.speed * 0.2f;
+                it.currentTurnCount += deltaTime * it.speed * 0.5f;
             }
             else
             {

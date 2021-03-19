@@ -1,4 +1,4 @@
-public enum Debuff
+public enum StatusEffect
 {
     STUN, // unable to gain turn points
     POISON, // Lose HP every turn

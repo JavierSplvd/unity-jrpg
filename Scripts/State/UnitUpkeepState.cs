@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using static Debuff;
+using static StatusEffect;
 
 public class UnitUpkeepState : State<BattleSystem> // rename to RemoveStunState???
 {
@@ -18,9 +18,9 @@ public class UnitUpkeepState : State<BattleSystem> // rename to RemoveStunState?
 
     public override void OnStateEnter() 
     {
-        List<Debuff> asList = activeUnit.currentDebuffs.ToList();
+        List<StatusEffect> asList = activeUnit.currentStatusEffect.ToList();
         asList.Remove(STUN);
-        activeUnit.currentDebuffs = asList.ToArray();
+        activeUnit.currentStatusEffect = asList.ToArray();
         owner.ChangeState(new UnitSelectActionState(owner, activeUnit));
     }
 

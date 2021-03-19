@@ -27,9 +27,9 @@ public class StatusEffectsHUD : MonoBehaviour {
     private void UpdateStatusImages() {
         children.ToList().ForEach(it => it.color = new Color(0, 0, 0, 0));
 
-        for (int i = 0; i < unit.currentDebuffs.Length; i++) {
+        for (int i = 0; i < unit.currentStatusEffect.Length; i++) {
             children[i].color = Color.white;
-            children[i].sprite = Resources.Load<Sprite>(unit.currentDebuffs[i].ToString());
+            children[i].sprite = Resources.Load<Sprite>(unit.currentStatusEffect[i].ToString());
         }
     }
 }

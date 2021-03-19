@@ -1,5 +1,5 @@
 using System.Linq;
-using static Debuff;
+using static StatusEffect;
 using UnityEngine;
 
 public class CleanUpState : State<BattleSystem>
@@ -26,15 +26,15 @@ public class CleanUpState : State<BattleSystem>
     {
         // Apply poison, burn and hungry:
         base.owner.allUnits.ToList().ForEach(it => {
-            if(it.currentDebuffs.Contains(BURN))
+            if(it.currentStatusEffect.Contains(BURN))
             {
                 new DamagePercentageUseCase(it, BURN_PERCENTAGE).Execute();
             }
-            if(it.currentDebuffs.Contains(POISON))
+            if(it.currentStatusEffect.Contains(POISON))
             {
                 new DamagePercentageUseCase(it, POISON_PERCENTAGE).Execute();
             }
-            if(it.currentDebuffs.Contains(HUNGRY))
+            if(it.currentStatusEffect.Contains(HUNGRY))
             {
                 new DamagePercentageUseCase(it, HUNGRY_PERCENTAGE).Execute();
             }

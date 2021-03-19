@@ -43,7 +43,7 @@ public class TestUtil
     public static UnitSO CreateUnit()
     {
         UnitSO unit = ScriptableObject.CreateInstance<UnitSO>();
-        unit.currentDebuffs = new Debuff[0] {};
+        unit.currentStatusEffect = new StatusEffect[0] {};
         unit.magicAttack = 100;
         unit.level = 1;
         return unit;

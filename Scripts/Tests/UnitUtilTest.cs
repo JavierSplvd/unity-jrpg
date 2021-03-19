@@ -6,66 +6,66 @@ using System.Linq;
 public class UnitUtilTest
 {
     [Test]
-    public void SetDebuffDontAddDuplicates()
+    public void SetStatusEffectDontAddDuplicates()
     {
         UnitSO unit = TestUtil.CreateUnit();
 
-        UnitUtil.SetDebuff(unit, Debuff.BURN);
-        UnitUtil.SetDebuff(unit, Debuff.BURN);
+        UnitUtil.SetStatusEffect(unit, StatusEffect.BURN);
+        UnitUtil.SetStatusEffect(unit, StatusEffect.BURN);
 
-        Assert.That(unit.currentDebuffs.Length == 1);
-        Assert.That(unit.currentDebuffs.ToArray()[0].Equals(Debuff.BURN));
+        Assert.That(unit.currentStatusEffect.Length == 1);
+        Assert.That(unit.currentStatusEffect.ToArray()[0].Equals(StatusEffect.BURN));
     }
 
     [Test]
-    public void SetDebuffAddValues()
+    public void SetStatusEffectAddValues()
     {
         UnitSO unit = TestUtil.CreateUnit();
 
-        UnitUtil.SetDebuff(unit, Debuff.BURN);
-        UnitUtil.SetDebuff(unit, Debuff.STUN);
+        UnitUtil.SetStatusEffect(unit, StatusEffect.BURN);
+        UnitUtil.SetStatusEffect(unit, StatusEffect.STUN);
 
-        Assert.That(unit.currentDebuffs.Length == 2);
-        Assert.That(unit.currentDebuffs.Contains(Debuff.BURN));
-        Assert.That(unit.currentDebuffs.Contains(Debuff.STUN));
+        Assert.That(unit.currentStatusEffect.Length == 2);
+        Assert.That(unit.currentStatusEffect.Contains(StatusEffect.BURN));
+        Assert.That(unit.currentStatusEffect.Contains(StatusEffect.STUN));
     }
 
     [Test]
-    public void RemoveDebuffDeletesElement()
+    public void RemoveStatusEffectDeletesElement()
     {
         UnitSO unit = TestUtil.CreateUnit();
-        UnitUtil.SetDebuff(unit, Debuff.BURN);
-        UnitUtil.SetDebuff(unit, Debuff.STUN);
+        UnitUtil.SetStatusEffect(unit, StatusEffect.BURN);
+        UnitUtil.SetStatusEffect(unit, StatusEffect.STUN);
 
-        UnitUtil.RemoveDebuff(unit, Debuff.BURN);
+        UnitUtil.RemoveStatusEffect(unit, StatusEffect.BURN);
 
-        Assert.That(unit.currentDebuffs.Length == 1);
-        Assert.That(!unit.currentDebuffs.Contains(Debuff.BURN));
-        Assert.That(unit.currentDebuffs.Contains(Debuff.STUN));
+        Assert.That(unit.currentStatusEffect.Length == 1);
+        Assert.That(!unit.currentStatusEffect.Contains(StatusEffect.BURN));
+        Assert.That(unit.currentStatusEffect.Contains(StatusEffect.STUN));
     }
 
     [Test]
-    public void RemoveDebuffDoesNothingWhenTypeNotContained()
+    public void RemoveStatusEffectDoesNothingWhenTypeNotContained()
     {
         UnitSO unit = TestUtil.CreateUnit();
-        UnitUtil.SetDebuff(unit, Debuff.BURN);
-        UnitUtil.SetDebuff(unit, Debuff.STUN);
+        UnitUtil.SetStatusEffect(unit, StatusEffect.BURN);
+        UnitUtil.SetStatusEffect(unit, StatusEffect.STUN);
 
-        UnitUtil.RemoveDebuff(unit, Debuff.POISON);
+        UnitUtil.RemoveStatusEffect(unit, StatusEffect.POISON);
 
-        Assert.That(unit.currentDebuffs.Length == 2);
-        Assert.That(unit.currentDebuffs.Contains(Debuff.BURN));
-        Assert.That(unit.currentDebuffs.Contains(Debuff.STUN));
+        Assert.That(unit.currentStatusEffect.Length == 2);
+        Assert.That(unit.currentStatusEffect.Contains(StatusEffect.BURN));
+        Assert.That(unit.currentStatusEffect.Contains(StatusEffect.STUN));
     }
 
     [Test]
-    public void RemoveDebuffAwareWhenArrayItsNull()
+    public void RemoveStatusEffectAwareWhenArrayItsNull()
     {
         UnitSO unit = TestUtil.CreateUnit();
 
-        UnitUtil.RemoveDebuff(unit, Debuff.POISON);
+        UnitUtil.RemoveStatusEffect(unit, StatusEffect.POISON);
 
-        Assert.That(unit.currentDebuffs.Length == 0);
+        Assert.That(unit.currentStatusEffect.Length == 0);
     }
 
     [Test]
@@ -90,7 +90,7 @@ public class UnitUtilTest
         unit.maxTurnCount = 100f;
         unit.currentTurnCount = 0f;
         unit.speed = 50;
-        unit.currentDebuffs = new Debuff[1] {Debuff.STUN};
+        unit.currentStatusEffect = new StatusEffect[1] {StatusEffect.STUN};
 
         UnitUtil.ChargeTurnPointsAllUnits(allUnits, 1);
 

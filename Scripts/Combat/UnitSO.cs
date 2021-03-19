@@ -29,8 +29,8 @@ public class UnitSO : ScriptableObject {
     public float currentMP;
     public float maxTurnCount = 100;
     public float currentTurnCount;
-    public Debuff[] currentDebuffs;
-    [Header("Debuff Weakness")]
+    public StatusEffect[] currentStatusEffect;
+    [Header("Status Effect Weakness")]
     public float stunWeakness;
     public float poisonWeakness;
     public float burnWeakness;

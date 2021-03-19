@@ -1,6 +1,6 @@
 using UnityEngine;
 using NUnit.Framework;
-using static Debuff;
+using static StatusEffect;
 using System.Linq;
 
 public class CleanUpStateTest
@@ -13,7 +13,7 @@ public class CleanUpStateTest
         UnitSO unit = TestUtil.CreateUnit();
         unit.maxHP = 100f;
         unit.currentHP = 100f;
-        unit.currentDebuffs = new Debuff[1] {BURN};
+        unit.currentStatusEffect = new StatusEffect[1] {BURN};
         BattleSystem battleSystem = TestUtil.Create<BattleSystem>();
         battleSystem.allUnits = new UnitSO[1] {unit};
         State<BattleSystem> cleanUp = new CleanUpState(battleSystem);

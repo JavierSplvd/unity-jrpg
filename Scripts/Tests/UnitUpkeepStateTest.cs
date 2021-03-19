@@ -5,27 +5,27 @@ public class UnitUpkeepStateTest {
     public void WhenEnterState_RemoveStun()
     {
         UnitSO unit = TestUtil.CreateUnit();
-        unit.currentDebuffs = new Debuff[] {Debuff.STUN};
+        unit.currentStatusEffect = new StatusEffect[] {StatusEffect.STUN};
         BattleSystem battleSystem = TestUtil.CreateBattleSystem();
 
         UnitUpkeepState state = new UnitUpkeepState(battleSystem, unit);
 
         state.OnStateEnter();
 
-        Assert.AreEqual(0, unit.currentDebuffs.Length);
+        Assert.AreEqual(0, unit.currentStatusEffect.Length);
     }
 
     [Test]
     public void WhenEnterState_TriesToRemoveStun_DoesNotFail()
     {
         UnitSO unit = TestUtil.CreateUnit();
-        unit.currentDebuffs = new Debuff[0];
+        unit.currentStatusEffect = new StatusEffect[0];
         BattleSystem battleSystem = TestUtil.CreateBattleSystem();
 
         UnitUpkeepState state = new UnitUpkeepState(battleSystem, unit);
 
         state.OnStateEnter();
 
-        Assert.AreEqual(0, unit.currentDebuffs.Length);
+        Assert.AreEqual(0, unit.currentStatusEffect.Length);
     }
 }

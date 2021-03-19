@@ -1,6 +1,6 @@
 using System.Linq;
 using UnityEngine;
-using static Debuff;
+using static StatusEffect;
 
 [CreateAssetMenu(fileName = "ItemOffensiveSO", menuName = "BattleSystem/ItemOffensiveSO", order = 0)]
 public class ItemOffensiveSO : ItemSO {
@@ -15,11 +15,11 @@ public class ItemOffensiveSO : ItemSO {
     public float hungry; // Lose HP every turn
     public float forget; // Unable to do 2, 3 and 4 skill
 
-    struct DebuffChance {
-        public Debuff type;
+    struct StatusEffectChance {
+        public StatusEffect type;
         public float chance;
 
-        internal DebuffChance(Debuff type, float chance)
+        internal StatusEffectChance(StatusEffect type, float chance)
         {
             this.type = type;
             this.chance = chance;
@@ -28,14 +28,14 @@ public class ItemOffensiveSO : ItemSO {
 
     public override void Execute(CommandParams commandParams)
     {
-        DebuffChance[] chances = new DebuffChance[] {
-            new DebuffChance(STUN, stun),
-            new DebuffChance(POISON, poison),
-            new DebuffChance(BURN, burn),
-            new DebuffChance(FREEZE, freeze),
-            new DebuffChance(CRYING, crying),
-            new DebuffChance(HUNGRY, hungry),
-            new DebuffChance(FORGET, forget),
+        StatusEffectChance[] chances = new StatusEffectChance[] {
+            new StatusEffectChance(STUN, stun),
+            new StatusEffectChance(POISON, poison),
+            new StatusEffectChance(BURN, burn),
+            new StatusEffectChance(FREEZE, freeze),
+            new StatusEffectChance(CRYING, crying),
+            new StatusEffectChance(HUNGRY, hungry),
+            new StatusEffectChance(FORGET, forget),
         };
         commandParams.GetTargets().ToList().ForEach(target => {
             chances.ToList().ForEach(it => {
@@ -43,7 +43,7 @@ public class ItemOffensiveSO : ItemSO {
                 bool hit = Random.Range(0f, 100f) <= it.chance + weakness;
                 if(hit)
                 {
-                    UnitUtil.SetDebuff(target, it.type);
+                    UnitUtil.SetStatusEffect(target, it.type);
                 }
                 // Debug.Log(hit + "/" + it.type);
             });
