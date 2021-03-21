@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using static StatusEffect;
 
-public class CleanUpStateTest
+public class ApplyBurnStateTest
 {
     [Test]
     public void OnStateEnter_ApplyDamageBurn()
@@ -17,7 +17,7 @@ public class CleanUpStateTest
         State<BattleSystem> cleanUp = new ApplyBurnState(battleSystem);
 
         float atStart = unit.currentHP;
-        cleanUp.OnStateEnter();
+        cleanUp.OnStateExit();
 
         Assert.That(atStart > unit.currentHP);
         Assert.AreEqual(100f, atStart);

@@ -32,6 +32,7 @@ public class TestUtil
         SkillSO skill = ScriptableObject.CreateInstance<HealSkillSO>();
         skill.power = 100;
         skill.isMagical = true;
+        skill.targeting = SkillTarget.SINGLE_ALLY;
         return skill;
     }
 

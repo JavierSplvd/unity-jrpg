@@ -1,5 +1,5 @@
 using System.Linq;
-using UnityEngine;
+using static SkillTarget;
 
 public class DamageFlatUseCase : UseCase<float> {
 
@@ -12,9 +12,19 @@ public class DamageFlatUseCase : UseCase<float> {
 
     public float Execute() {
         float power = 0f;
+
         if(commandParams.GetSkill() != null)
         {
-            power = commandParams.GetSkill().power;
+            if(commandParams.GetSkill().targeting.Equals(SkillTarget.SINGLE_ALLY) ||
+                commandParams.GetSkill().targeting.Equals(SkillTarget.MULTIPLE_ALLIES))
+            {
+                power = commandParams.GetSkill().power;
+            }
+            else
+            {
+                power = - commandParams.GetSkill().power;
+            }
+            
         }
         else if (commandParams.GetItem().GetType() == typeof(ItemHealingSO))
         {
@@ -22,15 +32,11 @@ public class DamageFlatUseCase : UseCase<float> {
         }
         else if (commandParams.GetItem().GetType() == typeof(ItemOffensiveSO))
         {
-            power = ((ItemOffensiveSO) commandParams.GetItem()).power;
+            power = - ((ItemOffensiveSO) commandParams.GetItem()).power;
         }
 
         commandParams.GetTargets().ToList().ForEach(it => {
-            it.currentHP = Mathf.Clamp(
-                power + it.currentHP,
-                0,
-                it.maxHP
-            );
+            new ModifyHPUseCase(it, power).Execute();
             DamageLogger.Add(it.unitId, (int) power);
         });
         return power;

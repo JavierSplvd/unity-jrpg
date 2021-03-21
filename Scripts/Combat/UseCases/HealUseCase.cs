@@ -21,11 +21,7 @@ public class HealUseCase : UseCase<float> {
         float formulaRes = ((2 * level / 5 + 2) * (power / 50) * (attack / 200) + 2) * modifier;
 
         commandParams.GetTargets().ToList().ForEach(it => {
-            it.currentHP = Mathf.Clamp(
-                formulaRes + it.currentHP,
-                0,
-                it.maxHP
-            );
+            new ModifyHPUseCase(it, formulaRes).Execute();
             DamageLogger.Add(it.unitId, (int) formulaRes);
         });
 

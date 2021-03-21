@@ -7,4 +7,5 @@ public enum StatusEffect
     CRYING, // Low accuracy
     HUNGRY, // Lose HP every turn
     FORGET, // Unable to do 2, 3 and 4 skill
+    DEATH
 }

@@ -75,11 +75,11 @@ public class UnitUtilTest
         UnitSO[] allUnits = new UnitSO[] {unit};
         unit.maxTurnCount = 100f;
         unit.currentTurnCount = 0f;
-        unit.speed = 10;
+        unit.speed = 50;
 
         UnitUtil.ChargeTurnPointsAllUnits(allUnits, 1);
 
-        Assert.AreEqual(10, unit.currentTurnCount);
+        Assert.AreEqual(50, unit.currentTurnCount);
     }
 
     [Test]
@@ -94,7 +94,7 @@ public class UnitUtilTest
 
         UnitUtil.ChargeTurnPointsAllUnits(allUnits, 1);
 
-        Assert.AreEqual(10, unit.currentTurnCount);
+        Assert.AreEqual(25, unit.currentTurnCount);
     }
 
     [Test]

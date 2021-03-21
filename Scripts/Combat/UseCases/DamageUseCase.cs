@@ -19,12 +19,8 @@ public class DamageUseCase : UseCase<float> {
         float level = subject.level;
 
         float formulaRes = ((2 * level / 5 + 2) * (power / 50) * (attack / defense) + 2) * modifier * RandomWrapper.Range(0.2f);
-
-        target.currentHP = Mathf.Clamp(
-            target.currentHP - formulaRes,
-            0,
-            target.maxHP
-        );
+        
+        new ModifyHPUseCase(target, - formulaRes).Execute();
         DamageLogger.Add(target.unitId, (int) - formulaRes);
         return formulaRes;
     }
