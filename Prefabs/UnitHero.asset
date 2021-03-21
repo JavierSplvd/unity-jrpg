@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65692ae7c88619f4b95fed35fc008d4e, type: 3}
   m_Name: UnitHero
   m_EditorClassIdentifier: 
-  unitId: Hero37646
+  unitId: Hero20768
   unitName: Hero
   level: 50
   baseAttack: 100
@@ -29,11 +29,11 @@ MonoBehaviour:
   speed: 266
   maxHP: 266
   maxMP: 266
-  currentHP: 0
-  currentMP: 266
+  currentHP: 84.681015
+  currentMP: 241
   maxTurnCount: 100
-  currentTurnCount: 91.50404
-  currentDebuffs: 
+  currentTurnCount: 3.240036
+  currentStatusEffect: 
   stunWeakness: 0
   poisonWeakness: 0
   burnWeakness: 0

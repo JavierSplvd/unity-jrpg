@@ -1,7 +1,5 @@
-using UnityEngine;
 using NUnit.Framework;
 using static StatusEffect;
-using System.Linq;
 
 public class CleanUpStateTest
 {
@@ -16,7 +14,7 @@ public class CleanUpStateTest
         unit.currentStatusEffect = new StatusEffect[1] {BURN};
         BattleSystem battleSystem = TestUtil.Create<BattleSystem>();
         battleSystem.allUnits = new UnitSO[1] {unit};
-        State<BattleSystem> cleanUp = new CleanUpState(battleSystem);
+        State<BattleSystem> cleanUp = new ApplyBurnState(battleSystem);
 
         float atStart = unit.currentHP;
         cleanUp.OnStateEnter();

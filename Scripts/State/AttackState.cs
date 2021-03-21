@@ -32,7 +32,7 @@ public class AttackState : State<BattleSystem>
             }
             
             
-            owner.ChangeState(new CleanUpState(base.owner));
+            owner.ChangeState(new ApplyBurnState(base.owner));
         }
     }
 
