@@ -13,14 +13,14 @@ public class UnitUtil {
         return units.ToList().Where(it => it.controller.Equals(targetController)).ToArray();
     }
 
-    public static UnitSO[] GetFriends(UnitSO[] units, Controller controller)
+    public static UnitSO[] GetAliveFriends(UnitSO[] units, Controller controller)
     {
-        return units.ToList().Where(it => it.controller.Equals(controller)).ToArray();
+        return units.ToList().Where(it => it.controller.Equals(controller) && !it.currentStatusEffect.Contains(StatusEffect.DEATH)).ToArray();
     }
 
-    public static UnitSO[] GetOpponents(UnitSO[] units, Controller controller)
+    public static UnitSO[] GetAliveOpponents(UnitSO[] units, Controller controller)
     {
-        return units.ToList().Where(it => !it.controller.Equals(controller)).ToArray();
+        return units.ToList().Where(it => !it.controller.Equals(controller) && !it.currentStatusEffect.Contains(StatusEffect.DEATH)).ToArray();
     }
 
     public static float GetSumOfHP(UnitSO[] units, Controller controller)

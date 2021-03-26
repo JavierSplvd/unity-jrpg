@@ -1,25 +1,22 @@
+using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using System.Linq;
 
-public class UnitUtilTest
-{
+public class UnitUtilTest {
     [Test]
-    public void SetStatusEffectDontAddDuplicates()
-    {
+    public void SetStatusEffectDontAddDuplicates() {
         UnitSO unit = TestUtil.CreateUnit();
 
         UnitUtil.SetStatusEffect(unit, StatusEffect.BURN);
         UnitUtil.SetStatusEffect(unit, StatusEffect.BURN);
 
         Assert.That(unit.currentStatusEffect.Length == 1);
-        Assert.That(unit.currentStatusEffect.ToArray()[0].Equals(StatusEffect.BURN));
+        Assert.That(unit.currentStatusEffect.ToArray() [0].Equals(StatusEffect.BURN));
     }
 
     [Test]
-    public void SetStatusEffectAddValues()
-    {
+    public void SetStatusEffectAddValues() {
         UnitSO unit = TestUtil.CreateUnit();
 
         UnitUtil.SetStatusEffect(unit, StatusEffect.BURN);
@@ -31,8 +28,7 @@ public class UnitUtilTest
     }
 
     [Test]
-    public void RemoveStatusEffectDeletesElement()
-    {
+    public void RemoveStatusEffectDeletesElement() {
         UnitSO unit = TestUtil.CreateUnit();
         UnitUtil.SetStatusEffect(unit, StatusEffect.BURN);
         UnitUtil.SetStatusEffect(unit, StatusEffect.STUN);
@@ -45,8 +41,7 @@ public class UnitUtilTest
     }
 
     [Test]
-    public void RemoveStatusEffectDoesNothingWhenTypeNotContained()
-    {
+    public void RemoveStatusEffectDoesNothingWhenTypeNotContained() {
         UnitSO unit = TestUtil.CreateUnit();
         UnitUtil.SetStatusEffect(unit, StatusEffect.BURN);
         UnitUtil.SetStatusEffect(unit, StatusEffect.STUN);
@@ -59,8 +54,7 @@ public class UnitUtilTest
     }
 
     [Test]
-    public void RemoveStatusEffectAwareWhenArrayItsNull()
-    {
+    public void RemoveStatusEffectAwareWhenArrayItsNull() {
         UnitSO unit = TestUtil.CreateUnit();
 
         UnitUtil.RemoveStatusEffect(unit, StatusEffect.POISON);
@@ -69,10 +63,9 @@ public class UnitUtilTest
     }
 
     [Test]
-    public void ChargeTurnPoints_FunctionOfSpeed()
-    {
+    public void ChargeTurnPoints_FunctionOfSpeed() {
         UnitSO unit = TestUtil.CreateUnit();
-        UnitSO[] allUnits = new UnitSO[] {unit};
+        UnitSO[] allUnits = new UnitSO[] { unit };
         unit.maxTurnCount = 100f;
         unit.currentTurnCount = 0f;
         unit.speed = 50;
@@ -83,14 +76,13 @@ public class UnitUtilTest
     }
 
     [Test]
-    public void ChargeTurnPoints_ReducedWhenStun()
-    {
+    public void ChargeTurnPoints_ReducedWhenStun() {
         UnitSO unit = TestUtil.CreateUnit();
-        UnitSO[] allUnits = new UnitSO[] {unit};
+        UnitSO[] allUnits = new UnitSO[] { unit };
         unit.maxTurnCount = 100f;
         unit.currentTurnCount = 0f;
         unit.speed = 50;
-        unit.currentStatusEffect = new StatusEffect[1] {StatusEffect.STUN};
+        unit.currentStatusEffect = new StatusEffect[1] { StatusEffect.STUN };
 
         UnitUtil.ChargeTurnPointsAllUnits(allUnits, 1);
 
@@ -98,8 +90,7 @@ public class UnitUtilTest
     }
 
     [Test]
-    public void GetSumOfHP_forEachController()
-    {
+    public void GetSumOfHP_forEachController() {
         UnitSO playerUnitA = TestUtil.CreateUnit();
         playerUnitA.currentHP = 50;
         playerUnitA.controller = Controller.PLAYER;
@@ -110,11 +101,43 @@ public class UnitUtilTest
         aiUnitC.currentHP = 90;
         aiUnitC.controller = Controller.AI;
 
-        UnitSO[] allUnits = new UnitSO[] {playerUnitA, playerUnitB, aiUnitC};
+        UnitSO[] allUnits = new UnitSO[] { playerUnitA, playerUnitB, aiUnitC };
         float countPlayer = UnitUtil.GetSumOfHP(allUnits, Controller.PLAYER);
         float countAI = UnitUtil.GetSumOfHP(allUnits, Controller.AI);
 
         Assert.AreEqual(110, countPlayer);
         Assert.AreEqual(90, countAI);
+    }
+
+    [Test]
+    public void GivenDeadAlliedUnit_GetFriendsDoesNotReturnIt() {
+        UnitSO a = TestUtil.CreateUnit();
+        a.controller = Controller.PLAYER;
+        UnitSO b = TestUtil.CreateUnit();
+        b.controller = Controller.AI;
+        UnitSO dead = TestUtil.CreateUnit();
+        dead.controller = Controller.PLAYER;
+        dead.currentStatusEffect = new StatusEffect[] { StatusEffect.DEATH };
+
+        var list = UnitUtil.GetAliveFriends(new UnitSO[] { a, b, dead }, Controller.PLAYER);
+
+        Assert.AreEqual(1, list.Length);
+        Assert.AreEqual(a, list[0]);
+    }
+
+    [Test]
+    public void GivenDeadEnemyUnit_GetOpponentsDoesNotReturnIt() {
+        UnitSO a = TestUtil.CreateUnit();
+        a.controller = Controller.PLAYER;
+        UnitSO b = TestUtil.CreateUnit();
+        b.controller = Controller.AI;
+        UnitSO dead = TestUtil.CreateUnit();
+        dead.controller = Controller.AI;
+        dead.currentStatusEffect = new StatusEffect[] { StatusEffect.DEATH };
+
+        var list = UnitUtil.GetAliveOpponents(new UnitSO[] { a, b, dead }, Controller.PLAYER);
+
+        Assert.AreEqual(1, list.Length);
+        Assert.AreEqual(b, list[0]);
     }
 }

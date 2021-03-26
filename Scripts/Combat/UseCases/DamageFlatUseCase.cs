@@ -36,6 +36,10 @@ public class DamageFlatUseCase : UseCase<float> {
         }
 
         commandParams.GetTargets().ToList().ForEach(it => {
+            if(it.currentStatusEffect.Contains(StatusEffect.DEATH))
+            {
+                return; // If is dead, do not heal.
+            }
             new ModifyHPUseCase(it, power).Execute();
             DamageLogger.Add(it.unitId, (int) power);
         });

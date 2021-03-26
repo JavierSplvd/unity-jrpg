@@ -29,10 +29,10 @@ public class AIState : State<BattleSystem>
                 randomTargets = new UnitSO[1] {activeUnit};
                 break;
             case MULTIPLE_ALLIES:
-                randomTargets = UnitUtil.GetFriends(base.owner.allUnits, AI);
+                randomTargets = UnitUtil.GetAliveFriends(base.owner.allUnits, AI);
                 break;
             case MULTIPLE_OPPONENTS:
-                randomTargets = UnitUtil.GetOpponents(base.owner.allUnits, AI);
+                randomTargets = UnitUtil.GetAliveOpponents(base.owner.allUnits, AI);
                 break;
             default:
                 throw new System.Exception("Exhaust enum at AIState.Tick()");

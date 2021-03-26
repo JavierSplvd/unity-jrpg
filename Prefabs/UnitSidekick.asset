@@ -10,29 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65692ae7c88619f4b95fed35fc008d4e, type: 3}
-  m_Name: UnitDemon
+  m_Name: UnitSidekick
   m_EditorClassIdentifier: 
-  unitId: Demon20946
-  unitName: Demon
+  unitId: Hero41550
+  unitName: Sidekick
   level: 50
   baseAttack: 100
   baseDefense: 100
-  baseMagicAttack: 100
+  baseMagicAttack: 150
   baseMagicDefense: 100
-  baseSpeed: 110
+  baseSpeed: 100
   baseMaxHP: 100
   baseMaxMP: 100
   attack: 266
   defense: 266
-  magicAttack: 266
+  magicAttack: 400
   magicDefense: 266
-  speed: 293
+  speed: 266
   maxHP: 266
   maxMP: 266
   currentHP: 266
   currentMP: 266
   maxTurnCount: 100
-  currentTurnCount: 11.340003
+  currentTurnCount: 101.079994
   currentStatusEffect: 
   stunWeakness: 0
   poisonWeakness: 0
@@ -41,8 +41,11 @@ MonoBehaviour:
   cryingWeakness: 0
   hungryWeakness: 0
   forgetWeakness: 0
-  controller: 1
+  controller: 0
   skills:
   - {fileID: 11400000, guid: 573a2402769dbfd409f617330ecc7399, type: 2}
-  prefab: {fileID: 2648658694317888305, guid: a97b20c74db9a2a48838a4e0eb90dea4, type: 3}
-  sprite: {fileID: 21300000, guid: acd4205805283bf4cb6c96a5834d5392, type: 3}
+  - {fileID: 11400000, guid: 29b92883ef00c7d428ff5c7c33c114a1, type: 2}
+  - {fileID: 11400000, guid: 3b6216f09931a6b49a436ed8b501bd34, type: 2}
+  - {fileID: 11400000, guid: d91f7251ad8a6ec4daf507b19747f383, type: 2}
+  prefab: {fileID: 2648658694317888305, guid: 83c6ec14acb13b14fb666552d1320f7e, type: 3}
+  sprite: {fileID: 21300000, guid: 5eb4a7f17acc4a341b7daba65b48c871, type: 3}
