@@ -90,6 +90,20 @@ public class UnitUtilTest {
     }
 
     [Test]
+    public void ChargeTurnPoints_ZeroWhenDead() {
+        UnitSO unit = TestUtil.CreateUnit();
+        UnitSO[] allUnits = new UnitSO[] { unit };
+        unit.maxTurnCount = 100f;
+        unit.currentTurnCount = 0f;
+        unit.speed = 50;
+        unit.currentStatusEffect = new StatusEffect[1] { StatusEffect.DEATH };
+
+        UnitUtil.ChargeTurnPointsAllUnits(allUnits, 1);
+
+        Assert.AreEqual(0, unit.currentTurnCount);
+    }
+
+    [Test]
     public void GetSumOfHP_forEachController() {
         UnitSO playerUnitA = TestUtil.CreateUnit();
         playerUnitA.currentHP = 50;

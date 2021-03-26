@@ -126,6 +126,10 @@ public class UnitUtil {
             {
                 it.currentTurnCount += deltaTime * it.speed * 0.5f;
             }
+            else if (it.currentStatusEffect.Contains(StatusEffect.DEATH))
+            {
+                // Do not gain
+            }
             else
             {
                 it.currentTurnCount += deltaTime * it.speed;
