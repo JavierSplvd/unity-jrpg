@@ -3,6 +3,12 @@ using UnityEngine.UI;
 
 public class BattleHUD : MonoBehaviour, IBattleHUD
 {
+    [Header("Manual")]
+    private Image unitBg;
+    [SerializeField] private Sprite normal;
+    [SerializeField] private Sprite highligth;
+
+    [Header("This is auto wired")]
     private UnitSO unit;
     public Text nameText;
     public Text levelText;
@@ -16,6 +22,8 @@ public class BattleHUD : MonoBehaviour, IBattleHUD
     public StatusEffectsHUD statusEffects;
 
     void Awake() {
+        unitBg = GetComponent<Image>();
+
         int childCount = transform.childCount;
         for(int i = 0; i < childCount; i++)
         {
@@ -86,6 +94,13 @@ public class BattleHUD : MonoBehaviour, IBattleHUD
 
     public void UpdateData(UnitSO unit)
     {
+        if(unit.isActive) {
+            unitBg.sprite = highligth;
+        }
+        else {
+            unitBg.sprite = normal;
+        }
+
         hpSlider.maxValue = unit.finalMaxHP;
         hpSlider.value = unit.currentHP;
         hpText.text = (int) unit.currentHP + "/" + unit.finalMaxHP;

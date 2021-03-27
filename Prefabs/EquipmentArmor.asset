@@ -16,7 +16,7 @@ MonoBehaviour:
   image: {fileID: 0}
   type: 1
   bonusAttack: 0
-  bonusDefense: 10
+  bonusDefense: 25
   bonusMagicAttack: 0
   bonusMagicDefense: 0
   bonusSpeed: 0

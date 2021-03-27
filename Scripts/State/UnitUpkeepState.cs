@@ -18,9 +18,11 @@ public class UnitUpkeepState : State<BattleSystem> // rename to RemoveStunState?
 
     public override void OnStateEnter() 
     {
+        // remove stun
         List<StatusEffect> asList = activeUnit.currentStatusEffect.ToList();
         asList.Remove(STUN);
         activeUnit.currentStatusEffect = asList.ToArray();
+        //
         owner.ChangeState(new UnitSelectActionState(owner, activeUnit));
     }
 

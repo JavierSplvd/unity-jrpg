@@ -12,27 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65692ae7c88619f4b95fed35fc008d4e, type: 3}
   m_Name: UnitDemon
   m_EditorClassIdentifier: 
-  unitId: Demon20946
+  unitId: Demon20964
   unitName: Demon
   level: 50
+  equipment: []
   baseAttack: 100
   baseDefense: 100
-  baseMagicAttack: 100
+  baseMagicAttack: 110
   baseMagicDefense: 100
   baseSpeed: 110
-  baseMaxHP: 100
+  baseMaxHP: 200
   baseMaxMP: 100
-  attack: 266
-  defense: 266
-  magicAttack: 266
-  magicDefense: 266
-  speed: 293
-  maxHP: 266
-  maxMP: 266
-  currentHP: 266
+  levelAttack: 266
+  levelDefense: 266
+  levelMagicAttack: 293
+  levelMagicDefense: 266
+  levelSpeed: 293
+  levelMaxHP: 533
+  levelMaxMP: 266
+  finalAttack: 266
+  finalDefense: 266
+  finalMagicAttack: 293
+  finalMagicDefense: 266
+  finalSpeed: 293
+  finalMaxHP: 533
+  finalMaxMP: 266
+  currentHP: 0
   currentMP: 266
   maxTurnCount: 100
-  currentTurnCount: 11.340003
+  currentTurnCount: 56.700016
   currentStatusEffect: 
   stunWeakness: 0
   poisonWeakness: 0
@@ -42,6 +50,7 @@ MonoBehaviour:
   hungryWeakness: 0
   forgetWeakness: 0
   controller: 1
+  isActive: 0
   skills:
   - {fileID: 11400000, guid: 573a2402769dbfd409f617330ecc7399, type: 2}
   prefab: {fileID: 2648658694317888305, guid: a97b20c74db9a2a48838a4e0eb90dea4, type: 3}

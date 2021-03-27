@@ -87,8 +87,10 @@ public class BattleSystem : MonoBehaviour
     {
         foreach(UnitSO u in allUnits)
         {
+            u.isActive = false;
             if(u.currentTurnCount >= 100)
             {
+                u.isActive = true;
                 u.currentTurnCount -= 100;
                 return u;
             }

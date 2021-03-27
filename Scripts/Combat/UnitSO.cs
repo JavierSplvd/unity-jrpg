@@ -51,7 +51,7 @@ public class UnitSO : ScriptableObject {
 
     [Header("Other")]
     public Controller controller;
-
+    public bool isActive;
     public SkillSO[] skills;
     [Header("Graphics")]
     public GameObject prefab;
