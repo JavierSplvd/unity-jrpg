@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22a405e86f0c52240aee619083cb8fc9, type: 3}
-  m_Name: SkillUseItem
+  m_Script: {fileID: 11500000, guid: f46a2fe67337e534a965f7fc404c341d, type: 3}
+  m_Name: SkillRevive
   m_EditorClassIdentifier: 
-  skillName: Use Item
+  skillName: Revive
   icon: {fileID: 0}
-  skillSound: {fileID: 0}
-  manaCost: 0
-  power: 0
-  isMagical: 0
-  targeting: 5
-  offensive: 1
+  skillSound: {fileID: 8300000, guid: 0a5790535843b174486a5c76861c22da, type: 3}
+  animationName: 0
+  manaCost: 50
+  power: 100
+  isMagical: 1
+  targeting: 6

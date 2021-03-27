@@ -46,6 +46,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 573a2402769dbfd409f617330ecc7399, type: 2}
   - {fileID: 11400000, guid: 29b92883ef00c7d428ff5c7c33c114a1, type: 2}
   - {fileID: 11400000, guid: 3b6216f09931a6b49a436ed8b501bd34, type: 2}
-  - {fileID: 11400000, guid: d91f7251ad8a6ec4daf507b19747f383, type: 2}
+  - {fileID: 11400000, guid: 92ae3ce5d615a114997808cf82b03a89, type: 2}
   prefab: {fileID: 2648658694317888305, guid: 83c6ec14acb13b14fb666552d1320f7e, type: 3}
   sprite: {fileID: 21300000, guid: 5eb4a7f17acc4a341b7daba65b48c871, type: 3}

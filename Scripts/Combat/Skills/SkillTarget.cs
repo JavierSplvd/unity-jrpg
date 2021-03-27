@@ -5,5 +5,6 @@ public enum SkillTarget
     SELF,
     SINGLE_ALLY,
     MULTIPLE_ALLIES,
-    ITEM_STATE
+    ITEM_STATE,
+    REVIVE
 }
