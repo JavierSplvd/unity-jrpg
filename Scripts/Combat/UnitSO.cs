@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UnitSO", menuName = "BattleSystem/UnitSO", order = 0)]
@@ -8,6 +8,8 @@ public class UnitSO : ScriptableObject {
     public string unitName;
     [Header("Level and exp")]
     public float level;
+    [Header("Equipment")]
+    public EquipmentSO[] equipment;
     [Header("Base stats")]
     public float baseAttack = 100;
     public float baseDefense = 100;
@@ -17,13 +19,21 @@ public class UnitSO : ScriptableObject {
     public float baseMaxHP = 100;
     public float baseMaxMP = 100;
     [Header("Stats for the level")]
-    public float attack;
-    public float defense;
-    public float magicAttack;
-    public float magicDefense;
-    public float speed;
-    public float maxHP;
-    public float maxMP;
+    public float levelAttack;
+    public float levelDefense;
+    public float levelMagicAttack;
+    public float levelMagicDefense;
+    public float levelSpeed;
+    public float levelMaxHP;
+    public float levelMaxMP;
+    [Header("Stats after level+equipment")]
+    public float finalAttack;
+    public float finalDefense;
+    public float finalMagicAttack;
+    public float finalMagicDefense;
+    public float finalSpeed;
+    public float finalMaxHP;
+    public float finalMaxMP;
     [Header("Current values")]
     public float currentHP;
     public float currentMP;

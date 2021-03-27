@@ -66,7 +66,8 @@ public class BattleSystem : MonoBehaviour
 
         allUnits = allyTeam.units.Concat(enemyTeam.units).ToArray();
         // Reset units and place ids
-        UnitUtil.LevelScaling(allUnits);
+        UnitUtil.ScaleStatsByLevel(allUnits);
+        UnitUtil.ApplyStatsEquipment(allUnits);
         UnitUtil.ResetUnits(allUnits);
     }
 

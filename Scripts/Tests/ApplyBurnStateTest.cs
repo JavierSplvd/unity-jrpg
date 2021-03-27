@@ -9,7 +9,7 @@ public class ApplyBurnStateTest
         RandomWrapper.test = true;
         
         UnitSO unit = TestUtil.CreateUnit();
-        unit.maxHP = 100f;
+        unit.finalMaxHP = 100f;
         unit.currentHP = 100f;
         unit.currentStatusEffect = new StatusEffect[1] {BURN};
         BattleSystem battleSystem = TestUtil.Create<BattleSystem>();

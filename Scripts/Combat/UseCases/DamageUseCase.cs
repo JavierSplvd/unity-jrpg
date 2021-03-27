@@ -14,8 +14,8 @@ public class DamageUseCase : UseCase<float> {
         float power = skill.power;
         // Decide between physical and magical attack+defense
         bool isMagic = skill.isMagical;
-        float attack = isMagic? subject.magicAttack : subject.attack;
-        float defense = isMagic? subject.magicDefense : target.defense;
+        float attack = isMagic? subject.finalMagicAttack : subject.finalAttack;
+        float defense = isMagic? subject.finalMagicDefense : target.finalDefense;
         float level = subject.level;
 
         float formulaRes = ((2 * level / 5 + 2) * (power / 50) * (attack / defense) + 2) * modifier * RandomWrapper.Range(0.2f);

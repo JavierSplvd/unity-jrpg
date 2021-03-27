@@ -11,7 +11,7 @@ public class DamagePercentageUseCase : UseCase<float> {
 
     public float Execute() {
         Debug.Log("DamagePercentageUseCase");
-        float damage = -target.maxHP * percentage * RandomWrapper.Range(0.2f);
+        float damage = -target.finalMaxHP * percentage * RandomWrapper.Range(0.2f);
         new ModifyHPUseCase(target, damage).Execute();
         DamageLogger.Add(target.unitId, (int) damage);
         return damage;

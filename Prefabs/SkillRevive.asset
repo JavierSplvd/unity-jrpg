@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: Revive
   icon: {fileID: 0}
   skillSound: {fileID: 8300000, guid: 0a5790535843b174486a5c76861c22da, type: 3}
-  animationName: 0
+  animationName: 2
   manaCost: 50
   power: 100
   isMagical: 1

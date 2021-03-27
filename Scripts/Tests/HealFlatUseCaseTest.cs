@@ -17,10 +17,10 @@ public class HealFlatUseCaseTest {
     [Test]
     public void GivenDeadUnit_ShouldNotHeal() {
         UnitSO alive = TestUtil.CreateUnit();
-        alive.maxHP = 200;
+        alive.finalMaxHP = 200;
         alive.currentHP = 100;
         UnitSO dead = TestUtil.CreateUnit();
-        dead.maxHP = 200;
+        dead.finalMaxHP = 200;
         dead.currentHP = 0;
         dead.currentStatusEffect = new StatusEffect[] { StatusEffect.DEATH };
 

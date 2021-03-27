@@ -68,7 +68,7 @@ public class UnitUtilTest {
         UnitSO[] allUnits = new UnitSO[] { unit };
         unit.maxTurnCount = 100f;
         unit.currentTurnCount = 0f;
-        unit.speed = 50;
+        unit.finalSpeed = 50;
 
         UnitUtil.ChargeTurnPointsAllUnits(allUnits, 1);
 
@@ -81,7 +81,7 @@ public class UnitUtilTest {
         UnitSO[] allUnits = new UnitSO[] { unit };
         unit.maxTurnCount = 100f;
         unit.currentTurnCount = 0f;
-        unit.speed = 50;
+        unit.finalSpeed = 50;
         unit.currentStatusEffect = new StatusEffect[1] { StatusEffect.STUN };
 
         UnitUtil.ChargeTurnPointsAllUnits(allUnits, 1);
@@ -95,7 +95,7 @@ public class UnitUtilTest {
         UnitSO[] allUnits = new UnitSO[] { unit };
         unit.maxTurnCount = 100f;
         unit.currentTurnCount = 0f;
-        unit.speed = 50;
+        unit.finalSpeed = 50;
         unit.currentStatusEffect = new StatusEffect[1] { StatusEffect.DEATH };
 
         UnitUtil.ChargeTurnPointsAllUnits(allUnits, 1);

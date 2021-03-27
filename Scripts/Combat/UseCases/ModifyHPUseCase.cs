@@ -13,7 +13,7 @@ public class ModifyHPUseCase : UseCase<float> {
         unit.currentHP = Mathf.Clamp(
             unit.currentHP + value,
             0,
-            unit.maxHP
+            unit.finalMaxHP
         );
         if(unit.currentHP == 0)
         {

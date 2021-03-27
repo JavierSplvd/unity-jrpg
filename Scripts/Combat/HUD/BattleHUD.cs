@@ -86,11 +86,11 @@ public class BattleHUD : MonoBehaviour, IBattleHUD
 
     public void UpdateData(UnitSO unit)
     {
-        hpSlider.maxValue = unit.maxHP;
+        hpSlider.maxValue = unit.finalMaxHP;
         hpSlider.value = unit.currentHP;
-        hpText.text = (int) unit.currentHP + "/" + unit.maxHP;
+        hpText.text = (int) unit.currentHP + "/" + unit.finalMaxHP;
 
-        mpSlider.maxValue = unit.maxMP;
+        mpSlider.maxValue = unit.finalMaxMP;
         mpSlider.value = unit.currentMP;
 
         turnCount.maxValue = unit.maxTurnCount;
