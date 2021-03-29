@@ -50,7 +50,16 @@ MonoBehaviour:
   cryingWeakness: 0
   hungryWeakness: 0
   forgetWeakness: 0
+  elementalWeakness:
+    list:
+    - Key: 0
+      Value: 100
+    - Key: 1
+      Value: 100
+    - Key: 2
+      Value: 100
   controller: 0
+  isActive: 0
   skills:
   - {fileID: 11400000, guid: 573a2402769dbfd409f617330ecc7399, type: 2}
   - {fileID: 11400000, guid: 29b92883ef00c7d428ff5c7c33c114a1, type: 2}

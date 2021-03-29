@@ -8,6 +8,7 @@ public abstract class SkillSO : ScriptableObject {
     public SkillAnimationName animationName;
     public float manaCost;
     public float power;
+    public Element element = Element.NORMAL;
     [Tooltip("True if should use magic stats.")]
     public bool isMagical = false;
     public SkillTarget targeting = SINGLE_OPPONENT;

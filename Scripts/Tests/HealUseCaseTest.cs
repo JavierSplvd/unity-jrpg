@@ -12,7 +12,7 @@ public class HealUseCaseTest {
         );
         var result = new HealUseCase(cp).Execute();
 
-        Assert.AreEqual(4.4f, result);
+        Assert.AreEqual(24f, result);
     }
 
     [Test]

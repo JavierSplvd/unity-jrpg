@@ -1,4 +1,4 @@
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UnitSO", menuName = "BattleSystem/UnitSO", order = 0)]
@@ -48,6 +48,8 @@ public class UnitSO : ScriptableObject {
     public float cryingWeakness;
     public float hungryWeakness;
     public float forgetWeakness;
+    [Header("Element Weakness")]
+    public SerializableDictionary<Element, float> elementalWeakness;
 
     [Header("Other")]
     public Controller controller;
