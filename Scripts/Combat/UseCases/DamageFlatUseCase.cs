@@ -1,5 +1,4 @@
 using System.Linq;
-using static SkillTarget;
 
 public class DamageFlatUseCase : UseCase<float> {
 
@@ -35,13 +34,13 @@ public class DamageFlatUseCase : UseCase<float> {
             power = - ((ItemOffensiveSO) commandParams.GetItem()).power;
         }
 
-        commandParams.GetTargets().ToList().ForEach(it => {
-            if(it.currentStatusEffect.Contains(StatusEffect.DEATH))
+        commandParams.GetTargets().ToList().ForEach(target => {
+            if(target.currentStatusEffect.Contains(StatusEffect.DEATH))
             {
-                return; // If is dead, do not heal.
+                return; // If is dead, do not heal or damage.
             }
-            new ModifyHPUseCase(it, power).Execute();
-            DamageLogger.Add(it.unitId, (int) power);
+            new ModifyHPUseCase(target, power).Execute();
+            DamageLogger.Add(target.unitId, (int) power);
         });
         return power;
     }
