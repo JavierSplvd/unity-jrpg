@@ -5,6 +5,7 @@ using static StatusEffect;
 [CreateAssetMenu(fileName = "ItemOffensiveSO", menuName = "BattleSystem/ItemOffensiveSO", order = 0)]
 public class ItemOffensiveSO : ItemSO {
     public float power;
+    public Element element = Element.NORMAL;
 
     // 0 => 0% of inflict that status. 100 => 100% chance of inflicting that.
     public float stun; // unable to gain turn points

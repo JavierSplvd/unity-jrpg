@@ -41,7 +41,6 @@ public class UnitUtil {
 
     public static void ResetUnits(UnitSO[] allUnits) {
         allUnits.ToList().ForEach(it => {
-            it.unitId = it.unitName + it.GetHashCode();
             it.currentHP = it.finalMaxHP;
             it.currentMP = it.finalMaxMP;
             it.currentTurnCount = 0;

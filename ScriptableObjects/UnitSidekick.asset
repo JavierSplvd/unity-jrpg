@@ -24,24 +24,24 @@ MonoBehaviour:
   baseSpeed: 100
   baseMaxHP: 100
   baseMaxMP: 100
-  levelAttack: 266
+  levelAttack: 133
   levelDefense: 266
   levelMagicAttack: 400
   levelMagicDefense: 266
   levelSpeed: 266
   levelMaxHP: 266
   levelMaxMP: 266
-  finalAttack: 266
-  finalDefense: 10266
+  finalAttack: 133
+  finalDefense: 291
   finalMagicAttack: 400
   finalMagicDefense: 266
   finalSpeed: 266
   finalMaxHP: 266
   finalMaxMP: 266
-  currentHP: 262.832
+  currentHP: 184.24718
   currentMP: 266
   maxTurnCount: 100
-  currentTurnCount: 101.079994
+  currentTurnCount: 102.15999
   currentStatusEffect: 
   stunWeakness: 0
   poisonWeakness: 0
@@ -50,7 +50,16 @@ MonoBehaviour:
   cryingWeakness: 0
   hungryWeakness: 0
   forgetWeakness: 0
+  elementalWeakness:
+    list:
+    - Key: 0
+      Value: 100
+    - Key: 1
+      Value: 100
+    - Key: 2
+      Value: 100
   controller: 0
+  isActive: 0
   skills:
   - {fileID: 11400000, guid: 573a2402769dbfd409f617330ecc7399, type: 2}
   - {fileID: 11400000, guid: 29b92883ef00c7d428ff5c7c33c114a1, type: 2}

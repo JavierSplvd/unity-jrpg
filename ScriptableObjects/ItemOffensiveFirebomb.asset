@@ -19,6 +19,7 @@ MonoBehaviour:
   sellValue: 550
   targeting: 0
   power: 200
+  element: 1
   stun: 0
   poison: 0
   burn: 0

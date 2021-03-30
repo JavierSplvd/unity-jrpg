@@ -10,6 +10,21 @@ public class DamageFlatUseCase : UseCase<float> {
     }
 
     public float Execute() {
+        float total = 0;
+        commandParams.GetTargets().ToList().ForEach(target => {
+            if(target.currentStatusEffect.Contains(StatusEffect.DEATH))
+            {
+                return; // If is dead, do not heal or damage.
+            }
+            float power = GetPower(target);
+            new ModifyHPUseCase(target, power).Execute();
+            DamageLogger.Add(target.unitId, (int) power);
+        });
+        return total;
+    }
+
+    public float GetPower(UnitSO target)
+    {
         float power = 0f;
 
         if(commandParams.GetSkill() != null)
@@ -31,17 +46,11 @@ public class DamageFlatUseCase : UseCase<float> {
         }
         else if (commandParams.GetItem().GetType() == typeof(ItemOffensiveSO))
         {
-            power = - ((ItemOffensiveSO) commandParams.GetItem()).power;
+            var item = (ItemOffensiveSO) commandParams.GetItem();
+            float modifier = target.elementalWeakness[item.element];
+            power = - item.power;
         }
 
-        commandParams.GetTargets().ToList().ForEach(target => {
-            if(target.currentStatusEffect.Contains(StatusEffect.DEATH))
-            {
-                return; // If is dead, do not heal or damage.
-            }
-            new ModifyHPUseCase(target, power).Execute();
-            DamageLogger.Add(target.unitId, (int) power);
-        });
         return power;
     }
 }
