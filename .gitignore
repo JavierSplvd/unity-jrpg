@@ -1,1 +1,10 @@
 *.meta
+
+.vscode
+/Logs
+/Temp
+/UserSettings
+/Recordings
+/obj
+/Logs
+/Library
