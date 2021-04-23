@@ -15,6 +15,7 @@ public class NumiInput : MonoBehaviour
     public float cameraHorizontal;
     public bool cameraSwitch, dodge, jog, run, jump, interact, reload, menu, click;
     public bool keyboard = true;
+    public bool f1, f2, f3, f4;
     public Vector3 mousePosition;
 
     void Awake()
@@ -75,6 +76,9 @@ public class NumiInput : MonoBehaviour
 
         click = UnityEngine.Input.GetMouseButtonUp(0);
         mousePosition = UnityEngine.Input.mousePosition;
+
+        f1 = UnityEngine.Input.GetKeyUp(KeyCode.F1);
+        f2 = UnityEngine.Input.GetKeyUp(KeyCode.F2);
     }
 
     private void GamepadControls()

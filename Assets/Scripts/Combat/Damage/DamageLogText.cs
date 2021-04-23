@@ -15,6 +15,10 @@ public class DamageLogText : MonoBehaviour
         textElement.text = "";
     }
 
+    private void OnDestroy() {
+        DamageLogger.OnDamageDealt -= ShowText;
+    }
+
     void FixedUpdate() {
         if(timer.Progress())
         {

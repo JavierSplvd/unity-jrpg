@@ -4312,6 +4312,10 @@ MonoBehaviour:
   menu: 0
   click: 0
   keyboard: 1
+  f1: 0
+  f2: 0
+  f3: 0
+  f4: 0
   mousePosition: {x: 0, y: 0, z: 0}
 --- !u!4 &548594358
 Transform:
@@ -10647,6 +10651,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: namek
+      objectReference: {fileID: 0}
+    - target: {fileID: -880588088940008719, guid: 3e9a099e73e18ad4bab0fe288c47da99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -343118697927090926, guid: 3e9a099e73e18ad4bab0fe288c47da99,
         type: 3}
