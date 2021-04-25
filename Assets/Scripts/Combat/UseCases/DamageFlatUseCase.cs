@@ -1,4 +1,5 @@
 using System.Linq;
+using UnityEngine;
 
 public class DamageFlatUseCase : UseCase<float> {
 
@@ -17,6 +18,7 @@ public class DamageFlatUseCase : UseCase<float> {
                 return; // If is dead, do not heal or damage.
             }
             float power = GetPower(target);
+            total += power;
             new ModifyHPUseCase(target, power).Execute();
             DamageLogger.Add(target.unitId, (int) power);
         });
