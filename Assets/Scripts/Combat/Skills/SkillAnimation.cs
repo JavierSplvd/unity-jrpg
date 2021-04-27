@@ -18,7 +18,6 @@ public class SkillAnimation : MonoBehaviour
     public void Play(SkillAnimationName name)
     {
         image.enabled = true;
-        Debug.Log(name.ToString());
         animator.Play(name.ToString(), -1, 0f);
     }
 

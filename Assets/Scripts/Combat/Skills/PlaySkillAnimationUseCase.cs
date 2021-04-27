@@ -17,7 +17,6 @@ public class PlaySkillAnimationUseCase : UseCase<object> {
         if (components == null || anyItemIsNull) {
             components = GameObject.FindObjectsOfType<SkillAnimation>().ToList();
         }
-        components.ForEach(it => Debug.Log(it));
         GetSkillAnimation(components, unitId).Play(name);
         return null;
     }

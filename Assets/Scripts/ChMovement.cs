@@ -17,6 +17,7 @@ public class ChMovement : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 movement = GameContext.Instance.input.forward * Vector2.up + GameContext.Instance.input.lateral * Vector2.right;
+        movement = Vector2.ClampMagnitude(movement, 1);
         rb.velocity = movement * Time.fixedDeltaTime * moveSpeed;
     }
 

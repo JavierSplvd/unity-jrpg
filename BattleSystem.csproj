@@ -91,7 +91,9 @@
      <Compile Include="Assets\Scripts\State\SelectOneTargetState.cs" />
      <Compile Include="Assets\Scripts\LeanTween\Framework\LeanAudio.cs" />
      <Compile Include="Assets\Scripts\Combat\HUD\StatusEffectsHUD.cs" />
+     <Compile Include="Assets\Scripts\Combat\UseCases\StopBattleUseCase.cs" />
      <Compile Include="Assets\Scripts\State\UnitUpkeepState.cs" />
+     <Compile Include="Assets\Scripts\Combat\UseCases\StartBattleUseCase.cs" />
      <Compile Include="Assets\Scripts\Combat\ItemOffensiveSO.cs" />
      <Compile Include="Assets\Scripts\Combat\Skills\HealSkillSO.cs" />
      <Compile Include="Assets\Scripts\Combat\ItemSelector\BattleItemSelector.cs" />
@@ -116,8 +118,7 @@
      <Compile Include="Assets\Scripts\Combat\UseCases\HealUseCase.cs" />
      <Compile Include="Assets\Scripts\GameContext.cs" />
      <Compile Include="Assets\Scripts\Combat\HUD\BattleEnemyHUD.cs" />
-     <Compile Include="Assets\Scripts\Combat\UseCases\StartBattleUseCase.cs" />
-     <Compile Include="Assets\Scripts\Combat\UseCases\StopBattleUseCase.cs" />
+     <Compile Include="Assets\Scripts\BattleSM.cs" />
      <None Include="Assets\Scripts\LeanTween\ReadMe.txt" />
      <None Include="Assets\Scripts\LeanTween\License.txt" />
      <None Include="Assets\Scripts\BattleSystem.asmdef" />
