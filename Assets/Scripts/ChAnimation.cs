@@ -16,25 +16,23 @@ public class ChAnimation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(chMovement.Rigidbody.velocity.magnitude == 0)
-        {
-            animator.Play(idleClip, 0);
-        }
-        else if(chMovement.Rigidbody.velocity.y > 0)
+        if(GameContext.Instance.input.forward > 0)
         {
             animator.Play(walkNClip, 0);
         }
-        else if(chMovement.Rigidbody.velocity.y < 0)
+        else if(GameContext.Instance.input.forward < 0)
         {
             animator.Play(walkSClip, 0);
         }
-        else if(chMovement.Rigidbody.velocity.x > 0)
+        else if(GameContext.Instance.input.lateral > 0)
         {
             animator.Play(walkEClip, 0);
         }
-        else if(chMovement.Rigidbody.velocity.x < 0)
+        else if(GameContext.Instance.input.lateral < 0)
         {
             animator.Play(walkWClip, 0);
+        }else{
+            animator.Play(idleClip, 0);
         }
     }
 }

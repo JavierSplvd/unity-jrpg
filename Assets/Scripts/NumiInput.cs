@@ -20,12 +20,12 @@ public class NumiInput : MonoBehaviour
 
     void Awake()
     {
-        if(_instance == null)
+        if (_instance == null)
         {
             DontDestroyOnLoad(gameObject);
             _instance = this;
         }
-        else if(_instance != this)
+        else if (_instance != this)
         {
             Destroy(gameObject);
         }
@@ -33,13 +33,13 @@ public class NumiInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(keyboard)
+        if (keyboard)
         {
             KeyboardMouseControls();
         }
@@ -48,10 +48,10 @@ public class NumiInput : MonoBehaviour
             GamepadControls();
         }
 
-        foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+        foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
         {
             //if (UnityEngine.Input.GetKeyDown(kcode))
-                //Debug.Log("KeyCode down: " + kcode);
+            //Debug.Log("KeyCode down: " + kcode);
         }
     }
 
@@ -66,13 +66,13 @@ public class NumiInput : MonoBehaviour
         // cameraHorizontal = UnityEngine.Input.GetKey(KeyCode.RightArrow)? 1 : UnityEngine.Input.GetKey(KeyCode.LeftArrow)? -1 : 0;
         cameraVertical = UnityEngine.Input.GetAxis("Mouse Y");
         cameraHorizontal = UnityEngine.Input.GetAxis("Mouse X");
-        
+
         reload = UnityEngine.Input.GetKeyUp(KeyCode.R);
         jump = UnityEngine.Input.GetKeyUp(KeyCode.Space);
-        
-        run =  UnityEngine.Input.GetKey(KeyCode.LeftShift);
-        interact =  UnityEngine.Input.GetKeyUp(KeyCode.F);
-        menu =  UnityEngine.Input.GetKeyUp(KeyCode.F1);
+
+        run = UnityEngine.Input.GetKey(KeyCode.LeftShift);
+        interact = UnityEngine.Input.GetKeyUp(KeyCode.F);
+        menu = UnityEngine.Input.GetKeyUp(KeyCode.F1);
 
         click = UnityEngine.Input.GetMouseButtonUp(0);
         mousePosition = UnityEngine.Input.mousePosition;
@@ -90,11 +90,11 @@ public class NumiInput : MonoBehaviour
         // fire = UnityEngine.Input.GetButtonUp(KeyCode.Space);
         cameraVertical = UnityEngine.Input.GetAxis("Debug Vertical");
         cameraHorizontal = UnityEngine.Input.GetAxis("Debug Horizontal");
-        
+
         dodge = UnityEngine.Input.GetKeyUp(KeyCode.Joystick1Button2);
         jump = UnityEngine.Input.GetKeyUp(KeyCode.Joystick1Button0);
 
-        jog =  UnityEngine.Input.GetKey(KeyCode.Joystick1Button4);
-        run =  UnityEngine.Input.GetKey(KeyCode.Joystick1Button5);
+        jog = UnityEngine.Input.GetKey(KeyCode.Joystick1Button4);
+        run = UnityEngine.Input.GetKey(KeyCode.Joystick1Button5);
     }
 }
