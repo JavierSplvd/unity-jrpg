@@ -6,12 +6,13 @@
     },
     {
       "Id": "2",
-      "Text": "second second second second second second second",
+      "Text": "This is the second dialogue. This has no portrait.",
       "NextId": "3"
     },
     {
       "Id": "3",
-      "Text": "third third third third third third third third third "
+      "Text": "Hello, I am a character. I have a portrait.",
+      "PortraitName": "Celeste"
     },
     {
       "Id": "4",
@@ -33,7 +34,12 @@
     },
     {
       "Id": "7",
-      "Text": "You choose Choice 2"
+      "Text": "You choose Choice 2",
+      "NextId": "8"
+    },
+    {
+      "Id": "8",
+      "Text": "This is the last dialogue. The game ends here."
     }
   ]
 }
