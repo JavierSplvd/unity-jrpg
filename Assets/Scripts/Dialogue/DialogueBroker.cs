@@ -42,33 +42,55 @@ public class DialogueBroker
     }
 
     // Method to add a id to the queue
-    public void AddDialogue(string id)
+    public void AddDialogueId(string id)
     {
         queue.Enqueue(id);
         Dialogue dialogue = all.Find(d => d.Id == id);
-        if(dialogue.NextId != null)
+        if (dialogue.NextId != null && dialogue.IsChoice == false)
         {
-            AddDialogue(dialogue.NextId);
+            AddDialogueId(dialogue.NextId);
+        }
+        else if (dialogue.NextId != null && dialogue.IsChoice == true)
+        {
+            queue.Enqueue(dialogue.NextId);
         }
     }
 
-    // Method to remove the first item from the list
-    public Dialogue ConsumeFromQueue()
+    public Dialogue GetFromQueue()
     {
         if (queue.Count > 0)
         {
-            string id = queue.Dequeue();
+            string id = queue.Peek();
             return all.Find(d => d.Id == id);
         }
         else
         {
-            return new Dialogue("No dialogue?", "", null);
+            return new Dialogue("No dialogue?", "", null, false, null, null, null, null, null, null, null, null);
         }
     }
 
-    public bool HasQueue()
+    public void ConsumeFromQueue()
+    {
+        queue.Dequeue();
+    }
+
+    public bool QueueHasItems()
     {
         return queue.Count > 0;
+    }
+
+    public bool NextHasChoices()
+    {
+        if (queue.Count > 0)
+        {
+            string id = queue.Peek();
+            Dialogue dialogue = all.Find(d => d.Id == id);
+            return dialogue.IsChoice;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void LoadDialogueJson()

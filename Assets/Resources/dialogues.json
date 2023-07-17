@@ -7,11 +7,33 @@
     {
       "Id": "2",
       "Text": "second second second second second second second",
-      "NextId"  : "3"
+      "NextId": "3"
     },
     {
       "Id": "3",
       "Text": "third third third third third third third third third "
+    },
+    {
+      "Id": "4",
+      "Text": "I will ask you something.",
+      "NextId": "5"
+    },
+    {
+      "Id": "5",
+      "Text": "Choose one",
+      "IsChoice": "true",
+      "Choice1": "Choice 1",
+      "Choice2": "Choice 2",
+      "NextForChoice1": "6",
+      "NextForChoice2": "7"
+    },
+    {
+      "Id": "6",
+      "Text": "You choose Choice 1"
+    },
+    {
+      "Id": "7",
+      "Text": "You choose Choice 2"
     }
   ]
 }

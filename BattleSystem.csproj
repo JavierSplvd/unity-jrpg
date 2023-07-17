@@ -82,12 +82,14 @@
      <Compile Include="Assets\Scripts\Combat\InventorySO.cs" />
      <Compile Include="Assets\Scripts\GameFixFps.cs" />
      <Compile Include="Assets\Scripts\Combat\HUD\StatusEffectsHUD.cs" />
+     <Compile Include="Assets\Scripts\Utils\EditorSquare.cs" />
      <Compile Include="Assets\Scripts\Combat\HUD\IBattleHUD.cs" />
      <Compile Include="Assets\Scripts\Utils\TestUtil.cs" />
      <Compile Include="Assets\Scripts\State\AttackState.cs" />
      <Compile Include="Assets\Scripts\State\WinState.cs" />
      <Compile Include="Assets\Scripts\Combat\UnitSO.cs" />
      <Compile Include="Assets\Scripts\LeanTween\Framework\LTDescrOptional.cs" />
+     <Compile Include="Assets\Scripts\Dialogue\DialogueChoicesPresenter.cs" />
      <Compile Include="Assets\Scripts\State\UnitSelectActionState.cs" />
      <Compile Include="Assets\Scripts\Combat\BattleSystem.cs" />
      <Compile Include="Assets\Scripts\Combat\Skills\SkillAnimationName.cs" />

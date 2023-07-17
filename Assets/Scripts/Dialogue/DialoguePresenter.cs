@@ -24,19 +24,19 @@ public class DialoguePresenter : MonoBehaviour
 
     void Update()
     {
-        if (DialogueBroker.Instance.HasQueue() && !isBusy)
+        if (DialogueBroker.Instance.QueueHasItems() && !isBusy && DialogueBroker.Instance.NextHasChoices() == false)
         {
-            dialogue = DialogueBroker.Instance.ConsumeFromQueue();
+            dialogue = DialogueBroker.Instance.GetFromQueue();
             StartDisplayDialogue();
         }
-
-        if (Input.GetKeyDown(KeyCode.J))
+        else if (Input.GetKeyUp(KeyCode.J))
         {
             if (isBusy)
             {
                 if (!isDisplayingFullMessage)
                 {
                     // Display the full message
+                    Debug.Log("isBusy is true and isDisplayingFullMessage is false.");
                     StopCoroutine(displayCoroutine);
                     textMeshPro.text = dialogue.Text.Replace("#", "");
                     isDisplayingFullMessage = true;
@@ -44,16 +44,18 @@ public class DialoguePresenter : MonoBehaviour
                 else
                 {
                     // Finish displaying and move to the next dialogue
+                    Debug.Log("isBusy is true and isDisplayingFullMessage is true.");
                     isBusy = false;
                     dialogueBox.SetActive(false);
+                    DialogueBroker.Instance.ConsumeFromQueue();
                     isDisplayingFullMessage = false;
                 }
             }
             else
             {
-                Debug.Log("Player pressed the activation key.");
-                dialogue = null;
+                Debug.Log("isBusy is false.");
                 dialogueBox.SetActive(false);
+                isDisplayingFullMessage = false;
             }
         }
     }
@@ -90,7 +92,9 @@ public class DialoguePresenter : MonoBehaviour
 
             yield return new WaitForSeconds(characterDelay);
         }
+        isBusy = false;
         isDisplayingFullMessage = false;
+        DialogueBroker.Instance.ConsumeFromQueue();
     }
 
     private float AssignPitchValue(char character)
