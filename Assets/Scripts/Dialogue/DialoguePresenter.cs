@@ -9,7 +9,7 @@ public class DialoguePresenter : MonoBehaviour
     public GameObject dialogueBox;
     private AudioSource audioSource;
 
-    public Dialogue dialogue;
+    private Dialogue dialogue;
     public float characterDelay = 1f;
     [Header("DEBUG")]
     [SerializeField]
@@ -29,9 +29,16 @@ public class DialoguePresenter : MonoBehaviour
     {
         if (DialogueBroker.Instance.QueueHasItems() && !isBusy && DialogueBroker.Instance.NextHasChoices() == false)
         {
-            dialogue = DialogueBroker.Instance.GetFromQueue();
-            DialogueBroker.Instance.ConsumeFromQueue();
-            StartDisplayDialogue();
+            bool isDifferent = dialogue != null && !DialogueBroker.Instance.GetFromQueue().Id.Equals(dialogue?.Id);
+            bool isNull = dialogue is null;
+            Debug.Log("from queue: " + DialogueBroker.Instance.GetFromQueue().Id);
+            Debug.Log("dialogue: " + dialogue?.Id);
+            Debug.Log("isDifferent: " + isDifferent);
+            if (isDifferent || isNull)
+            {
+                dialogue = DialogueBroker.Instance.GetFromQueue();
+                StartDisplayDialogue();
+            }
         }
         if (Input.GetKeyUp(KeyCode.J))
         {
@@ -52,6 +59,8 @@ public class DialoguePresenter : MonoBehaviour
                     isBusy = false;
                     dialogueBox.SetActive(false);
                     isDisplayingFullMessage = false;
+                    DialogueBroker.Instance.ConsumeFromQueue();
+                    dialogue = null;
                 }
             }
             else if (!isBusy && isDisplayingFullMessage)
@@ -59,6 +68,8 @@ public class DialoguePresenter : MonoBehaviour
                 Debug.Log("isBusy is false but isDisplayingFullMessage is true.");
                 dialogueBox.SetActive(false);
                 isDisplayingFullMessage = false;
+                dialogue = null;
+                DialogueBroker.Instance.ConsumeFromQueue();
             }
         }
     }

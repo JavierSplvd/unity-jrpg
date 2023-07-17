@@ -31,6 +31,7 @@ public class DialogueChoicesPresenter : MonoBehaviour
         if (DialogueBroker.Instance.QueueHasItems() && DialogueBroker.Instance.NextHasChoices() == true && !isBusy)
         {
             dialogue = DialogueBroker.Instance.GetFromQueue();
+            DialogueBroker.Instance.ConsumeFromQueue();
             StartDisplayDialogue();
         }
         else if (Input.GetKeyUp(KeyCode.H) && isBusy)
