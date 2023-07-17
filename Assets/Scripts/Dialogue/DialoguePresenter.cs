@@ -11,7 +11,10 @@ public class DialoguePresenter : MonoBehaviour
 
     public Dialogue dialogue;
     public float characterDelay = 1f;
+    [Header("DEBUG")]
+    [SerializeField]
     private bool isBusy = false;
+    [SerializeField]
     private bool isDisplayingFullMessage = false;
 
     private Coroutine displayCoroutine;
@@ -27,9 +30,10 @@ public class DialoguePresenter : MonoBehaviour
         if (DialogueBroker.Instance.QueueHasItems() && !isBusy && DialogueBroker.Instance.NextHasChoices() == false)
         {
             dialogue = DialogueBroker.Instance.GetFromQueue();
+            DialogueBroker.Instance.ConsumeFromQueue();
             StartDisplayDialogue();
         }
-        else if (Input.GetKeyUp(KeyCode.J))
+        if (Input.GetKeyUp(KeyCode.J))
         {
             if (isBusy)
             {
@@ -47,13 +51,12 @@ public class DialoguePresenter : MonoBehaviour
                     Debug.Log("isBusy is true and isDisplayingFullMessage is true.");
                     isBusy = false;
                     dialogueBox.SetActive(false);
-                    DialogueBroker.Instance.ConsumeFromQueue();
                     isDisplayingFullMessage = false;
                 }
             }
-            else
+            else if (!isBusy && isDisplayingFullMessage)
             {
-                Debug.Log("isBusy is false.");
+                Debug.Log("isBusy is false but isDisplayingFullMessage is true.");
                 dialogueBox.SetActive(false);
                 isDisplayingFullMessage = false;
             }
@@ -63,6 +66,7 @@ public class DialoguePresenter : MonoBehaviour
     public void StartDisplayDialogue()
     {
         isBusy = true;
+        isDisplayingFullMessage = false;
         dialogueBox.SetActive(true);
         if (displayCoroutine != null)
         {
@@ -93,8 +97,7 @@ public class DialoguePresenter : MonoBehaviour
             yield return new WaitForSeconds(characterDelay);
         }
         isBusy = false;
-        isDisplayingFullMessage = false;
-        DialogueBroker.Instance.ConsumeFromQueue();
+        isDisplayingFullMessage = true;
     }
 
     private float AssignPitchValue(char character)

@@ -16,6 +16,8 @@ public class DialogueChoicesPresenter : MonoBehaviour
     public GameObject choiceBox4;
     private AudioSource audioSource;
 
+    private bool isBusy = false;
+
     public Dialogue dialogue;
 
     void Start()
@@ -26,17 +28,48 @@ public class DialogueChoicesPresenter : MonoBehaviour
 
     void Update()
     {
-        if (DialogueBroker.Instance.QueueHasItems() && DialogueBroker.Instance.NextHasChoices() == true)
+        if (DialogueBroker.Instance.QueueHasItems() && DialogueBroker.Instance.NextHasChoices() == true && !isBusy)
         {
             dialogue = DialogueBroker.Instance.GetFromQueue();
             StartDisplayDialogue();
         }
+        else if (Input.GetKeyUp(KeyCode.H) && isBusy)
+        {
+            dialogueBox.SetActive(false);
+            DialogueBroker.Instance.ConsumeFromQueue();
+            DialogueBroker.Instance.AddDialogueId(dialogue.NextForChoice1);
+        }
+        else if (Input.GetKeyUp(KeyCode.J) && isBusy)
+        {
+            dialogueBox.SetActive(false);
+            DialogueBroker.Instance.ConsumeFromQueue();
+            DialogueBroker.Instance.AddDialogueId(dialogue.NextForChoice2);
+        }
+        else if (Input.GetKeyUp(KeyCode.K) && isBusy)
+        {
+            dialogueBox.SetActive(false);
+            DialogueBroker.Instance.ConsumeFromQueue();
+            DialogueBroker.Instance.AddDialogueId(dialogue.NextForChoice3);
+        }
+        else if (Input.GetKeyUp(KeyCode.L) && isBusy)
+        {
+            dialogueBox.SetActive(false);
+            DialogueBroker.Instance.ConsumeFromQueue();
+            DialogueBroker.Instance.AddDialogueId(dialogue.NextForChoice4);
+        }
+
     }
 
     private void StartDisplayDialogue()
     {
+        isBusy = true;
         dialogueBox.SetActive(true);
-        if(dialogue.Choice1 != null)
+        choiceBox1.SetActive(false);
+        choiceBox2.SetActive(false);
+        choiceBox3.SetActive(false);
+        choiceBox4.SetActive(false);
+
+        if (dialogue.Choice1 != null)
         {
             choiceBox1.SetActive(true);
             textChoice1.text = dialogue.Choice1;

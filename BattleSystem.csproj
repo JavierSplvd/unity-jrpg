@@ -116,6 +116,7 @@
      <Compile Include="Assets\Scripts\LeanTween\Framework\LTDescr.cs" />
      <Compile Include="Assets\Scripts\Utils\SerializableDictionary.cs" />
      <Compile Include="Assets\Scripts\Utils\RandomUtil.cs" />
+     <Compile Include="Assets\Scripts\Dialogue\DialogueBrokerDebugger.cs" />
      <Compile Include="Assets\Scripts\State\ApplyHungryState.cs" />
      <Compile Include="Assets\Scripts\Combat\UseCases\DamageUseCase.cs" />
      <Compile Include="Assets\Scripts\Combat\CommandParams.cs" />

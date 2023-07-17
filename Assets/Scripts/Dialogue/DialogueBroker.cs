@@ -65,7 +65,7 @@ public class DialogueBroker
         }
         else
         {
-            return new Dialogue("No dialogue?", "", null, false, null, null, null, null, null, null, null, null);
+            return null;
         }
     }
 

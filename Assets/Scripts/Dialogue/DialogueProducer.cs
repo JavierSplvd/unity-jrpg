@@ -8,7 +8,7 @@ public class DialogueProducer : MonoBehaviour
     private bool isTouchingPlayer = false;
     private bool exhausted = false;
 
-    private void Update()
+    private void LateUpdate()
     {
         if (Input.GetKeyUp(activationKey) && isTouchingPlayer && !exhausted)
         {
