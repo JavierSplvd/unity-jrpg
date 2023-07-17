@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "Id": "1",
+      "Text": "This is the first dialogue###### in the game."
+    },
+    {
+      "Id": "2",
+      "Text": "second second second second second second second",
+      "NextId"  : "3"
+    },
+    {
+      "Id": "3",
+      "Text": "third third third third third third third third third "
+    }
+  ]
+}

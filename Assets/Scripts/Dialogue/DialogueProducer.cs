@@ -5,27 +5,36 @@ public class DialogueProducer : MonoBehaviour
     public KeyCode activationKey = KeyCode.J;
     public string targetTag = "Player";
     public string dialogueId = "test";
+    private bool isTouchingPlayer = false;
+    private bool exhausted = false;
 
     private void Update()
     {
-        if (Input.GetKeyDown(activationKey) && IsPlayerColliding())
+        if (Input.GetKeyUp(activationKey) && isTouchingPlayer && !exhausted)
         {
-            DialogueBroker.Instance.AddDialogue(new Dialogue("Hello, world!", dialogueId, null));
+            Debug.Log("Player pressed the activation key.");
+            DialogueBroker.Instance.AddDialogue(dialogueId);
+            exhausted = true;
         }
     }
 
-    private bool IsPlayerColliding()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f, Quaternion.identity);
-
-        foreach (Collider collider in colliders)
+        if (other.gameObject.CompareTag("Player"))
         {
-            if (collider.CompareTag(targetTag))
-            {
-                return true;
-            }
-        }
+            Debug.Log("Player entered the trigger.");
+            isTouchingPlayer = true;
 
-        return false;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player exited the trigger.");
+            isTouchingPlayer = false;
+            exhausted = false;
+        }
     }
 }

@@ -54,8 +54,11 @@
      <Compile Include="Assets\Scripts\Combat\Equipment\EquipmentType.cs" />
      <Compile Include="Assets\Scripts\Utils\RandomWrapper.cs" />
      <Compile Include="Assets\Scripts\State\StartState.cs" />
+     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
      <Compile Include="Assets\Scripts\Utils\ToggleGameObject.cs" />
+     <Compile Include="Assets\Scripts\Dialogue\DialogueBroker.cs" />
      <Compile Include="Assets\Scripts\State\AIState.cs" />
+     <Compile Include="Assets\Scripts\Dialogue\DialogueProducer.cs" />
      <Compile Include="Assets\Scripts\Combat\Skills\SkillReviveSO.cs" />
      <Compile Include="Assets\Scripts\SoundLibrarySO.cs" />
      <Compile Include="Assets\Scripts\LeanTween\Framework\LTSeq.cs" />
@@ -117,6 +120,7 @@
      <Compile Include="Assets\Scripts\Combat\HUD\BattleHUD.cs" />
      <Compile Include="Assets\Scripts\Combat\CommandSelector\CommandButton.cs" />
      <Compile Include="Assets\Scripts\State\DefenderState.cs" />
+     <Compile Include="Assets\Scripts\Dialogue\DialogueJson.cs" />
      <Compile Include="Assets\Scripts\NumiInput.cs" />
      <Compile Include="Assets\Scripts\Combat\ItemSelector\ItemButton.cs" />
      <Compile Include="Assets\Scripts\LeanTween\Framework\LeanTween.cs" />
