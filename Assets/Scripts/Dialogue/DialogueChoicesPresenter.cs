@@ -15,7 +15,8 @@ public class DialogueChoicesPresenter : MonoBehaviour
     public GameObject choiceBox3;
     public GameObject choiceBox4;
     private AudioSource audioSource;
-
+    [Header("DEBUG")]
+    [SerializeField]
     private bool isBusy = false;
 
     public Dialogue dialogue;
@@ -31,32 +32,35 @@ public class DialogueChoicesPresenter : MonoBehaviour
         if (DialogueBroker.Instance.QueueHasItems() && DialogueBroker.Instance.NextHasChoices() == true && !isBusy)
         {
             dialogue = DialogueBroker.Instance.GetFromQueue();
-            DialogueBroker.Instance.ConsumeFromQueue();
             StartDisplayDialogue();
         }
-        else if (Input.GetKeyUp(KeyCode.H) && isBusy)
+        else if (Input.GetKeyUp(KeyCode.H) && isBusy && dialogue.Choice1 != null)
         {
             dialogueBox.SetActive(false);
             DialogueBroker.Instance.ConsumeFromQueue();
             DialogueBroker.Instance.AddDialogueId(dialogue.NextForChoice1);
+            isBusy = false;
         }
-        else if (Input.GetKeyUp(KeyCode.J) && isBusy)
+        else if (Input.GetKeyUp(KeyCode.J) && isBusy && dialogue.Choice2 != null)
         {
             dialogueBox.SetActive(false);
             DialogueBroker.Instance.ConsumeFromQueue();
             DialogueBroker.Instance.AddDialogueId(dialogue.NextForChoice2);
+            isBusy = false;
         }
-        else if (Input.GetKeyUp(KeyCode.K) && isBusy)
+        else if (Input.GetKeyUp(KeyCode.K) && isBusy && dialogue.Choice3 != null)
         {
             dialogueBox.SetActive(false);
             DialogueBroker.Instance.ConsumeFromQueue();
             DialogueBroker.Instance.AddDialogueId(dialogue.NextForChoice3);
+            isBusy = false;
         }
-        else if (Input.GetKeyUp(KeyCode.L) && isBusy)
+        else if (Input.GetKeyUp(KeyCode.L) && isBusy && dialogue.Choice4 != null)
         {
             dialogueBox.SetActive(false);
             DialogueBroker.Instance.ConsumeFromQueue();
             DialogueBroker.Instance.AddDialogueId(dialogue.NextForChoice4);
+            isBusy = false;
         }
 
     }
