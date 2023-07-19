@@ -45,6 +45,16 @@
       "Id": "9",
       "Text": "You open the chest...",
       "EventId": "OpenChest-0001"
+    },
+    {
+      "Id": "10",
+      "Text": "You open the chest...",
+      "EventId": "OpenChest-0002"
+    },
+    {
+      "Id": "11",
+      "Text": "You open the chest...",
+      "EventId": "OpenChest-0003"
     }
   ]
 }
