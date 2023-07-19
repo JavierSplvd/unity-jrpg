@@ -6,7 +6,6 @@ using System.IO;
 public class ItemManager : MonoBehaviour
 {
     private static ItemManager instance;
-    public static ItemManager Instance => instance;
 
     private List<Item> items = new List<Item>();
 
@@ -14,16 +13,26 @@ public class ItemManager : MonoBehaviour
     public event Action<Item> ItemRemoved;
     public event Action<Item> ItemModified;
 
-    private void Awake()
+    // Getter for the singleton instance
+    public static ItemManager Instance
     {
-        if (instance != null && instance != this)
+        get
         {
-            Destroy(gameObject);
-            return;
-        }
+            if (instance == null)
+            {
+                // Look for an existing ItemManager instance in the scene
+                instance = FindObjectOfType<ItemManager>();
 
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+                if (instance == null)
+                {
+                    // Create a new ItemManager object if it doesn't exist
+                    GameObject go = new GameObject("ItemManager");
+                    instance = go.AddComponent<ItemManager>();
+                }
+            }
+
+            return instance;
+        }
     }
 
     public void AddItem(Item item)

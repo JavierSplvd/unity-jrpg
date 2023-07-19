@@ -45,7 +45,7 @@ public class ItemManagerTests
     public void TestSerialization()
     {
         Item item1 = new Item("Health Potion", ItemType.Potion);
-        Item item2 = new Item("Fire Sword", ItemType.Sword);
+        Item item2 = new Item("Fire Sword", ItemType.Weapon);
         itemManager.AddItem(item1);
         itemManager.AddItem(item2);
 

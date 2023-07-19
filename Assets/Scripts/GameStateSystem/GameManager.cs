@@ -11,22 +11,29 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-
+    private static GameManager instance;
     public GameState CurrentState { get; private set; }
     public event Action<GameState> OnGameStateChange;
 
-    private void Awake()
+    // Getter for the singleton instance
+    public static GameManager Instance
     {
-        // Ensure only one instance of GameManager exists
-        if (Instance == null)
+        get
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            if (instance == null)
+            {
+                // Look for an existing GameManager instance in the scene
+                instance = FindObjectOfType<GameManager>();
+
+                if (instance == null)
+                {
+                    // Create a new GameManager object if it doesn't exist
+                    GameObject go = new GameObject("GameManager");
+                    instance = go.AddComponent<GameManager>();
+                }
+            }
+
+            return instance;
         }
     }
 

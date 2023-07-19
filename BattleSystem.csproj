@@ -47,7 +47,6 @@
      <Compile Include="Assets\Scripts\Combat\UseCases\DamagePercentageUseCase.cs" />
      <Compile Include="Assets\Scripts\State\SelectItemState.cs" />
      <Compile Include="Assets\Scripts\Combat\Damage\DamageLogText.cs" />
-     <Compile Include="Assets\Scripts\EventSystem\Chest.cs" />
      <Compile Include="Assets\Scripts\State\DefeatState.cs" />
      <Compile Include="Assets\Scripts\Combat\Skills\ItemSkillSO.cs" />
      <Compile Include="Assets\Scripts\State\ApplyPoisonState.cs" />
@@ -121,6 +120,7 @@
      <Compile Include="Assets\Scripts\LeanTween\Framework\LTDescr.cs" />
      <Compile Include="Assets\Scripts\DialogueSystem\DialogueConsumerEditor.cs" />
      <Compile Include="Assets\Scripts\Utils\SerializableDictionary.cs" />
+     <Compile Include="Assets\Scripts\ItemSystem\DialogueItemPresenter.cs" />
      <Compile Include="Assets\Scripts\DialogueSystem\DialogueJson.cs" />
      <Compile Include="Assets\Scripts\Utils\RandomUtil.cs" />
      <Compile Include="Assets\Scripts\State\ApplyHungryState.cs" />
@@ -139,6 +139,7 @@
      <Compile Include="Assets\Scripts\Combat\ItemSelector\BattleItemSelector.cs" />
      <Compile Include="Assets\Scripts\CloudFloat.cs" />
      <Compile Include="Assets\Scripts\Combat\Skills\BasicAttackSkillSO.cs" />
+     <Compile Include="Assets\Scripts\ItemSystem\Chest.cs" />
      <Compile Include="Assets\Scripts\Combat\Controller.cs" />
      <Compile Include="Assets\Scripts\Combat\TargetSelector\BattleTargetSelector.cs" />
      <Compile Include="Assets\Scripts\State\UpkeepState.cs" />

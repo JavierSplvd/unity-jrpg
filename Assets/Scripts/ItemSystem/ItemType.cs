@@ -1,7 +1,7 @@
 public enum ItemType
 {
     Potion,
-    Sword,
+    Weapon,
     Spell,
     Accessory,
     Key
