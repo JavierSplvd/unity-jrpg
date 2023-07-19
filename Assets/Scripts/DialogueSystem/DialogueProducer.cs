@@ -12,7 +12,7 @@ public class DialogueProducer : MonoBehaviour
     {
         if (Input.GetKeyUp(activationKey) && isTouchingPlayer && !exhausted)
         {
-            DialogueManager.Instance.AddDialogue(dialogueId);
+            DialogueManager.Instance.InvokeDialogueEvent(dialogueId);
             exhausted = true;
         }
     }

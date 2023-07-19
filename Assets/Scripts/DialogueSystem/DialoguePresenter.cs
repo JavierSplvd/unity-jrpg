@@ -75,7 +75,7 @@ public class DialoguePresenter : MonoBehaviour
                     isDisplayingFullMessage = false;
                     DisablePortraits();
                     if (dialogue.NextId != null)
-                        DialogueManager.Instance.AddDialogue(dialogue.NextId);
+                        DialogueManager.Instance.InvokeDialogueEvent(dialogue.NextId);
                 }
             }
             else if (!isBusy && isDisplayingFullMessage)
@@ -85,7 +85,7 @@ public class DialoguePresenter : MonoBehaviour
                 isDisplayingFullMessage = false;
                 DisablePortraits();
                 if (dialogue.NextId != null)
-                    DialogueManager.Instance.AddDialogue(dialogue.NextId);
+                    DialogueManager.Instance.InvokeDialogueEvent(dialogue.NextId);
             }
         }
     }

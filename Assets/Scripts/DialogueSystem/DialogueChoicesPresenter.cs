@@ -47,25 +47,25 @@ public class DialogueChoicesPresenter : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.H) && isBusy && dialogue.Choice1 != null)
         {
             dialogueBox.SetActive(false);
-            DialogueManager.Instance.AddDialogue(dialogue.NextForChoice1);
+            DialogueManager.Instance.InvokeDialogueEvent(dialogue.NextForChoice1);
             isBusy = false;
         }
         else if (Input.GetKeyUp(KeyCode.J) && isBusy && dialogue.Choice2 != null)
         {
             dialogueBox.SetActive(false);
-            DialogueManager.Instance.AddDialogue(dialogue.NextForChoice2);
+            DialogueManager.Instance.InvokeDialogueEvent(dialogue.NextForChoice2);
             isBusy = false;
         }
         else if (Input.GetKeyUp(KeyCode.K) && isBusy && dialogue.Choice3 != null)
         {
             dialogueBox.SetActive(false);
-            DialogueManager.Instance.AddDialogue(dialogue.NextForChoice3);
+            DialogueManager.Instance.InvokeDialogueEvent(dialogue.NextForChoice3);
             isBusy = false;
         }
         else if (Input.GetKeyUp(KeyCode.L) && isBusy && dialogue.Choice4 != null)
         {
             dialogueBox.SetActive(false);
-            DialogueManager.Instance.AddDialogue(dialogue.NextForChoice4);
+            DialogueManager.Instance.InvokeDialogueEvent(dialogue.NextForChoice4);
             isBusy = false;
         }
 

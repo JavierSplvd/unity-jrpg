@@ -16,6 +16,13 @@ public class Dialogue
     public string PortraitName;
     public string EventId;
 
+    public Dialogue(string id, string text, string eventId)
+    {
+        Id = id;
+        Text = text;
+        EventId = eventId;
+    }
+
     public Dialogue(string id, string text, string nextId, bool isChoice, string choice1, string choice2, string choice3, string choice4, string nextForChoice1, string nextForChoice2, string nextForChoice3, string nextForChoice4, string portraitName, string eventId)
     {
         Id = id;
