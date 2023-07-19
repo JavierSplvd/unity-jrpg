@@ -24,28 +24,28 @@ public class ItemManagerTests
     [Test]
     public void TestAddItem()
     {
-        Item item = new Item("Health Potion", ItemType.Potion);
+        Item item = new Item(ItemType.Potion);
         itemManager.AddItem(item);
 
-        Assert.IsTrue(itemManager.GetItem("Health Potion") != null);
+        Assert.IsTrue(itemManager.GetItem(ItemType.Potion) != null);
     }
 
     [Test]
     public void TestRemoveItem()
     {
-        Item item = new Item("Health Potion", ItemType.Potion);
+        Item item = new Item(ItemType.Potion);
         itemManager.AddItem(item);
 
         itemManager.RemoveItem(item);
 
-        Assert.IsTrue(itemManager.GetItem("Health Potion") == null);
+        Assert.IsTrue(itemManager.GetItem(ItemType.Potion) == null);
     }
 
     [Test]
     public void TestSerialization()
     {
-        Item item1 = new Item("Health Potion", ItemType.Potion);
-        Item item2 = new Item("Fire Sword", ItemType.Weapon);
+        Item item1 = new Item(ItemType.Potion);
+        Item item2 = new Item(ItemType.Weapon);
         itemManager.AddItem(item1);
         itemManager.AddItem(item2);
 
@@ -57,7 +57,7 @@ public class ItemManagerTests
 
         itemManager.DeserializeItemsFromJson(json);
 
-        Assert.IsTrue(itemManager.GetItem("Health Potion") != null);
-        Assert.IsTrue(itemManager.GetItem("Fire Sword") != null);
+        Assert.IsTrue(itemManager.GetItem(ItemType.Potion) != null);
+        Assert.IsTrue(itemManager.GetItem(ItemType.Weapon) != null);
     }
 }

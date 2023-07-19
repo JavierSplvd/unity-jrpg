@@ -18,7 +18,7 @@ public class DialogueItemPresenter : MonoBehaviour
 
     private void OnItemAdded(Item item)
     {
-        textMeshPro.text = "You obtained " + item.Name;
+        textMeshPro.text = "You obtained " + item.Type.ToString().Replace("_", " ") + "!";
         background.enabled = true;
         // After 5 seconds, clear the text
         Invoke("ClearText", 2.5f);

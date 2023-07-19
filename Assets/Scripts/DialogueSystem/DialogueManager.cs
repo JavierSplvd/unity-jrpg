@@ -27,6 +27,15 @@ public class DialogueManager
         }
     }
 
+    public void InvokeDialogueEvent(Dialogue dialogue)
+    {
+        DialogueAdded?.Invoke(dialogue);
+        if (dialogue?.EventId != null)
+        {
+            EventManager.Instance.InvokeEvent(dialogue.EventId);
+        }
+    }
+
     // Private constructor to prevent instantiation
     private DialogueManager()
     {

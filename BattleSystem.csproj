@@ -80,6 +80,7 @@
      <Compile Include="Assets\Scripts\Combat\UseCases\StopBattleUseCase.cs" />
      <Compile Include="Assets\Scripts\Combat\ItemSO.cs" />
      <Compile Include="Assets\Scripts\Combat\Skills\SkillSO.cs" />
+     <Compile Include="Assets\Scripts\ItemSystem\ItemManagerEditor .cs" />
      <Compile Include="Assets\Scripts\Combat\InventorySO.cs" />
      <Compile Include="Assets\Scripts\GameFixFps.cs" />
      <Compile Include="Assets\Scripts\Combat\HUD\StatusEffectsHUD.cs" />

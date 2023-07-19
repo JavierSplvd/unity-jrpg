@@ -7,6 +7,7 @@ public class ItemManager : MonoBehaviour
 {
     private static ItemManager instance;
 
+    [SerializeField, HideInInspector]
     private List<Item> items = new List<Item>();
 
     public event Action<Item> ItemAdded;
@@ -47,9 +48,9 @@ public class ItemManager : MonoBehaviour
         ItemRemoved?.Invoke(item);
     }
 
-    public Item GetItem(string itemName)
+    public Item GetItem(ItemType itemType)
     {
-        return items.Find(item => item.Name == itemName);
+        return items.Find(item => item.Type.Equals(itemType));
     }
 
     public void ModifyItem(Item item)
