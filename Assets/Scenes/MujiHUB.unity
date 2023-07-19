@@ -1260,6 +1260,7 @@ MonoBehaviour:
     NextForChoice3: 
     NextForChoice4: 
     PortraitName: 
+    EventId: 
 --- !u!82 &250190090
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6964,6 +6965,7 @@ GameObject:
   - component: {fileID: 1800884257}
   - component: {fileID: 1800884258}
   - component: {fileID: 1800884259}
+  - component: {fileID: 1800884260}
   m_Layer: 0
   m_Name: chest_0
   m_TagString: Untagged
@@ -7119,6 +7121,19 @@ MonoBehaviour:
   activationKey: 106
   targetTag: Player
   dialogueId: 9
+--- !u!114 &1800884260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800884254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467e1ba63ba910d409846e7117027720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventId: OpenChest-0001
 --- !u!1 &1818567102
 GameObject:
   m_ObjectHideFlags: 0

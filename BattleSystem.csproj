@@ -47,6 +47,7 @@
      <Compile Include="Assets\Scripts\Combat\UseCases\DamagePercentageUseCase.cs" />
      <Compile Include="Assets\Scripts\State\SelectItemState.cs" />
      <Compile Include="Assets\Scripts\Combat\Damage\DamageLogText.cs" />
+     <Compile Include="Assets\Scripts\EventSystem\Chest.cs" />
      <Compile Include="Assets\Scripts\State\DefeatState.cs" />
      <Compile Include="Assets\Scripts\Combat\Skills\ItemSkillSO.cs" />
      <Compile Include="Assets\Scripts\State\ApplyPoisonState.cs" />

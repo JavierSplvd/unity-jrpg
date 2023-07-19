@@ -43,9 +43,6 @@ public class DialoguePresenter : MonoBehaviour
         {
             bool isDifferent = dialogue != null && !DialogueManager.Instance.GetFromQueue().Id.Equals(dialogue?.Id);
             bool isNull = dialogue is null;
-            Debug.Log("from queue: " + DialogueManager.Instance.GetFromQueue().Id);
-            Debug.Log("dialogue: " + dialogue?.Id);
-            Debug.Log("isDifferent: " + isDifferent);
             if (isDifferent || isNull)
             {
                 dialogue = DialogueManager.Instance.GetFromQueue();

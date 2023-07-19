@@ -40,7 +40,17 @@ public class DialogueProducerEditor : Editor
         }
 
         // Display the dialogue text in the editor
+        EditorGUILayout.LabelField("Dialogue Id:");
+        EditorGUILayout.HelpBox(selectedDialogue.Id, MessageType.None);
         EditorGUILayout.LabelField("Dialogue Text:");
-        EditorGUILayout.TextArea(selectedDialogue.Text);
+        EditorGUILayout.HelpBox(selectedDialogue.Text, MessageType.None);
+        EditorGUILayout.LabelField("Dialogue IsChoice:");
+        EditorGUILayout.HelpBox(selectedDialogue.IsChoice.ToString(), MessageType.None);
+        EditorGUILayout.LabelField("Dialogue EventId:");
+        EditorGUILayout.HelpBox(selectedDialogue.EventId, MessageType.None);
+        EditorGUILayout.LabelField("Dialogue NextId:");
+        EditorGUILayout.HelpBox(selectedDialogue.NextId, MessageType.None);
+        EditorGUILayout.LabelField("Dialogue PortraitName:");
+        EditorGUILayout.HelpBox(selectedDialogue.PortraitName, MessageType.None);
     }
 }

@@ -61,7 +61,8 @@ public class DialogueManager
         if (queue.Count > 0)
         {
             string id = queue.Peek();
-            return all.Find(d => d.Id == id);
+            Dialogue dialogue = all.Find(d => d.Id == id);
+            return dialogue;
         }
         else
         {
@@ -71,7 +72,12 @@ public class DialogueManager
 
     public void ConsumeFromQueue()
     {
-        queue.Dequeue();
+        string id = queue.Dequeue();
+        Dialogue dialogue = all.Find(d => d.Id == id);
+        if (dialogue.EventId != null)
+        {
+            EventManager.Instance.InvokeEvent(dialogue.EventId);
+        }
     }
 
     public bool QueueHasItems()

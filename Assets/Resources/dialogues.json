@@ -43,7 +43,8 @@
     },
     {
       "Id": "9",
-      "Text": "You found a Potion!"
+      "Text": "You found a Potion!",
+      "EventId": "OpenChest-0001"
     }
   ]
 }
