@@ -41,12 +41,15 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Tests\ModifyHPUseCaseTest.cs" />
+     <Compile Include="Assets\Scripts\Tests\GameManagerTests.cs" />
      <Compile Include="Assets\Scripts\Tests\HealUseCaseTest.cs" />
      <Compile Include="Assets\Scripts\Tests\UnitUpkeepStateTest.cs" />
+     <Compile Include="Assets\Scripts\Tests\EventManagerTests.cs" />
      <Compile Include="Assets\Scripts\Tests\ApplyBurnStateTest.cs" />
      <Compile Include="Assets\Scripts\Tests\PlaySkillAnimationUseCaseTest.cs" />
      <Compile Include="Assets\Scripts\Tests\UnitUtilTest.cs" />
      <Compile Include="Assets\Scripts\Tests\SkillAnimationTest.cs" />
+     <Compile Include="Assets\Scripts\Tests\ItemManagerTests.cs" />
      <Compile Include="Assets\Scripts\Tests\DamageUseCaseTest.cs" />
      <Compile Include="Assets\Scripts\Tests\HealFlatUseCaseTest.cs" />
      <None Include="Assets\Scripts\Tests\Tests.asmdef" />

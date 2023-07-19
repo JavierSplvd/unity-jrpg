@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -38,16 +39,16 @@ public class DialoguePresenter : MonoBehaviour
 
     void Update()
     {
-        if (DialogueBroker.Instance.QueueHasItems() && !isBusy && DialogueBroker.Instance.NextHasChoices() == false)
+        if (DialogueManager.Instance.QueueHasItems() && !isBusy && DialogueManager.Instance.NextHasChoices() == false)
         {
-            bool isDifferent = dialogue != null && !DialogueBroker.Instance.GetFromQueue().Id.Equals(dialogue?.Id);
+            bool isDifferent = dialogue != null && !DialogueManager.Instance.GetFromQueue().Id.Equals(dialogue?.Id);
             bool isNull = dialogue is null;
-            Debug.Log("from queue: " + DialogueBroker.Instance.GetFromQueue().Id);
+            Debug.Log("from queue: " + DialogueManager.Instance.GetFromQueue().Id);
             Debug.Log("dialogue: " + dialogue?.Id);
             Debug.Log("isDifferent: " + isDifferent);
             if (isDifferent || isNull)
             {
-                dialogue = DialogueBroker.Instance.GetFromQueue();
+                dialogue = DialogueManager.Instance.GetFromQueue();
                 StartDisplayDialogue();
             }
         }
@@ -71,7 +72,7 @@ public class DialoguePresenter : MonoBehaviour
                     dialogueBox.SetActive(false);
                     isDisplayingFullMessage = false;
                     dialogue = null;
-                    DialogueBroker.Instance.ConsumeFromQueue();
+                    DialogueManager.Instance.ConsumeFromQueue();
                     DisablePortraits();
                 }
             }
@@ -81,7 +82,7 @@ public class DialoguePresenter : MonoBehaviour
                 dialogueBox.SetActive(false);
                 isDisplayingFullMessage = false;
                 dialogue = null;
-                DialogueBroker.Instance.ConsumeFromQueue();
+                DialogueManager.Instance.ConsumeFromQueue();
                 DisablePortraits();
             }
         }

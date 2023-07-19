@@ -40,6 +40,10 @@
     {
       "Id": "8",
       "Text": "This is the last dialogue. The game ends here."
+    },
+    {
+      "Id": "9",
+      "Text": "You found a Potion!"
     }
   ]
 }

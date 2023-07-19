@@ -9,10 +9,10 @@ namespace System.Runtime.CompilerServices
     internal class IsExternalInit { }
 }
 
-public class DialogueBroker
+public class DialogueManager
 {
     // Singleton instance
-    private static DialogueBroker instance;
+    private static DialogueManager instance;
 
     private const string jsonFilePath = "dialogues"; // Path to the JSON file without the .json extension
 
@@ -23,19 +23,19 @@ public class DialogueBroker
     private Queue<string> queue = new Queue<string>();
 
     // Private constructor to prevent instantiation
-    private DialogueBroker()
+    private DialogueManager()
     {
         LoadDialogueJson();
     }
 
     // Singleton instance property
-    public static DialogueBroker Instance
+    public static DialogueManager Instance
     {
         get
         {
             if (instance == null)
             {
-                instance = new DialogueBroker();
+                instance = new DialogueManager();
             }
             return instance;
         }

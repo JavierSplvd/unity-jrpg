@@ -29,37 +29,37 @@ public class DialogueChoicesPresenter : MonoBehaviour
 
     void Update()
     {
-        if (DialogueBroker.Instance.QueueHasItems() && DialogueBroker.Instance.NextHasChoices() == true && !isBusy)
+        if (DialogueManager.Instance.QueueHasItems() && DialogueManager.Instance.NextHasChoices() == true && !isBusy)
         {
-            dialogue = DialogueBroker.Instance.GetFromQueue();
+            dialogue = DialogueManager.Instance.GetFromQueue();
             StartDisplayDialogue();
         }
         else if (Input.GetKeyUp(KeyCode.H) && isBusy && dialogue.Choice1 != null)
         {
             dialogueBox.SetActive(false);
-            DialogueBroker.Instance.ConsumeFromQueue();
-            DialogueBroker.Instance.AddDialogueId(dialogue.NextForChoice1);
+            DialogueManager.Instance.ConsumeFromQueue();
+            DialogueManager.Instance.AddDialogueId(dialogue.NextForChoice1);
             isBusy = false;
         }
         else if (Input.GetKeyUp(KeyCode.J) && isBusy && dialogue.Choice2 != null)
         {
             dialogueBox.SetActive(false);
-            DialogueBroker.Instance.ConsumeFromQueue();
-            DialogueBroker.Instance.AddDialogueId(dialogue.NextForChoice2);
+            DialogueManager.Instance.ConsumeFromQueue();
+            DialogueManager.Instance.AddDialogueId(dialogue.NextForChoice2);
             isBusy = false;
         }
         else if (Input.GetKeyUp(KeyCode.K) && isBusy && dialogue.Choice3 != null)
         {
             dialogueBox.SetActive(false);
-            DialogueBroker.Instance.ConsumeFromQueue();
-            DialogueBroker.Instance.AddDialogueId(dialogue.NextForChoice3);
+            DialogueManager.Instance.ConsumeFromQueue();
+            DialogueManager.Instance.AddDialogueId(dialogue.NextForChoice3);
             isBusy = false;
         }
         else if (Input.GetKeyUp(KeyCode.L) && isBusy && dialogue.Choice4 != null)
         {
             dialogueBox.SetActive(false);
-            DialogueBroker.Instance.ConsumeFromQueue();
-            DialogueBroker.Instance.AddDialogueId(dialogue.NextForChoice4);
+            DialogueManager.Instance.ConsumeFromQueue();
+            DialogueManager.Instance.AddDialogueId(dialogue.NextForChoice4);
             isBusy = false;
         }
 

@@ -4,7 +4,7 @@ public class DialogueProducer : MonoBehaviour
 {
     public KeyCode activationKey = KeyCode.J;
     public string targetTag = "Player";
-    public string dialogueId = "test";
+    public string dialogueId = "default";
     private bool isTouchingPlayer = false;
     private bool exhausted = false;
 
@@ -13,7 +13,7 @@ public class DialogueProducer : MonoBehaviour
         if (Input.GetKeyUp(activationKey) && isTouchingPlayer && !exhausted)
         {
             Debug.Log("Player pressed the activation key.");
-            DialogueBroker.Instance.AddDialogueId(dialogueId);
+            DialogueManager.Instance.AddDialogueId(dialogueId);
             exhausted = true;
         }
     }
@@ -56,5 +56,10 @@ public class DialogueProducer : MonoBehaviour
             isTouchingPlayer = false;
             exhausted = false;
         }
+    }
+
+    public string GetDialogueId()
+    {
+        return dialogueId;
     }
 }
