@@ -11,10 +11,11 @@ public class DialoguePresenter : MonoBehaviour
     public GameObject dialogueBox;
     private AudioSource audioSource;
 
-    private Dialogue dialogue;
     public float characterDelay = 1f;
     public GameObject[] portraits;
     [Header("DEBUG")]
+    [SerializeField]
+    private Dialogue dialogue;
     [SerializeField]
     private bool isBusy = false;
     [SerializeField]
@@ -27,6 +28,20 @@ public class DialoguePresenter : MonoBehaviour
         dialogueBox.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         DisablePortraits();
+        DialogueManager.Instance.DialogueAdded += OnDialogueAdded;
+    }
+
+    private void OnDialogueAdded(Dialogue newDialogue)
+    {
+        if (newDialogue != null && newDialogue.IsChoice == false)
+        {
+            dialogue = newDialogue;
+            StartDisplayDialogue();
+        }
+        else if (newDialogue == null)
+        {
+            Debug.LogWarning("Dialogue is null");
+        }
     }
 
     private void DisablePortraits()
@@ -39,16 +54,6 @@ public class DialoguePresenter : MonoBehaviour
 
     void Update()
     {
-        if (DialogueManager.Instance.QueueHasItems() && !isBusy && DialogueManager.Instance.NextHasChoices() == false)
-        {
-            bool isDifferent = dialogue != null && !DialogueManager.Instance.GetFromQueue().Id.Equals(dialogue?.Id);
-            bool isNull = dialogue is null;
-            if (isDifferent || isNull)
-            {
-                dialogue = DialogueManager.Instance.GetFromQueue();
-                StartDisplayDialogue();
-            }
-        }
         if (Input.GetKeyUp(KeyCode.J))
         {
             if (isBusy)
@@ -68,9 +73,9 @@ public class DialoguePresenter : MonoBehaviour
                     isBusy = false;
                     dialogueBox.SetActive(false);
                     isDisplayingFullMessage = false;
-                    dialogue = null;
-                    DialogueManager.Instance.ConsumeFromQueue();
                     DisablePortraits();
+                    if (dialogue.NextId != null)
+                        DialogueManager.Instance.AddDialogue(dialogue.NextId);
                 }
             }
             else if (!isBusy && isDisplayingFullMessage)
@@ -78,9 +83,9 @@ public class DialoguePresenter : MonoBehaviour
                 Debug.Log("isBusy is false but isDisplayingFullMessage is true.");
                 dialogueBox.SetActive(false);
                 isDisplayingFullMessage = false;
-                dialogue = null;
-                DialogueManager.Instance.ConsumeFromQueue();
                 DisablePortraits();
+                if (dialogue.NextId != null)
+                    DialogueManager.Instance.AddDialogue(dialogue.NextId);
             }
         }
     }
@@ -92,9 +97,9 @@ public class DialoguePresenter : MonoBehaviour
         dialogueBox.SetActive(true);
         if (dialogue.PortraitName != null && portraits.Length > 0)
         {
-            // convert portraits to a list
             List<GameObject> portraitList = new List<GameObject>(portraits);
-            portraitList.Find(p => p.name == dialogue.PortraitName)?.SetActive(true);
+            GameObject portraitGO = portraitList.Find(p => p.name == dialogue.PortraitName);
+            portraitGO?.SetActive(true);
         }
         if (displayCoroutine != null)
         {

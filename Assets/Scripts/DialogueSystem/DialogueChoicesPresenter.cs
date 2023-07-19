@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -25,41 +26,46 @@ public class DialogueChoicesPresenter : MonoBehaviour
     {
         dialogueBox.SetActive(false);
         audioSource = GetComponent<AudioSource>();
+        DialogueManager.Instance.DialogueAdded += OnDialogueAdded;
+    }
+
+    private void OnDialogueAdded(Dialogue newDialogue)
+    {
+        if (newDialogue != null && newDialogue.IsChoice == true)
+        {
+            dialogue = newDialogue;
+            StartDisplayDialogue();
+        }
+        else if (newDialogue == null)
+        {
+            Debug.LogWarning("Dialogue is null");
+        }
     }
 
     void Update()
     {
-        if (DialogueManager.Instance.QueueHasItems() && DialogueManager.Instance.NextHasChoices() == true && !isBusy)
-        {
-            dialogue = DialogueManager.Instance.GetFromQueue();
-            StartDisplayDialogue();
-        }
-        else if (Input.GetKeyUp(KeyCode.H) && isBusy && dialogue.Choice1 != null)
+        if (Input.GetKeyUp(KeyCode.H) && isBusy && dialogue.Choice1 != null)
         {
             dialogueBox.SetActive(false);
-            DialogueManager.Instance.ConsumeFromQueue();
-            DialogueManager.Instance.AddDialogueId(dialogue.NextForChoice1);
+            DialogueManager.Instance.AddDialogue(dialogue.NextForChoice1);
             isBusy = false;
         }
         else if (Input.GetKeyUp(KeyCode.J) && isBusy && dialogue.Choice2 != null)
         {
             dialogueBox.SetActive(false);
-            DialogueManager.Instance.ConsumeFromQueue();
-            DialogueManager.Instance.AddDialogueId(dialogue.NextForChoice2);
+            DialogueManager.Instance.AddDialogue(dialogue.NextForChoice2);
             isBusy = false;
         }
         else if (Input.GetKeyUp(KeyCode.K) && isBusy && dialogue.Choice3 != null)
         {
             dialogueBox.SetActive(false);
-            DialogueManager.Instance.ConsumeFromQueue();
-            DialogueManager.Instance.AddDialogueId(dialogue.NextForChoice3);
+            DialogueManager.Instance.AddDialogue(dialogue.NextForChoice3);
             isBusy = false;
         }
         else if (Input.GetKeyUp(KeyCode.L) && isBusy && dialogue.Choice4 != null)
         {
             dialogueBox.SetActive(false);
-            DialogueManager.Instance.ConsumeFromQueue();
-            DialogueManager.Instance.AddDialogueId(dialogue.NextForChoice4);
+            DialogueManager.Instance.AddDialogue(dialogue.NextForChoice4);
             isBusy = false;
         }
 

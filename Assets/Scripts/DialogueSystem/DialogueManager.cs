@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +22,18 @@ public class DialogueManager
 
     // Queue
     private Queue<string> queue = new Queue<string>();
+
+    public event Action<Dialogue> DialogueAdded;
+
+    public void AddDialogue(string id)
+    {
+        Dialogue dialogue = all.Find(d => d.Id == id);
+        DialogueAdded?.Invoke(dialogue);
+        if (dialogue.EventId != null)
+        {
+            EventManager.Instance.InvokeEvent(dialogue.EventId);
+        }
+    }
 
     // Private constructor to prevent instantiation
     private DialogueManager()

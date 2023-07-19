@@ -12,8 +12,7 @@ public class DialogueProducer : MonoBehaviour
     {
         if (Input.GetKeyUp(activationKey) && isTouchingPlayer && !exhausted)
         {
-            Debug.Log("Player pressed the activation key.");
-            DialogueManager.Instance.AddDialogueId(dialogueId);
+            DialogueManager.Instance.AddDialogue(dialogueId);
             exhausted = true;
         }
     }
@@ -42,7 +41,6 @@ public class DialogueProducer : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player entered the trigger.");
             isTouchingPlayer = true;
 
         }
@@ -52,7 +50,6 @@ public class DialogueProducer : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player exited the trigger.");
             isTouchingPlayer = false;
             exhausted = false;
         }

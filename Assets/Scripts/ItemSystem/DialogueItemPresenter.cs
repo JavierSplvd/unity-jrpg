@@ -21,7 +21,7 @@ public class DialogueItemPresenter : MonoBehaviour
         textMeshPro.text = "You obtained " + item.Name;
         background.enabled = true;
         // After 5 seconds, clear the text
-        Invoke("ClearText", 4f);
+        Invoke("ClearText", 2.5f);
     }
 
     private void ClearText()

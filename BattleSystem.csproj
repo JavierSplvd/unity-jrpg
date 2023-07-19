@@ -86,7 +86,6 @@
      <Compile Include="Assets\Scripts\Utils\EditorSquare.cs" />
      <Compile Include="Assets\Scripts\Combat\HUD\IBattleHUD.cs" />
      <Compile Include="Assets\Scripts\Utils\TestUtil.cs" />
-     <Compile Include="Assets\Scripts\DialogueSystem\DialogueBrokerDebugger.cs" />
      <Compile Include="Assets\Scripts\DialogueSystem\DialoguePresenter.cs" />
      <Compile Include="Assets\Scripts\State\AttackState.cs" />
      <Compile Include="Assets\Scripts\State\WinState.cs" />
