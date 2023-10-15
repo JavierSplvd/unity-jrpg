@@ -91,7 +91,14 @@ namespace SuperTiled2Unity.Editor
             // Fill out the attributes
             comp.m_Id = xObject.GetAttributeAs("id", 0);
             comp.m_TiledName = xObject.GetAttributeAs("name", string.Format("Object_{0}", comp.m_Id));
-            comp.m_Type = xObject.GetAttributeAs("type", "");
+
+            comp.m_Type = xObject.GetAttributeAs("class", "");
+            
+            //As of Tiled 1.9 types have been merged with classes
+            //As a simple way to support both version we can fall back like this to the old < 1.9 way
+            if(string.IsNullOrWhiteSpace(comp.m_Type))
+                comp.m_Type = xObject.GetAttributeAs("type", "");
+
             comp.m_X = xObject.GetAttributeAs("x", 0.0f);
             comp.m_Y = xObject.GetAttributeAs("y", 0.0f);
             comp.m_Rotation = xObject.GetAttributeAs("rotation", 0.0f);
@@ -267,7 +274,7 @@ namespace SuperTiled2Unity.Editor
                 // Add the renderer
                 var renderer = goTile.AddComponent<SpriteRenderer>();
                 renderer.sprite = tile.m_Sprite;
-                renderer.color = new Color(1, 1, 1, superObject.CalculateOpacity());
+                renderer.color = superObject.CalculateColor();
                 Importer.AssignMaterial(renderer, m_ObjectLayer.m_TiledName);
                 Importer.AssignSpriteSorting(renderer);
 

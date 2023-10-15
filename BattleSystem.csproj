@@ -60,8 +60,8 @@
      <Compile Include="Assets\Scripts\Combat\Skills\SkillReviveSO.cs" />
      <Compile Include="Assets\Scripts\SoundLibrarySO.cs" />
      <Compile Include="Assets\Scripts\LeanTween\Framework\LTSeq.cs" />
-     <Compile Include="Assets\Scripts\Utils\RoundedFollow.cs" />
      <Compile Include="Assets\Scripts\DialogueSystem\DialogueProducer.cs" />
+     <Compile Include="Assets\Scripts\Utils\RoundedFollow.cs" />
      <Compile Include="Assets\Scripts\UseCase\UseCase.cs" />
      <Compile Include="Assets\Scripts\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
      <Compile Include="Assets\Scripts\Combat\ItemHealingSO.cs" />

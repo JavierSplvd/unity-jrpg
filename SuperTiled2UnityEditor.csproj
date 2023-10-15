@@ -111,8 +111,8 @@
      <Compile Include="Assets\SuperTiled2Unity\Scripts\Editor\SortingMode.cs" />
      <Compile Include="Assets\SuperTiled2Unity\Scripts\Editor\Loaders\SuperGroupLayerLoader.cs" />
      <Compile Include="Assets\SuperTiled2Unity\Scripts\Editor\Importers\TxAssetImporterEditor.cs" />
-     <Compile Include="Assets\SuperTiled2Unity\Scripts\Editor\Extensions\StreamExtensions.cs" />
      <Compile Include="Assets\SuperTiled2Unity\Scripts\Editor\Importers\TsxAssetImporterEditor.cs" />
+     <Compile Include="Assets\SuperTiled2Unity\Scripts\Editor\Extensions\StreamExtensions.cs" />
      <Compile Include="Assets\SuperTiled2Unity\Scripts\Editor\Collision\CollisionClipperKey.cs" />
      <Compile Include="Assets\SuperTiled2Unity\Scripts\Editor\ThirdParty\MultiValueDictionary.cs" />
      <Compile Include="Assets\SuperTiled2Unity\Scripts\Editor\Loaders\CustomPropertyLoader.cs" />

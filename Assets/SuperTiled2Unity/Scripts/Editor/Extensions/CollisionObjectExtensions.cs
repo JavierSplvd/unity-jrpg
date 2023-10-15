@@ -25,12 +25,17 @@ namespace SuperTiled2Unity.Editor
             {
                 AddBoxCollider(go, collision, tile, importContext);
             }
+            else if (collision.CollisionShapeType == CollisionShapeType.Point)
+            {
+                AddPointCollider(go, collision, importContext);
+            }
 
             // Additional settings on the collider that was just added
             var addedCollider = go.GetComponent<Collider2D>();
             if (addedCollider != null)
             {
                 addedCollider.isTrigger = importContext.GetIsTriggerOverridable(collision.m_IsTrigger);
+                addedCollider.gameObject.layer = LayerMask.NameToLayer(collision.m_PhysicsLayer);
             }
 
             goParent.AddChildWithUniqueName(go);
@@ -88,6 +93,17 @@ namespace SuperTiled2Unity.Editor
             box.offset = importContext.MakePointPPU(collision.m_Size.x, -collision.m_Size.y) * 0.5f;
             box.size = importContext.MakeSize(collision.m_Size);
 
+            var xpos = importContext.MakeScalar(collision.m_Position.x);
+            var ypos = importContext.MakeScalar(collision.m_Position.y);
+
+            go.transform.localPosition = new Vector3(xpos, ypos);
+            go.transform.localEulerAngles = new Vector3(0, 0, importContext.MakeRotation(collision.m_Rotation));
+
+            go.AddComponent<SuperColliderComponent>();
+        }
+
+        private static void AddPointCollider(GameObject go, CollisionObject collision, SuperImportContext importContext)
+        {
             var xpos = importContext.MakeScalar(collision.m_Position.x);
             var ypos = importContext.MakeScalar(collision.m_Position.y);
 

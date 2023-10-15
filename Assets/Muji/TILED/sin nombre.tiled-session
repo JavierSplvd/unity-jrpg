@@ -1,0 +1,44 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "hub.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "gameboy_rpg_v09.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "hub.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 650.3333333333333,
+                "y": 757.3333333333333
+            }
+        }
+    },
+    "last.imagePath": "C:/Users/Javier/Documents/unity-jrpg/Assets/Muji/TILED",
+    "map.height": 100,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 100,
+    "openFiles": [
+        "hub.tmx",
+        "gameboy_rpg_v09.tsx"
+    ],
+    "project": "sin nombre.tiled-project",
+    "recentFiles": [
+        "gameboy_rpg_v09.tsx",
+        "hub.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
